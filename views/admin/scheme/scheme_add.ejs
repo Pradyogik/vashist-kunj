@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}   
+.selectMultiple {
+	 width: 376px;
+	 position: relative;
+}
+ .selectMultiple select {
+	 display: none;
+}
+ .selectMultiple > div {
+	 position: relative;
+	 z-index: 2;
+	 padding: 8px 12px 2px 12px;
+	 border-radius: 8px;
+	 background: #fff;
+	 font-size: 14px;
+	 min-height: 44px;
+	 box-shadow: 0 4px 16px 0 rgba(22, 42, 90, .12);
+	 transition: box-shadow 0.3s ease;
+}
+ .selectMultiple > div:hover {
+	 box-shadow: 0 4px 24px -1px rgba(22, 42, 90, .16);
+}
+ .selectMultiple > div .arrow {
+	 right: 1px;
+	 top: 0;
+	 bottom: 0;
+	 cursor: pointer;
+	 width: 28px;
+	 position: absolute;
+}
+ .selectMultiple > div .arrow:before, .selectMultiple > div .arrow:after {
+	 content: '';
+	 position: absolute;
+	 display: block;
+	 width: 2px;
+	 height: 8px;
+	 border-bottom: 8px solid #99a3ba;
+	 top: 43%;
+	 transition: all 0.3s ease;
+}
+ .selectMultiple > div .arrow:before {
+	 right: 12px;
+	 transform: rotate(-130deg);
+}
+ .selectMultiple > div .arrow:after {
+	 left: 9px;
+	 transform: rotate(130deg);
+}
+ .selectMultiple > div span {
+	 color: #99a3ba;
+	 display: block;
+	 position: absolute;
+	 left: 12px;
+	 cursor: pointer;
+	 top: 8px;
+	 line-height: 28px;
+	 transition: all 0.3s ease;
+}
+ .selectMultiple > div span.hide {
+	 opacity: 0;
+	 visibility: hidden;
+	 transform: translate(-4px, 0);
+}
+ .selectMultiple > div a {
+	 position: relative;
+	 padding: 0 24px 6px 8px;
+	 line-height: 28px;
+	 color: #1e2330;
+	 display: inline-block;
+	 vertical-align: top;
+	 margin: 0 6px 0 0;
+}
+ .selectMultiple > div a em {
+	 font-style: normal;
+	 display: block;
+	 white-space: nowrap;
+}
+ .selectMultiple > div a:before {
+	 content: '';
+	 left: 0;
+	 top: 0;
+	 bottom: 6px;
+	 width: 100%;
+	 position: absolute;
+	 display: block;
+	 background: rgba(228, 236, 250, .7);
+	 z-index: -1;
+	 border-radius: 4px;
+}
+ .selectMultiple > div a i {
+	 cursor: pointer;
+	 position: absolute;
+	 top: 0;
+	 right: 0;
+	 width: 24px;
+	 height: 28px;
+	 display: block;
+}
+ .selectMultiple > div a i:before, .selectMultiple > div a i:after {
+	 content: '';
+	 display: block;
+	 width: 2px;
+	 height: 10px;
+	 position: absolute;
+	 left: 50%;
+	 top: 50%;
+	 background: #4d18ff;
+	 border-radius: 1px;
+}
+ .selectMultiple > div a i:before {
+	 transform: translate(-50%, -50%) rotate(45deg);
+}
+ .selectMultiple > div a i:after {
+	 transform: translate(-50%, -50%) rotate(-45deg);
+}
+ .selectMultiple > div a.notShown {
+	 opacity: 0;
+	 transition: opacity 0.3s ease;
+}
+ .selectMultiple > div a.notShown:before {
+	 width: 28px;
+	 transition: width 0.45s cubic-bezier(0.87, -0.41, 0.19, 1.44) 0.2s;
+}
+ .selectMultiple > div a.notShown i {
+	 opacity: 0;
+	 transition: all 0.3s ease 0.3s;
+}
+ .selectMultiple > div a.notShown em {
+	 opacity: 0;
+	 transform: translate(-6px, 0);
+	 transition: all 0.4s ease 0.3s;
+}
+ .selectMultiple > div a.notShown.shown {
+	 opacity: 1;
+}
+ .selectMultiple > div a.notShown.shown:before {
+	 width: 100%;
+}
+ .selectMultiple > div a.notShown.shown i {
+	 opacity: 1;
+}
+ .selectMultiple > div a.notShown.shown em {
+	 opacity: 1;
+	 transform: translate(0, 0);
+}
+ .selectMultiple > div a.remove:before {
+	 width: 28px;
+	 transition: width 0.4s cubic-bezier(0.87, -0.41, 0.19, 1.44) 0s;
+}
+ .selectMultiple > div a.remove i {
+	 opacity: 0;
+	 transition: all 0.3s ease 0s;
+}
+ .selectMultiple > div a.remove em {
+	 opacity: 0;
+	 transform: translate(-12px, 0);
+	 transition: all 0.4s ease 0s;
+}
+ .selectMultiple > div a.remove.disappear {
+	 opacity: 0;
+	 transition: opacity 0.5s ease 0s;
+}
+ .selectMultiple > ul {
+	 margin: 0;
+	 padding: 0;
+	 list-style: none;
+	 font-size: 16px;
+	 z-index: 1;
+	 position: absolute;
+	 top: 100%;
+	 left: 0;
+	 right: 0;
+	 visibility: hidden;
+	 opacity: 0;
+	 border-radius: 8px;
+	 transform: translate(0, 20px) scale(0.8);
+	 transform-origin: 0 0;
+	 filter: drop-shadow(0 12px 20px rgba(22, 42, 90, .08));
+	 transition: all 0.4s ease, transform 0.4s cubic-bezier(0.87, -0.41, 0.19, 1.44), filter 0.3s ease 0.2s;
+}
+ .selectMultiple > ul li {
+	 color: #1e2330;
+	 background: #fff;
+	 padding: 12px 16px;
+	 cursor: pointer;
+	 overflow: hidden;
+	 position: relative;
+	 transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease 0.3s, opacity 0.5s ease 0.3s, border-radius 0.3s ease 0.3s;
+}
+ .selectMultiple > ul li:first-child {
+	 border-radius: 8px 8px 0 0;
+}
+ .selectMultiple > ul li:first-child:last-child {
+	 border-radius: 8px;
+}
+ .selectMultiple > ul li:last-child {
+	 border-radius: 0 0 8px 8px;
+}
+ .selectMultiple > ul li:last-child:first-child {
+	 border-radius: 8px;
+}
+ .selectMultiple > ul li:hover {
+	 background: #4d18ff;
+	 color: #fff;
+}
+ .selectMultiple > ul li:after {
+	 content: '';
+	 position: absolute;
+	 top: 50%;
+	 left: 50%;
+	 width: 6px;
+	 height: 6px;
+	 background: rgba(0, 0, 0, .4);
+	 opacity: 0;
+	 border-radius: 100%;
+	 transform: scale(1, 1) translate(-50%, -50%);
+	 transform-origin: 50% 50%;
+}
+ .selectMultiple > ul li.beforeRemove {
+	 border-radius: 0 0 8px 8px;
+}
+ .selectMultiple > ul li.beforeRemove:first-child {
+	 border-radius: 8px;
+}
+ .selectMultiple > ul li.afterRemove {
+	 border-radius: 8px 8px 0 0;
+}
+ .selectMultiple > ul li.afterRemove:last-child {
+	 border-radius: 8px;
+}
+ .selectMultiple > ul li.remove {
+	 transform: scale(0);
+	 opacity: 0;
+}
+ .selectMultiple > ul li.remove:after {
+	 animation: ripple 0.4s ease-out;
+}
+ .selectMultiple > ul li.notShown {
+	 display: none;
+	 transform: scale(0);
+	 opacity: 0;
+	 transition: transform 0.35s ease, opacity 0.4s ease;
+}
+ .selectMultiple > ul li.notShown.show {
+	 transform: scale(1);
+	 opacity: 1;
+}
+ .selectMultiple.open > div {
+	 box-shadow: 0 4px 20px -1px rgba(22, 42, 90, .12);
+}
+ .selectMultiple.open > div .arrow:before {
+	 transform: rotate(-50deg);
+}
+ .selectMultiple.open > div .arrow:after {
+	 transform: rotate(50deg);
+}
+ .selectMultiple.open > ul {
+	 transform: translate(0, 12px) scale(1);
+	 opacity: 1;
+	 visibility: visible;
+	 filter: drop-shadow(0 16px 24px rgba(22, 42, 90, .16));
+}
+ @keyframes ripple {
+	 0% {
+		 transform: scale(0, 0);
+		 opacity: 1;
+	}
+	 25% {
+		 transform: scale(30, 30);
+		 opacity: 1;
+	}
+	 100% {
+		 opacity: 0;
+		 transform: scale(50, 50);
+	}
+}
+ html {
+	 box-sizing: border-box;
+	 -webkit-font-smoothing: antialiased;
+}
+ * {
+	 box-sizing: inherit;
+}
+ *:before, *:after {
+	 box-sizing: inherit;
+ }
+</style>
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+        <%- include('../admin-layouts/header') %>
+            
+        <div class="content-wrapper">
+     
+          
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            
+				
+            	<div class="right_col" role="main">
+                <!-- page content -->
+                
+					<div class="row">
+           
+                        <div class="col-sm-12">
+                          <div class="clearfix"></div>
+                          <div class="panel panel-bd">
+                              <div class="panel-body">
+                                  <fieldset class="the-fieldset">
+                                      <legend class="the-legend">Add Property Size</legend>
+                                        <form data-toggle="validator" action="/admin/scheme-add" method="post" id="genratetoken" style="padding-top: 23px">
+                                         
+                                        
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="SelectParentScheme">Select Land Category</label>
+                                                        <select class="form-control" required aria-label="Default select example" name="land_category_id" id="land_category_id" onchange="handleChange(event)">
+                                                           
+                                                            <% 
+                                                            for (let l of landlist) { 
+                                                            %>
+                                                            <option value="<%= l.id %>" > <%= l.land_category %>  </option>
+                                                            <% } %> 
+                                                            <!-- Add options dynamically here -->
+                                                        </select>
+                                                        
+                                                        <div class="invalid-feedback">
+                                                            <!-- Error message for landCategory -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="SelectParentScheme">Select Parent Scheme</label>
+                                                        <select class="form-control" aria-label="Default select example" id="parent_scheme_id" name="parent_scheme_id" onchange="handleChange(event)">
+                                                           
+                                                            <% 
+                                                            for (let s of schemelist) { 
+                                                            %>
+                                                            <option value="<%= s.id %>" > <%= s.title %> </option>
+                                                            <% } %> 
+                                                            <!-- Add options dynamically here -->
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3 col-md-4">
+                                                        <label for="exampleFormControlInput1">Name of Scheme</label>
+                                                        <input type="text" class="form-control" name="title" id="title" placeholder="Name of Scheme"  onchange="handleChange(event)" required>
+                                                        <span style="color: #e55353;"><!-- Error message for title --></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-4">
+                                                        <label for="exampleFormControlTextarea1">Scheme Code (Abbreviation)</label>
+                                                        <input type="text" class="form-control" required id="schemeCode" placeholder="Scheme Code" name="scheme_code" onchange="handleChange(event)">
+                                                        <div class="invalid-feedback">
+                                                            Scheme Code is required.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 col-md-4">
+                                                        <label for="exampleFormControlTextarea1">Total Area In Scheme</label>
+                                                        <input type="number" class="form-control" required id="totalArea" placeholder="Upload totalArea file" name="total_land_area" onchange="handleChange(event)">
+                                                        <div class="invalid-feedback">
+                                                            Total Area is required.
+                                                        </div>
+                                                        <span style="color: #e55353;"><!-- Error message for totalArea --></span>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="SelectParentScheme">Select Unit</label>
+                                                        <select class="form-control" aria-label="Default select example" id="unit" name="total_area_unit_id" onchange="handleChange(event)" required>
+                                                            <% 
+                                                            for (let u of unitlist) { 
+                                                            %>
+                                                            <option value="<%= u.id %>" > <%= u.unit %>  </option>
+                                                            <% } %>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Unit is required
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-4">
+                                                        <label for="exampleFormControlTextarea1">Scheme Start Date</label>
+                                                        <input type="date" name="scheme_start_date" id="startDate"  class="form-control"  onchange="handleDateChange(event)">
+                                                        <div class="invalid-feedback">
+                                                            Start Date is required.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 col-md-4">
+                                                        <label for="exampleFormControlTextarea1">Scheme End Date</label>
+                                                        <input type="date" class="form-control" name="scheme_end_date" id="endDate" onchange="handleEndDateChange(event)">
+                                                        <div class="invalid-feedback">
+                                                            End Date is required.
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 col-md-4">
+                                                        <label for="exampleFormControlTextarea1">Upload Brochure File</label>
+                                                        <input type="file" class="form-control" id="brochure" name="brochure_file_path" onchange="handleFileChange(event)" accept="application/pdf">
+                                                        <div class="invalid-feedback">
+                                                            Brochure File is required
+                                                        </div>
+                                                        <span style="color: #e55353;"><!-- Error message for brochureFilePath --></span>
+                                                    </div>
+                                                </div>
+                                             
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="sizes">Select Sizes</label>
+                                                        
+                                                        <select id="sizeInput" class="form-control" name="propertySize[]" id="SelectPropertySize"  multiple>
+                                                             <% for (let p of propertylist) { %>
+                                                                 <option value="<%= p.id %>_<%= p.property_size %>"> <%= p.property_size %><%= p.unit %> </option>
+                                                             <% } %>
+                                                            <!-- Add more options as needed -->
+                                                        </select>
+                                                        </div>                                                    
+                                                        <div class="col-md-2">
+
+                                                        <input type="button" class="btn btn-primary mt-2" onclick="addSizes()" style="margin-top: 31px;" value="Add Sizes">
+                                                        
+
+                                                        <div id="sizes" class="mt-2"></div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="reserveCategories">Select Reserve Categories</label>
+                                                        <select id="categoryInput" name="reserve_cat[]" class="form-control" multiple>
+                                                            <% for (let r of reservelist) { %>
+                                                                <option value="<%= r.id %>_<%= r.reserve_category %>"> <%= r.reserve_category %> </option>
+                                                            <% } %>
+                                                            <!-- Add more options as needed -->
+                                                        </select>
+                                                    </div>                 
+                                                    <div class="col-md-2">
+                                                        <input type="button" class="btn btn-primary mt-2" onclick="addCategories()" style="margin-top: 31px;" value="Add Categories">
+                                                        <div id="reserveCategories" class="mt-2"></div>
+                                                    </div>
+                                                </div>
+                                        
+                                                <table class="table mt-4">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Property Size</th>
+                                                            <th>Total No. of Property</th>
+                                                            <th>Default</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="propertyTable">
+                                                    </tbody>
+                                                </table>
+                                                <div class="row">
+                                                    <div class="mb-3 col-md-12">
+                                                        <label for="exampleFormControlTextarea1">Description</label>
+                                                        <textarea id="description" name="description"></textarea>
+                                                        <script>
+                                                            CKEDITOR.replace('description');
+                                                        </script>
+                                                        <span style="color: #e55353;"><!-- Error message for description --></span>
+                                                    </div>
+                                                </div>
+                                            </div>      
+                                            <div class="help-block"></div>
+                                   
+                                          <div class="form-group pull-right">
+                                              <button type="submit" class="btn btn-cap m-r-5 ">Submit</button>
+                                              <button type="reset" class="btn btn-warning">Cancel</button>
+                                          </div>
+                                      </form>
+                                  </fieldset>
+                              </div>
+                          </div>		
+                      </div>
+                    </div>
+                    
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+         <script>
+            let sizes = [];
+            let categories = [];
+    
+            function addSizes() {
+                const sizeInput = document.getElementById('sizeInput');
+                const selectedSizes = Array.from(sizeInput.selectedOptions).map(option => option.value);
+                selectedSizes.forEach(size => {
+                    if (!sizes.includes(size)) {
+                        sizes.push(size);
+                        var sanArr = size.split( "_" );
+                        document.getElementById('sizes').innerHTML += `<span class="badge badge-primary m-1">${sanArr[1]}</span>`;
+                    }
+                });
+                updateTable();
+            }
+    
+            function addCategories() {
+                const categoryInput = document.getElementById('categoryInput');
+                const selectedCategories = Array.from(categoryInput.selectedOptions).map(option => option.value);
+                selectedCategories.forEach(category => {
+                    if (!categories.includes(category)) {
+                        categories.push(category);
+                         var sancatArr = category.split( "_" );
+                        document.getElementById('reserveCategories').innerHTML += `<span class="badge badge-primary m-1">${sancatArr[1]}</span>`;
+                    }
+                });
+                updateTable();
+            }
+    
+            function updateTable() {
+                const tableBody = document.getElementById('propertyTable');
+                tableBody.innerHTML = '';
+                sizes.forEach(size => {
+                    var sanpArr = size.split( "_" );
+                    var sizeId = sanpArr[0];
+                    var sizeVal = sanpArr[1];
+                    let row = `<tr>
+                        <td><input type="hidden" class="form-control" name="sizemasterid[]" value="${sizeId}">${sizeVal}</td>
+                        <td><input type="number" name="total_plots[]" class="form-control"  placeholder="Total No. of Plots"></td>
+                        <td><input type="number" name="free_hold_total_plots[]" class="form-control"  placeholder="Total No. of Free Hold Plots"></td>`;
+                    
+                    if (categories !== undefined || categories.length > 0) {
+                    	var spg =1;
+                    	var cnt = categories.length;
+
+						   categories.forEach(category => {
+						   	
+	                    	var sancatArr = category.split( "_" );
+	                        var catId = sancatArr[0];
+	                        var catVal = sancatArr[1];
+	                        row += `<td><input type="hidden" class="form-control" name="reservcatmasterid_${spg}[]" value="${catId}">
+	                            <input type="number" name="number_of_reservcat_plots_${spg}[]" class="form-control"  placeholder="Number of plots for ${catVal}"></td>`;
+	                      spg++;
+	                    });
+					}
+                    
+    
+                    row += `</tr>`;
+                    tableBody.innerHTML += row;
+                });
+    
+                updateTableHeader();
+            }
+    
+            function updateTableHeader() {
+                const tableHead = document.querySelector('thead tr');
+                tableHead.innerHTML = `
+                    <th>Property Size</th>
+                    <th>Total No. of Property</th>
+                    <th>Default</th>
+                `;
+                categories.forEach(category => {
+                    tableHead.innerHTML += `<th>${category}</th>`;
+                });
+            }
+        </script>
+
+<script>
+$(document).ready(function() {
+var select = $('select[multiple]');
+var options = select.find('option');
+
+
+
+var div = $('<div />').addClass('selectMultiple');
+var active = $('<div />');
+var list = $('<ul />');
+var placeholder = select.data('placeholder');
+
+var span = $('<span />').text(placeholder).appendTo(active);
+
+options.each(function() {
+    var text = $(this).text();
+    if($(this).is(':selected')) {
+        active.append($('<a />').html('<em>' + text + '</em><i></i>'));
+        span.addClass('hide');
+    } else {
+        list.append($('<li />').html(text));
+    }
+});
+
+active.append($('<div />').addClass('arrow'));
+div.append(active).append(list);
+
+select.wrap(div);
+
+$(document).on('click', '.selectMultiple ul li', function(e) {
+    var select = $(this).parent().parent();
+    var li = $(this);
+    if(!select.hasClass('clicked')) {
+        select.addClass('clicked');
+        li.prev().addClass('beforeRemove');
+        li.next().addClass('afterRemove');
+        li.addClass('remove');
+        var a = $('<a />').addClass('notShown').html('<em>' + li.text() + '</em><i></i>').hide().appendTo(select.children('div'));
+        a.slideDown(400, function() {
+            setTimeout(function() {
+                a.addClass('shown');
+                select.children('div').children('span').addClass('hide');
+                select.find('option:contains(' + li.text() + ')').prop('selected', true);
+            }, 500);
+        });
+        setTimeout(function() {
+            if(li.prev().is(':last-child')) {
+                li.prev().removeClass('beforeRemove');
+            }
+            if(li.next().is(':first-child')) {
+                li.next().removeClass('afterRemove');
+            }
+            setTimeout(function() {
+                li.prev().removeClass('beforeRemove');
+                li.next().removeClass('afterRemove');
+            }, 200);
+
+            li.slideUp(400, function() {
+                li.remove();
+                select.removeClass('clicked');
+            });
+        }, 600);
+    }
+});
+
+$(document).on('click', '.selectMultiple > div a', function(e) {
+    var select = $(this).parent().parent();
+    var self = $(this);
+    self.removeClass().addClass('remove');
+    select.addClass('open');
+    setTimeout(function() {
+        self.addClass('disappear');
+        setTimeout(function() {
+            self.animate({
+                width: 0,
+                height: 0,
+                padding: 0,
+                margin: 0
+            }, 300, function() {
+                var li = $('<li />').text(self.children('em').text()).addClass('notShown').appendTo(select.find('ul'));
+                li.slideDown(400, function() {
+                    li.addClass('show');
+                    setTimeout(function() {
+                        select.find('option:contains(' + self.children('em').text() + ')').prop('selected', false);
+                        if(!select.find('option:selected').length) {
+                            select.children('div').children('span').removeClass('hide');
+                        }
+                        li.removeClass();
+                    }, 400);
+                });
+                self.remove();
+            })
+        }, 300);
+    }, 400);
+});
+
+$(document).on('click', '.selectMultiple > div .arrow, .selectMultiple > div span', function(e) {
+    $(this).parent().parent().toggleClass('open');
+});
+
+});
+
+     </script>
+        <%- include('../admin-layouts/footer') %>
+    </body>
+    
+</html>
+

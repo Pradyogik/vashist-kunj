@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script type="text/javascript" src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+
+            <%- include('../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">CMS</legend>
+                                        <form data-toggle="validator">
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Title</label>
+                                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required="">
+                                            </div>
+                                            <div class="form-group has-feedback">
+                                                <label for="inputLink" class="control-label">Slug</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">slug</span>
+                                                    <input type="text" class="form-control" id="link" name="link" placeholder="Enter Your Slug" required="">
+                                                </div>           
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="short_description" class="control-label">Short Description</label>
+                                                    <input type="text" class="form-control" id="short_description" name="short_description" placeholder="Enter Short Description" required="">
+                                            </div>
+                                            <!-- <div class="form-group has-feedback">
+                                                <label for="inputLink" class="control-label">Image:</label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="image" name="image" placeholder="Enter your link" required="">
+                                                </div>           
+                                            </div> -->
+                                            <div class="form-group">
+
+                                            <label for="content">Content/Description:</label>
+                                            <div class="panel-body">
+                                               
+                                                <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>                                                
+                                            </div>                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="status" class="control-label">Status</label>
+                                            <div class="radio_inline">
+                                                <div class="radio">
+                                                    <input type="radio" name="status" value="1" id="toast" required="">
+                                                    <label for="toast">Active</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <input type="radio" name="status" value="0" id="boost" required="">
+                                                    <label for="boost">Inactive</label>
+                                                </div>
+                                                
+                                            </div>    
+                                            <div class="help-block"></div>
+                                        </div>
+                                            
+                                            <div class="form-group pull-right">
+                                                <button type="submit" class="btn btn-cap m-r-5">Submit</button>
+                                                <button type="submit" class="btn btn-warning">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<!-- /page content -->
+               
+            </div>
+            <!-- footer content -->
+				<%- include('../admin-layouts/footer') %>
+			<!-- /footer content -->
+        </div> <!-- ./wrapper -->
+        <script>
+           // Añade el CK Editor
+            CKEDITOR.editorConfig = function (config) {
+                config.language = 'es';
+                config.uiColor = '#F7B42C';
+                config.height = 300;
+                config.toolbarCanCollapse = true;
+            };
+            CKEDITOR.replace('editor1');
+
+            // ANADE IMG ON CLICK
+            var brandImg = document.querySelectorAll("#brand-img img");
+
+            for (var i = 0; i < brandImg.length; i++) {
+                ckEdiloop = brandImg[i];
+                ckEdiloop.addEventListener("click", function(el){
+                    ckEdImg = '<p><img src="'+this.src+'" /></p>'; // La forma como las imágenes son envueltas en ckEditor
+                    CKEDITOR.instances['editor1'].insertHtml(ckEdImg) // Añade img al editor
+                });
+            }        
+</script>
+        <script src="/admin-assets/plugins/ckeditor/ckeditor.js"></script>
+        <script src="/admin-assets/plugins/ckeditor/ckeditor-active.js"></script>
+    </body>
+
+</html>

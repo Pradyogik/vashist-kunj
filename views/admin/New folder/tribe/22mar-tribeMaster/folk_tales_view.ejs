@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <div class="col-sm-12">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe- ADA</legend>
+                                            <dl>
+                                                <dt>Tribe Name</dt>
+                                                <dd>A description list is perfect for defining terms.</dd>
+                                                <dt>Tribe Description</dt>
+                                                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                                                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                                                <dt>Tribe About</dt>
+                                                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                                            </dl>
+                                        </fieldset>
+                                    </div>
+
+                                     <div class="col-sm-2 mt">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe- ADA</legend>
+                                            <table class="table table-hover table-striped">
+                                                
+                                                <tbody>
+                                                    <tr><td><a href="/admin/tribe/master/folkmusic/1/1"> Folk Music <i class="ti-angle-double-right"></i> </a></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folksong/1/1"> Folk Songs <i class="ti-angle-double-right"></i> </a></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkdance/1/1"> Folk Dance <i class="ti-angle-double-right"></i> </a></td></tr>
+                                                    <tr class="active-tab"><td><a href="/admin/tribe/master/folktales/1/1"> Folk Tales <i class="ti-angle-double-right"></i> </a></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkTraditionalCostumes/1/1">Traditional Costumes/Dresses </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkRituals/1/1">Rituals </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkFestivals/1/1">Festivals </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkCuisineDelicacies/1/1">Cuisine/Delicacies </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkHandicrafts/1/1">Handicrafts </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkFolkBooks/1/1">Books</a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkScripts/1/1">Scripts</a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkLanguages/1/1">Languages</a><i class="ti-angle-double-right"></i></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                     </div>
+
+                                     <div class="col-sm-10 mt">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe - > Folk Tales</legend>
+                                            <form  data-toggle="validator" method="post" name="add_folk_tales"  id="addFolkTales"  action="/admin/tribe/master/folktales">
+                                              <div class="col-sm-4">
+                                                <label class="form-label required">Tribe(s) :</label>
+                                                <select class="form-control form-select"  name="tribe_name" id="tribeName">
+                                                  <option value="">Select Tribe</option>
+                                                  <% for (let s of servicelist)
+                                                          {
+                                                        
+                                                          %>
+                                                          <option value="<%= s.id %>" >
+                                                          <%= s.tribe_name %> 
+                                                          </option>
+                                                          <% } %>
+                                                </select>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label class="form-label required">Title:</label>
+                                                    <input class="form-control" type="text" name="title" id="title" placeholder="Enter Title">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Variation:</label>
+                                                    <input class="form-control" name="variation" id="variation" placeholder="Enter Variation">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Plot summary:</label>
+                                                    <input class="form-control" type="text" name="plot_summary" id="plot_summary" placeholder="Enter Plot summary">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Character:</label>
+                                                    <input class="form-control" type="text" name="character" id="character" placeholder="Enter Character">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Storyteller:</label>
+                                                    <input class="form-control" type="text" name="storyteller" id="storyteller" placeholder="Enter Storyteller">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Region:</label>
+                                                    <input class="form-control" type="text" name="region" id="region" placeholder="Enter Region Or Cultual Origin">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Moral:</label>
+                                                    <input class="form-control" type="text" name="moral" id="moral" placeholder="Enter Moral">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Historical:</label>
+                                                    <input class="form-control" type="text" name="historical" id="historical" placeholder="Enter Historical/religious Context and Significance">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label for="status" class="control-label">Is Folk</label>
+                                                    <div class="radio_inline">
+                                                        <div class="radio">
+                                                            <input type="radio" name="is_folk" value="1" id="toast" required="" checked>
+                                                            <label for="toast">Yes</label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <input type="radio" name="is_folk" value="0" id="boost" required="">
+                                                            <label for="boost">No</label>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                                <div class="form-group pull-right mt">
+                                                    <button type="submit" class="btn btn-cap m-r-5" onclick =" return Validate();">Submit</button>
+                                                    <button type="submit" class="btn btn-warning">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </fieldset>
+                                        <div class="mt"> 
+                                          <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe - > Folk Tales List</legend>
+                                          <div class="table-responsive">
+                                            <table id="myTable" class="table card-table table-vcenter text-nowrap datatable">
+                                              <thead>
+                                                <tr>
+                                                  <th>S No.</th>
+                                                  <th>Tribe Name</th>
+                                                  <th>Title</th>
+                                                  <th>Variation</th>
+                                                  <th>Plot Summary</th>
+                                                  <th>Character</th>
+                                                  <th>Storyteller</th>
+                                                  <th>Region</th>
+                                                  <th>Moral</th>
+                                                  <th>Historical</th>
+                                                  <th>Action</th>
+                                    
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <%  if(list.length>0)
+                                                  { 
+                                                    var number= 1;
+                                                    var del = '';
+                                                    for (let l of list)
+                                                      { %>
+                                                        <tr>
+                                                          
+                                                          <td><%= number %></td>
+                                                          <td><%= l.tribename %></td>
+                                                          <td><%= l.tale_title %></td>
+                                                          <td><%= l.variations %></td>
+                                                          <td><%= l.plot_summary %></td>
+                                                          <td><%= l.characters_involved %></td>
+                                                          <td><%= l.storyteller %></td>
+                                                          <td><%= l.region_cultural_origin %></td>
+                                                          <td><%= l.moral %></td>
+                                                          <td><%= l.historical_religious_significance %></td>
+                                                
+                                                          <td>
+                                                            <a href="#" class="btn btn-xs btn-success" aria-label=""  title="Edit Item">
+                                                              <i class="fa fa-edit"></i>
+                                                            </a>
+                                                            <a onclick="return checkConfirm('<%= l.id  %>')"  class="btn btn-xs btn-danger" aria-label="" title="Delete Item">
+                                                              <i class="fa fa-trash"></i>
+                                                          </a>
+                                                          </td>
+                                                        </tr>
+                  
+                                                      <% number++; } 
+                                                  }  %>
+                                               
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </fieldset>
+                                          <br>
+                                          <center>
+                                            <ul class="pagination modal-4">
+                                              <% var reamin = totalPages * pageSize;  if (reamin > pageSize) { %>  
+                                              <% if (currentPage > 1) { %>
+                                              <li><a href="?page=<%= currentPage - 1 %>" class="prev"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                                              <% } %>
+                                              <% for (let i = 1; i <= totalPages; i++) { %>
+                                                <% if(i <= 6) { %>
+                                                <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                                <% } else if(currentPage == i){ %>
+                                                  <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                                  
+                                                <% break;  } } %>
+                  
+                                              <% if(currentPage >= 5) { if(currentPage != totalPages) { %>
+                                                <% if(currentPage != totalPages - 1) { %>
+                                                <li><a href="javascript:void(0)" class="">...</a></li>
+                                                <% } %>
+                                                <li><a href="?page=<%= totalPages %>"><%= totalPages %></a></li>
+                  
+                                              <%  } } %>
+                  
+                                            
+                                              <% if (currentPage < totalPages) { %>
+                                                <li><a href="?page=<%= currentPage + 1 %>" class="next"> Next  <i class="fa fa-chevron-right"></i></a></li> 
+                                              <% } %>
+                  
+                                              <% } %>
+                                             
+                                            </ul>
+                                          </center>
+                                     </div>
+                                     </div>
+                                     
+                                </div>
+							    		
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<!-- /page content -->
+               
+            </div>
+            <!-- footer content -->
+				<%- include('../../admin-layouts/footer') %>
+			<!-- /footer content -->
+        </div> <!-- ./wrapper -->
+    </body>
+    <script type="text/javascript">
+ 
+      function Validate()
+      {
+        
+        var error = '';
+        var tribeName    = $('#tribeName').val();
+        var title        = $('#title').val();
+        var variation    = $('#variation').val();
+        var plot_summary = $('#plot_summary').val();
+        var character    = $('#character').val();
+        var storyteller  = $("#storyteller").val();
+        var region       = $('#region').val();
+        var moral        = $('#moral').val();
+        var historical   = $('#historical').val();
+
+        if(tribeName == '' || tribeName == null)
+        {
+          error+='Tribe Name Name is required\n';
+        }
+        if(title == '' || title == null)
+        {
+          error+='Title Name is required\n';
+        }
+        if(variation == '' || variation == null)
+        {
+          error+='Variation is required\n';
+        }
+        if(plot_summary == '' || plot_summary == null)
+        {
+          error+='Plot summary is required\n';
+        }
+        if(character == '' || character == null)
+        {
+          error+='Character summary is required\n';
+        }
+        if(storyteller == '' || storyteller == null)
+        {
+          error+='Storyteller is required\n';
+        }
+        if(region == '' || region == null)
+        {
+          error+='Region is required\n';
+        }
+        if(moral == '' || moral == null)
+        {
+          error+='Moral is required\n';
+        } 
+        if(historical == '' || historical == null)
+        {
+          error+='Historical is required\n';
+        }
+        
+        if(error != '')
+        {
+         swal({
+          title: "Error",
+          text: ""+error,
+          type: "error",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+        });
+       }
+       else
+       {
+         $('#addFolkTales').submit();
+       }
+     }
+  </script>
+
+
+</html>

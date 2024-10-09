@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+   
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-md-6">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Contact</legend>
+                                      
+                                        <form data-toggle="validator" method="post"  action="/admin/cms/contact/add" style="padding-top: 23px">
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Head Office Address</label>
+                                                <input type="text" class="form-control" id="head_office_address" name="head_office_address" placeholder="Enter Head Office Address" required="">
+                                            </div>
+                                            <div class="form-group has-feedback">
+                                                <label for="inputTwitter" class="control-label">Phone Number</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">+91</span>
+                                                    <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" name="phone_number" class="form-control" id="phone_number" placeholder="000 0000 0000" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="control-label">Email</label>
+                                                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Enter Email" data-error="Bruh, that email address is invalid" required="">
+                                                <div class="help-block"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="control-label">Opening Hours</label>
+                                                <input type="text" class="form-control" id="opening_hours" name="opening_hours" placeholder="Enter Opening Hours" data-error="Bruh, that email address is invalid" required="">
+                                                <div class="help-block"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status" class="control-label">Status</label>
+                                                <div class="radio_inline">
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" value="1" id="toast" required="">
+                                                        <label for="toast">Active</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" value="0" id="boost" required="">
+                                                        <label for="boost">Inactive</label>
+                                                    </div>
+                                                    
+                                                </div>    
+                                                <div class="help-block"></div>
+                                            </div>
+                                            <div class="form-group pull-right">
+                                                <button type="submit" class="btn btn-cap m-r-5">Submit</button>
+                                                <!-- <button type="submit" class="btn btn-warning">Cancel</button> -->
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                                <div class="panel-heading">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Contact List</legend>
+                            
+                                <div class="panel-body" >
+                            
+                                    <div class="table-responsive" >
+                                        <table id="dataTableExample1" class="table table-striped table-bordered" style="width:100%">
+                                            
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Head Office Address</th>
+                                                    <th>Phone No.</th>
+                                                    <th>Email</th>
+                                                    <th>Opening Hours</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                
+                                                </tr>
+                                            </thead>
+
+
+                                                <tbody>
+                                                    <%  if(list.length>0)
+                                                    { 
+                                                      var number= 1;
+                                                      var del = '';
+                                                      for (let l of list)
+                                                        { %>
+                                                    <tr>
+                                                        <td><%= number %></td>
+                                                        <td><%= l.head_office_address %></td>
+                                                        <td><%= l.phone_number %></td>
+                                                        <td><%= l.email %></td>
+                                                        <td><%= l.opening_hours %></td>
+
+                                                        <!-- <td style="color: <%= l.status === 1 ? 'green' : 'red' %>;">
+                                                            <%= l.status === 1 ? 'Active' : 'Inactive' %>
+                                                          </td> -->
+                                                          <td class="<%= l && l.status === 1 ? 'active-status' : 'inactive-status' %>">
+                                                            <%= l && l.status === 1 ? 'Active' : 'Inactive' %>
+                                                          </td>
+
+                                                       <td style="text-align:center">
+                                                        <a class="btn btn-xs btn-success" href="/admin/cms/contact/edit/<%= l.id %>" title="Edit Item">
+                                                          <span class="fa fa-edit "></span>
+                                                        </a>
+                                                        <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="/admin/cms/contact/delete/<%= l.id %>" title="Delete Item">
+                                                          <span class="glyphicon glyphicon-trash"></span>
+                                                        </a> 
+                                                      </td>   
+                                                        </tr>
+                                                           <% number++; } 
+                                                        }  %>                                                    
+                                                              
+                                                    </tbody>
+                                                </table>
+                                               
+                                            </div>
+                                </div>
+                            </fieldset>
+                            <center>
+                                <ul class="pagination modal-4">
+                                  <% var reamin = totalPages * pageSize;  if (reamin > pageSize) { %>  
+                                  <% if (currentPage > 1) { %>
+                                  <li><a href="?page=<%= currentPage - 1 %>" class="prev"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                                  <% } %>
+                                  <% for (let i = 1; i <= totalPages; i++) { %>
+                                    <% if(i <= 6) { %>
+                                    <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                    <% } else if(currentPage == i){ %>
+                                      <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                      
+                                    <% break;  } } %>
+      
+                                  <% if(currentPage >= 5) { if(currentPage != totalPages) { %>
+                                    <% if(currentPage != totalPages - 1) { %>
+                                    <li><a href="javascript:void(0)" class="">...</a></li>
+                                    <% } %>
+                                    <li><a href="?page=<%= totalPages %>"><%= totalPages %></a></li>
+      
+                                  <%  } } %>
+      
+                                
+                                  <% if (currentPage < totalPages) { %>
+                                    <li><a href="?page=<%= currentPage + 1 %>" class="next"> Next  <i class="fa fa-chevron-right"></i></a></li> 
+                                  <% } %>
+      
+                                  <% } %>
+                                 
+                                </ul>
+                              </center>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+               
+            </div>
+				<%- include('../../admin-layouts/footer') %>
+        </div>
+    </body>
+
+</html>

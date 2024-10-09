@@ -1,0 +1,95 @@
+
+<fieldset class="the-fieldset">
+    <legend class="the-legend">Tribe- ADA</legend>
+    <table class="table table-hover table-striped">
+        
+        <%
+       
+        if(categoryType =='music'){
+
+            var mActive = 'active-tab';
+
+        }else if(categoryType =='song'){
+
+            var sActive = 'active-tab';
+
+        }
+        else if(categoryType =='song'){
+
+            var sActive = 'active-tab';
+
+        }else if(categoryType =='dance'){
+
+            var dActive = 'active-tab';
+
+        }else if(categoryType =='tales'){
+
+            var tActive = 'active-tab';
+
+        }else if(categoryType =='costumes'){
+
+            var cActive = 'active-tab';
+
+        }else if(categoryType =='rituals'){
+
+            var rActive = 'active-tab';
+
+        }else if(categoryType =='festivals'){
+
+            var fActive = 'active-tab';
+
+        }else if(categoryType =='delicacies'){
+
+            var deActive = 'active-tab';
+
+        }else if(categoryType =='handicrafts'){
+
+            var hActive = 'active-tab';
+
+        }else if(categoryType =='books'){
+
+            var bActive = 'active-tab';
+
+        }else if(categoryType =='scripts'){
+
+            var scActive = 'active-tab';
+
+        }else if(categoryType =='languages'){
+
+            var lActive = 'active-tab';
+
+        }else{
+            
+            var mActive = '';
+            var sActive = '';
+            var dActive = '';
+            var tActive = '';
+            var cActive = '';
+            var rActive = '';
+            var fActive = '';
+            var deActive= '';
+            var hActive = '';
+            var bActive = '';
+            var scActive = '';
+            var lActive = '';
+        }
+    
+
+        %>
+
+        <tbody>
+            <tr class="<%=mActive%>"><td><a href="/admin/tribe/master/traditions/music/<%=tribeId%>"> Folk Music <i class="ti-angle-double-right"></i> </a></td></tr>
+            <tr class="<%=sActive%>"><td><a href="/admin/tribe/master/traditions/song/<%=tribeId%>"> Folk Songs <i class="ti-angle-double-right"></i> </a></td></tr>
+            <tr class="<%=dActive%>"><td><a href="/admin/tribe/master/traditions/dance/<%=tribeId%>"> Folk Dance <i class="ti-angle-double-right"></i> </a></td></tr>
+            <tr class="<%=tActive%>"><td><a href="/admin/tribe/master/traditions/tales/<%=tribeId%>"> Folk Tales <i class="ti-angle-double-right"></i> </a></td></tr>
+            <tr class="<%=cActive%>"><td><a href="/admin/tribe/master/traditions/costumes/<%=tribeId%>">Traditional Costumes/Dresses </a><i class="ti-angle-double-right"></i></td></tr>
+            <tr class="<%=rActive%>"><td><a href="/admin/tribe/master/traditions/rituals/<%=tribeId%>">Rituals </a><i class="ti-angle-double-right"></i></td></tr>
+            <tr class="<%=fActive%>"><td><a href="/admin/tribe/master/traditions/festivals/<%=tribeId%>">Festivals </a><i class="ti-angle-double-right"></i></td></tr>
+            <tr class="<%=deActive%>"><td><a href="/admin/tribe/master/traditions/delicacies/<%=tribeId%>">Cuisine/Delicacies </a><i class="ti-angle-double-right"></i></td></tr>
+            <tr class="<%=hActive%>"><td><a href="/admin/tribe/master/traditions/handicrafts/<%=tribeId%>">Handicrafts </a><i class="ti-angle-double-right"></i></td></tr>
+            <tr class="<%=bActive%>"><td><a href="/admin/tribe/master/traditions/books/<%=tribeId%>">Books</a><i class="ti-angle-double-right"></i></td></tr>
+            <tr class="<%=scActive%>"><td><a href="/admin/tribe/master/traditions/scripts/<%=tribeId%>">Scripts</a><i class="ti-angle-double-right"></i></td></tr>
+            <tr class="<%=lActive%>"><td><a href="/admin/tribe/master/traditions/languages/<%=tribeId%>">Languages</a><i class="ti-angle-double-right"></i></td></tr>
+        </tbody>
+    </table>
+</fieldset>

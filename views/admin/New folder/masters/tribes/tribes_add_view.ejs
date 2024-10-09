@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-md-6">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Tribes</legend>
+                                        <form data-toggle="validator" style="padding-top: 23px">
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Tribes Code</label>
+                                                <input type="text" class="form-control" id="tribes_code" name="tribes_code" value="C0005" readonly="readonly" placeholder="Enter Role Name" required="">
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Tribes Name</label>
+                                                <input type="text" class="form-control" id="tribes_name" name="tribes_name" placeholder="Enter Tribes Name" required="">
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                            <div class="form-group has-feedback">
+                                                <label for="inputName" class="control-label">Contact Number</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">+91</span>
+                                                    <input type="text" class="form-control" id="tribes_number" name="tribes_number" placeholder="Enter Contact Number" required="">
+                                                </div>
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Tribes Description</label>
+                                                <textarea type="text" class="form-control" id="tribes_desc" name="tribes_desc" placeholder="Enter Tribes Description" required=""></textarea>
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                            <div class="form-group">
+                                                <label for="status" class="control-label">Status</label>
+                                                <div class="radio_inline">
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" id="toast" required="">
+                                                        <label for="toast">Active</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" id="boost" required="">
+                                                        <label for="boost">Inactive</label>
+                                                    </div>
+                                                    
+                                                </div>
+                                                   
+                                                <div class="help-block"></div>
+                                            </div>
+                                           
+                                            <div class="form-group pull-right">
+                                                <button type="submit" class="btn btn-cap m-r-5">Submit</button>
+                                                <button type="submit" class="btn btn-warning">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                                <div class="panel-heading">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Tribes List</legend>
+                            
+                                <div class="panel-body">
+                            
+                                    <div class="table-responsive">
+                                        <table id="datatable-fixed-header" class="table table-striped table-bordered" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                <th>Tribes Name</th>
+                                                <th>Status</th>
+                                                <th>Created date</th>
+                                                <th>Action</th>
+                                                
+                                                </tr>
+                                            </thead>
+
+
+                                                <tbody>
+                                                    <tr>
+                                                    <td>1</td>
+                                                    <td>Tiger Nixon</td>                                                    
+                                                    <td>Active</td>
+                                                    <td>25/01/2024</td>
+                                                    <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                        <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                    </td>                                                    </tr>
+                                                    <tr>
+                                                    <td>2</td>
+                                                    <td>Garrett Winters</td>
+                                                    <td>Active</td>
+                                                    <td>25/01/2024</td>
+                                                    <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                        <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                    </td>                                                      </tr>
+                                                    <tr>
+                                                     <tr>
+                                                    <td>3</td>
+                                                    <td>Tiger Nixon</td>                                                    
+                                                    <td>Active</td>
+                                                    <td>25/01/2024</td>
+                                                    <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                        <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                    </td>                                                      </tr>
+                                                    <tr>
+                                                    <td>4</td>
+                                                    <td>Garrett Winters</td>
+                                                    <td>Active</td>
+                                                    <td>25/01/2024</td>
+                                                    <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                        <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                    </td>                                                      </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>Tiger Nixon</td>                                                    
+                                                        <td>Active</td>
+                                                        <td>25/01/2024</td>
+                                                        <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                            <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                        </td>                                                    </tr>
+                                                        <tr>
+                                                        <td>6</td>
+                                                        <td>Garrett Winters</td>
+                                                        <td>Active</td>
+                                                        <td>25/01/2024</td>
+                                                        <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                            <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                        </td>                                                      </tr>
+                                                        <tr>
+                                                         <tr>
+                                                        <td>7</td>
+                                                        <td>Tiger Nixon</td>                                                    
+                                                        <td>Active</td>
+                                                        <td>25/01/2024</td>
+                                                        <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                            <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                        </td>                                                      </tr>
+                                                        <tr>
+                                                        <td>8</td>
+                                                        <td>Garrett Winters</td>
+                                                        <td>Active</td>
+                                                        <td>25/01/2024</td>
+                                                        <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                            <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                        </td>  
+                                                          </tr>
+                                                          <tr>
+                                                            <td>9</td>
+                                                            <td>Tiger Nixon</td>                                                    
+                                                            <td>Active</td>
+                                                            <td>25/01/2024</td>
+                                                            <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                                <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                            </td>                                                    </tr>
+                                                            <tr>
+                                                            <td>10</td>
+                                                            <td>Garrett Winters</td>
+                                                            <td>Active</td>
+                                                            <td>25/01/2024</td>
+                                                            <td style="text-align:center"><a class="btn btn-xs btn-success" href="" title="Edit Item"><span class="fa fa-edit "></span></a>
+                                                                <a class="btn btn-xs btn-danger" onclick="return confirm('Do you really want to delete item')" href="" title="Delete Item"><span class="glyphicon glyphicon-trash"></span></a> 
+                                                            </td>                                                      </tr>
+                                                      
+                                                    <tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+               
+            </div>
+				<%- include('../../admin-layouts/footer') %>
+        </div>
+    </body>
+
+</html>

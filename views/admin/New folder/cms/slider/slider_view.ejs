@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                                <div class="panel-heading">
+                                    <div class="panel-title col-sm-6" >
+                                        <h4>Slider List</h4>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="/admin/cms/slider/add" class="pull-right btn btn-warning w-md m-rb-5">Add Slider</a>
+                                    </div>
+                                </div>
+                            
+                                <div class="panel-body">
+                            
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Title</th>
+                                                    <th>Description</th>
+                                                    <th>Image</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Galong</td>
+                                                    <td>Padam is one of the major subgroups among the Adi of Arunachal Pradesh. Rich in both cultural and oral tradition, the Padums are known for fiercely guarding their Democratic Society.</td>
+                                                    <td><img src="/assets/images/main-banner3.jpg" alt="" style="height: 100px; width: 300px;"></td>
+                                                    <td class="active-status">
+                                                        Active
+                                                      </td>                                                    
+                                                      <td style="text-align:center"><a href="/admin/cms/pages/edit/1" aria-label="">
+                                                        <img src="/admin-assets/dist/img/edit.png" width="15" height="15" alt="Tabler">
+                                                       
+                                                      </a>
+                                                      <a href="#" aria-label="">
+                                                        <img src="/admin-assets/dist/img/delete.png" width="15" height="15" alt="Tabler">
+                                                        
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Monpa</td>
+                                                    <td>The Abor tribe is also known as the Adi people. In the Indian state of Arunachal Pradesh, the Adi people are one of the most populated indigenous peoples. A few thousand live in the Tibet Autonomous Region (formerly Tibet), where they are known as the Lhoba, alongside some Nishi, Na, Galo, Mishmi, and Tagin people.</td>
+                                                    <td><img src="/assets/images/main-banner.jpg" alt="" style="height: 100px; width: 300px;"></td>
+                                                    <td class="active-status">
+                                                        Active
+                                                      </td>                                                    
+                                                      <td style="text-align:center"><a href="/admin/cms/pages/edit/2" aria-label="">
+                                                        <img src="/admin-assets/dist/img/edit.png" width="15" height="15" alt="Tabler">
+                                                       
+                                                      </a>
+                                                      <a href="#" aria-label="">
+                                                        <img src="/admin-assets/dist/img/delete.png" width="15" height="15" alt="Tabler">
+                                                        
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Adi</td>
+                                                    <td>The Tangsa tribe is an indigenous group primarily found in Northeast India, particularly in the state of Arunachal Pradesh, as well as in parts of Myanmar (Burma). They belong to the Tibeto-Burman linguistic group and are known for their rich cultural heritage, traditional practices, and close-knit community ties.</td>
+                                                    <td><img src="/assets/images/main-banner-2.jpg" alt="" style="height: 100px; width: 300px;"></td>
+                                                    <td class="active-status">
+                                                        Active
+                                                      </td>                                                    
+                                                      <td style="text-align:center"><a href="/admin/cms/pages/edit/3" aria-label="">
+                                                        <img src="/admin-assets/dist/img/edit.png" width="15" height="15" alt="Tabler">
+                                                       
+                                                      </a>
+                                                      <a href="#" aria-label="">
+                                                        <img src="/admin-assets/dist/img/delete.png" width="15" height="15" alt="Tabler">
+                                                        
+                                                    </a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                
+                                </div>
+                            </div>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+            
+        <%- include('../../admin-layouts/footer') %>
+    </body>
+
+</html>

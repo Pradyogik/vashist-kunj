@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}   
+  
+</style>
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+        <%- include('../admin-layouts/header') %>
+            
+        <div class="content-wrapper">
+     
+          
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            
+				
+            	<div class="right_col" role="main">
+                <!-- page content -->
+                
+					<div class="row">
+            <% if(error.length>0){ %>
+              <script>new Toasteur("top-right", 3000).error(" <%= error %>", 'Error!');</script>
+          <% } %>
+        
+          <% if(success.length>0){ %>
+              <script>new Toasteur("top-right", 3000).success(" <%= success %>", 'Success!');</script>
+          <% } %>
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                               <div class="panel-heading">
+                                    <div class="panel-title col-sm-6 mt-4" >
+                                        <h4>Scheme List</h4>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="/admin/scheme-add" class="pull-right btn btn-warning w-md m-rb-5">Add Scheme</a>
+                                    </div>
+                                </div> 
+                            
+                                <div class="panel-body">
+                                  <fieldset class="the-fieldset">
+                                    <legend class="the-legend"> Scheme List</legend>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                  <th>#</th>
+                                                  <th>Scheme Code</th>
+                                                  <th>Scheme Name</th>
+                                                  <!-- <th>Parent Scheme Name</th> -->
+                                                  <th>Land Category</th>
+                                                  <th>Total Property Area</th>
+                                                  <th>Start Date</th>
+                                                  <th>End Date</th>
+                                                  <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%  if(list.length>0)
+                                                { 
+                                                  var number= 1;
+                                                  for (let l of list)
+                                                    {
+
+                                                  
+
+                                                      if(l.status == 1){ 
+                                                        var del = '<label class="switch"><input class="form-check-input change_user_status" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Deactive" data-bs-original-title="Deactive" checked="" value="0" rel_id='+ l.id +'><span class="slider round"></span></label>';   
+                                                         
+                                                       }else{ 
+                                                         var del = '<label class="switch"><input class="form-check-input  change_user_status" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Active" data-bs-original-title="Active" value="1" rel_id='+ l.id +'><span class="slider round"></span></label>';  
+                                                        }
+                                                  %>
+                                                  <% 
+                                                    const formatDate = (dateString) => {
+                                                      const date = new Date(dateString);
+                                                      const day = ('0' + date.getDate()).slice(-2); // Ensure 2 digits
+                                                      const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are 0-based, ensure 2 digits
+                                                      const year = date.getFullYear();
+                                                      return `${day}-${month}-${year}`; // or use any other format
+                                                    };
+                                                  %>
+                                                      <tr id="rowid_<%= l.product_id  %>">
+                                                      
+                                                      <td><%= number %></td>
+                                                      <td><%= l.scheme_code  %></td>
+                                                      <td><%= l.title  %></td>
+                                                      <td><%= l.land_category  %></td>
+                                                      <td><%= l.total_land_area  %> <%= l.unit  %></td>
+                                                      <td><%= formatDate(l.scheme_start_date) %></td>
+                                                      <td><%= formatDate(l.scheme_end_date) %></td>
+                                                      <!-- <td ><%- del %></td> -->
+                                                      <td>
+                                                        <a href="/admin/scheme/<%= l.id  %>" class="btn btn-xs btn-success" aria-label="">
+                                                          Edit
+                                                          <i class="fa fa-edit"></i> 
+                                                        </a>
+                                                        <!-- <a onclick="return checkConfirm('<%= l.id  %>')" class="btn btn-xs btn-danger" aria-label="">
+                                                          <i class="fa fa-trash"></i>
+                                                        </a> -->
+                                                        <a href="/admin/scheme/viewdetails/<%= l.id  %>" class="btn btn-xs btn-info" aria-label="">
+                                                          <i class="fa fa-eye"></i>
+                                                        </a>
+                
+                
+                                                      </td>
+                                                      </td>
+                                                    </tr>
+                
+                                                    <% number++; } 
+                                                }  %>
+                                             
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                  </fieldset>
+                                    <br>
+                        <center>
+                          <ul class="pagination modal-4">
+                            <% var reamin = totalPages * pageSize;  if (reamin > pageSize) { %>  
+                            <% if (currentPage > 1) { %>
+                            <li><a href="?page=<%= currentPage - 1 %>" class="prev"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                            <% } %>
+                            <% for (let i = 1; i <= totalPages; i++) { %>
+                              <% if(i <= 6) { %>
+                              <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                              <% } else if(currentPage == i){ %>
+                                <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                
+                              <% break;  } } %>
+
+                            <% if(currentPage >= 5) { if(currentPage != totalPages) { %>
+                              <% if(currentPage != totalPages - 1) { %>
+                              <li><a href="javascript:void(0)" class="">...</a></li>
+                              <% } %>
+                              <li><a href="?page=<%= totalPages %>"><%= totalPages %></a></li>
+
+                            <%  } } %>
+
+                          
+                            <% if (currentPage < totalPages) { %>
+                              <li><a href="?page=<%= currentPage + 1 %>" class="next"> Next  <i class="fa fa-chevron-right"></i></a></li> 
+                            <% } %>
+
+                            <% } %>
+                           
+                          </ul>
+                        </center>
+                                </div>
+                                
+                            </div>		
+                            
+                        </div>
+                       
+                    </div>
+                    
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+            
+        <%- include('../admin-layouts/footer') %>
+    </body>
+    
+</html>
+

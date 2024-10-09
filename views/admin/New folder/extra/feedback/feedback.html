@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Form with Radio Button</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  	 .boxsdli{
+        padding: 15px;
+        background-color: #ffeb3b54;
+        box-shadow: 2px 2px 3px 3px lightblue;
+        border-radius: 15px 15px;
+        }
+  </style>
+  
+</head>
+<body>
+
+<div class="container mt-5">
+  <p>Your feedback is important and helps us improve our offerings. Please take a few moments to fill out this form. Thank you!</p>
+  <form>
+  <div class="form-group boxsdli" >
+      <label>Behaviour</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="behaviour" id="excellent" value="1">
+        <label class="form-check-label" for="male">Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="behaviour" id="average" value="2">
+        <label class="form-check-label" for="female">Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="behaviour" id="poor" value="3">
+        <label class="form-check-label" for="other">Poor</label>
+      </div>
+    </div>
+    <div class="form-group boxsdli">
+      <label>Services</label><br>
+     <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="services" id="excellent" value="1">
+        <label class="form-check-label" for="male">Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="services" id="average" value="2">
+        <label class="form-check-label" for="female">Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="services" id="poor" value="3">
+        <label class="form-check-label" for="other">Poor</label>
+      </div>
+    </div>
+      <div class="form-group boxsdli">
+      <label>Cleanliness</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="cleanliness" id="excellent" value="1">
+        <label class="form-check-label" for="male">Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="cleanliness" id="average" value="2">
+        <label class="form-check-label" for="female">Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="cleanliness" id="poor" value="3">
+        <label class="form-check-label" for="other">Poor</label>
+      </div>
+    </div>
+
+    <div class="form-group boxsdli">
+      <label>Ease of Booking</label><br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="easeofbooking" id="excellent" value="1">
+        <label class="form-check-label" for="male">Excellent</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="easeofbooking" id="average" value="2">
+        <label class="form-check-label" for="female">Average</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="easeofbooking" id="poor" value="3">
+        <label class="form-check-label" for="other">Poor</label>
+      </div>
+    </div>
+        
+    <div class="form-group boxsdli">
+        <label for="name">Remarks</label>
+           <textarea id="remark" name="remark"  rows="3" cols="35" placeholder="Remarks (if any)"></textarea>
+          </div>
+         <div style="text-align: center;">
+          <button type="submit" class="btn btn-success" id="save_review">Submit </button>
+          <button type="button" class="btn btn-warning" >Cancel</button>
+                                      
+     </div>
+  </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

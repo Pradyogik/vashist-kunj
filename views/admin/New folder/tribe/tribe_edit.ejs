@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class=" panel-body panel-heading ">
+                            <!-- <div class="panel-title col-sm-6" >
+                                <h4>Page List</h4>
+                            </div> -->
+                            <div class="col-sm-12 ">
+                                <a href="/admin/tribe" class="pull-right btn btn-warning w-md m-rb-5">Back to List</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+							<div class="clearfix"></div>
+                            
+                            <div class="panel panel-bd">
+                                
+                            
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Tribe(s) List</legend>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Tribe Name</th>
+                                                        <th>Tribe Slug</th>
+                                                        <th>About Tribe</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <%  if(list.length>0)
+                                                    { 
+                                                    var number= 1;
+                                                    for (let l of list)
+                                                        {
+                                                              
+                                                    %>
+                                                        
+                                                    <!-- the overlay element -->
+                                                    <div class="md-overlay"></div>
+                                                        <tr >
+                                                        <td><%= number %></td>
+                                                        
+                                                            <td><%= l.tribe_name %></td>
+                                                            <td><%= l.tribe_slug %></td>
+                                                            <td><%= l.about_tribe %></td>
+                                                        </tr>
+                    
+                                                        <% number++; } 
+                                                    } else { %>
+                                                        <tr>
+                                                            <td colspan="3">No tribes available.</td>
+                                                        </tr>
+                                                    <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </fieldset>
+                                       
+                                        
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="clearfix"></div>
+                                <div class="panel panel-bd">
+                                    <div class="panel-body">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Update Tribe(s)</legend>
+                                          
+                                            <form data-toggle="validator" method="post"  action="/admin/tribe/edit" style="padding-top: 23px">
+                                             
+                                                <div class="form-group">
+                                                    <input type="hidden" name="row_id" id="row_id" value="<%= list[0].id %>" >
+                                                    <label for="inputName" class="control-label">Tribe Name</label>
+                                                    <input type="text" class="form-control" id="tribe_name" name="tribe_name" value="<%= list[0].tribe_name %>" placeholder="Enter Tribe Name" required="">
+                                                </div>
+                                                <div class="help-block"></div>
+                                                <div class="form-group">
+                                                    <label for="inputName" class="control-label">Tribe Slug</label>
+                                                    <input type="text" class="form-control" id="tribe_slug" name="tribe_slug"  value="<%= list[0].tribe_slug %>" placeholder="Enter Slug Name" required="">
+                                                </div>
+                                                <div class="help-block"></div>
+                                                <div class="form-group">
+                                                    <label for="inputName" class="control-label">About Tribe</label>
+                                                    <textarea type="text" class="form-control" id="about_tribe" name="about_tribe" placeholder="Enter About Tribe" required=""><%= list[0].about_tribe %></textarea>
+                                                </div>
+                                                <div class="help-block"></div>
+                                                <div class="form-group">
+                                                    <label for="inputName" class="control-label">Tribe History</label>
+                                                    <textarea type="text" class="form-control" id="history_tribe" name="history_tribe" placeholder="Enter Tribe History" required=""><%= list[0].history_tribe %></textarea>
+                                                </div>
+                                                <div class="help-block"></div>
+                                                <div class="form-group pull-right">
+                                                    <button type="submit" class="btn btn-cap m-r-5 ">Submit</button>
+                                                    <button type="submit" class="btn btn-warning">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </fieldset>
+            
+                                       
+                                      
+                                    
+                                    </div>
+                                </div>		
+                            </div>
+                                   
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+            
+        <%- include('../admin-layouts/footer') %>
+    </body>
+    
+
+</html>

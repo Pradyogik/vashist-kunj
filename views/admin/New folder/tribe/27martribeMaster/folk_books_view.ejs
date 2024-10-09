@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <div class="col-sm-12">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe- ADA</legend>
+                                            <dl>
+                                                <dt>Tribe Name</dt>
+                                                <dd>A description list is perfect for defining terms.</dd>
+                                                <dt>Tribe Description</dt>
+                                                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                                                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                                                <dt>Tribe About</dt>
+                                                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                                            </dl>
+                                        </fieldset>
+                                    </div>
+
+                                     <div class="col-sm-2 mt">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe- ADA</legend>
+                                            <table class="table table-hover table-striped">
+                                                
+                                                <tbody>
+                                                    <tr><td><a href="/admin/tribe/master/folkmusic/1/1"> Folk Music <i class="ti-angle-double-right"></i> </a></td></tr>
+                                                    <tr ><td><a href="/admin/tribe/master/folksong/1/1"> Folk Songs <i class="ti-angle-double-right"></i> </a></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkdance/1/1"> Folk Dance <i class="ti-angle-double-right"></i> </a></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folktales/1/1"> Folk Tales <i class="ti-angle-double-right"></i> </a></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkTraditionalCostumes/1/1">Traditional Costumes/Dresses </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkRituals/1/1">Rituals </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkFestivals/1/1">Festivals </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkCuisineDelicacies/1/1">Cuisine/Delicacies </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkHandicrafts/1/1">Handicrafts </a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr class="active-tab"><td><a href="/admin/tribe/master/folkFolkBooks/1/1">Books</a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr ><td><a href="/admin/tribe/master/folkScripts/1/1">Scripts</a><i class="ti-angle-double-right"></i></td></tr>
+                                                    <tr><td><a href="/admin/tribe/master/folkLanguages/1/1">Languages</a><i class="ti-angle-double-right"></i></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </fieldset>
+                                     </div>
+
+                                     <div class="col-sm-10 mt">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe - > Script</legend>
+                                            <form data-toggle="validator"method="post" name="add_books"  id="addbooks"  action="/admin/tribe/master/folkFolkBooks">
+                                                <div class="col-sm-4">
+                                                   
+                                                    <label class="form-label required">Tribe(s) :</label>
+                                                  <select class="form-control form-select"  name="tribe_name" id="tribeName">
+                                                    <option value="">Select Tribe</option>
+                                                    <% for (let s of servicelist)
+                                                            {
+                                                          
+                                                            %>
+                                                            <option value="<%= s.id %>" >
+                                                            <%= s.tribe_name %> 
+                                                            </option>
+                                                            <% } %>
+                                                  </select>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Book Title:</label>
+                                                    <input class="form-control" type="text" name="book_title" id="book_title" placeholder="Enter Book Title">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Author:</label>
+                                                    <input class="form-control" name="author" id="author" placeholder="Enter Author">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Genre Folklore Religious:</label>
+                                                    <input class="form-control" type="text" name="genre_folklore_religious" id="genre_folklore_religious" placeholder="Enter Genre Folklore Religious">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Publication Historical Date:</label>
+                                                    <input class="form-control" type="date" name="publication_historical_date" id="publication_historical_date" placeholder="Enter Publication Historical Date">
+                                                  </div>
+                                                  
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Available For Purchase Link:</label>
+                                                    <input class="form-control" type="text" name="available_for_purchase_link" id="available_for_purchase_link" placeholder="Enter Available For Purchase Link">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Synopsis Summary </label>
+                                                    <input class="form-control" type="text" name="synopsis_summary" id="synopsis_summary" placeholder="Enter Synopsis Summary">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Historical Religious Significance</label>
+                                                    <input class="form-control" type="text" name="historical_religious_significance" id="historical_religious_significance" placeholder="Enter Historical Religious Significance">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-control-label">Is Folk</label>
+                                                    <div class="radio_inline radio-info">
+                                                        <div class="radio">
+                                                            <input type="radio" name="is_folk" id="toast"  value="1">
+                                                            <label for="toast">Yes</label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <input type="radio" name="is_folk" id="boost" value="0" >
+                                                            <label for="boost">No</label>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+                                                <div class="form-group pull-right mt">
+                                                    <button type="submit" class="btn btn-cap m-r-5" onclick="return Validate();">Submit</button>
+                                                    <button type="submit" class="btn btn-warning">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </fieldset>
+                                        <div class="mt"> 
+                                            <fieldset class="the-fieldset">
+                                              <legend class="the-legend">Tribe - > Languages List</legend>
+                                            <div class="table-responsive">
+                                              <table id="myTable" class="table card-table table-vcenter text-nowrap datatable">
+                                                <thead>
+                                                  <tr>
+                                                    <th>S No.</th>
+                                                    <th>Tribe Name</th>
+                                                    <th>Book Title</th>
+                                                    <th>Author</th>
+                                                    <th>Genre Folklore Religious</th>
+                                                    <th>Publication Historical Date</th>
+                                                    <th>Purchase Link</th>
+                                                    <th>Synopsis Summary</th>
+                                                    <th>Action</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <%  if(list.length>0)
+                                                    { 
+                                                      var number= 1;
+                                                      var del = '';
+                                                      for (let l of list)
+                                                        { %>
+                                                            <% function formatDate(rawDate) { %>
+                                                                <% const options = { day: '2-digit', month: '2-digit', year: 'numeric' }; %>
+                                                                <% const formattedDate = new Date(rawDate).toLocaleDateString('en-IN', options); %>
+                                                                <% return formattedDate; %>
+                                                              <% } %>
+                                                          <tr>
+                                                            <td><%= number %></td>
+                                                            <td><%= l.tribename %></td>
+                                                            <td><%= l.book_title %></td>
+                                                            <td><%= l.author %></td>
+                                                            <td><%= l.genre_folklore_religious %></td>
+                                                            <td><%= formatDate(l.publication_historical_date) %></td>
+                                                            <td><%= l.available_for_purchase_link %></td>
+                                                            <td><%= l.synopsis_summary %></td>
+                                                  
+                                                            <td>
+                                                              <a href="#" class="btn btn-xs btn-success" aria-label=""  title="Edit Item">
+                                                                <i class="fa fa-edit"></i>
+                                                              </a>
+                                                              <a onclick="return checkConfirm('<%= l.id  %>')"  class="btn btn-xs btn-danger" aria-label="" title="Delete Item">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                            </td>
+                                                          </tr>
+                    
+                                                        <% number++; } 
+                                                    }  %>
+                                                 
+                                                </tbody>
+                                              </table>
+                                              
+                                            </div>
+                                          </fieldset>
+                                            <br>
+                                            <center>
+                                              <ul class="pagination modal-4">
+                                                <% var reamin = totalPages * pageSize;  if (reamin > pageSize) { %>  
+                                                <% if (currentPage > 1) { %>
+                                                <li><a href="?page=<%= currentPage - 1 %>" class="prev"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                                                <% } %>
+                                                <% for (let i = 1; i <= totalPages; i++) { %>
+                                                  <% if(i <= 6) { %>
+                                                  <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                                  <% } else if(currentPage == i){ %>
+                                                    <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                                    
+                                                  <% break;  } } %>
+                    
+                                                <% if(currentPage >= 5) { if(currentPage != totalPages) { %>
+                                                  <% if(currentPage != totalPages - 1) { %>
+                                                  <li><a href="javascript:void(0)" class="">...</a></li>
+                                                  <% } %>
+                                                  <li><a href="?page=<%= totalPages %>"><%= totalPages %></a></li>
+                    
+                                                <%  } } %>
+                    
+                                              
+                                                <% if (currentPage < totalPages) { %>
+                                                  <li><a href="?page=<%= currentPage + 1 %>" class="next"> Next  <i class="fa fa-chevron-right"></i></a></li> 
+                                                <% } %>
+                    
+                                                <% } %>
+                                               
+                                              </ul>
+                                            </center>
+                                         </div>
+                                     </div>
+                                     
+                                </div>
+							    		
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<!-- /page content -->
+               
+            </div>
+            <!-- footer content -->
+				<%- include('../../admin-layouts/footer') %>
+			<!-- /footer content -->
+        </div> <!-- ./wrapper -->
+    </body>
+    <script type="text/javascript">
+        function Validate() {
+          var error = '';
+          var tribeName = $('#tribeName').val();
+          var book_title = $('#book_title').val();
+          var author = $('#author').val();
+          var genre_folklore_religious = $('#genre_folklore_religious').val();
+          var publication_historical_date = $('#publication_historical_date').val();
+          var available_for_purchase_link = $("#available_for_purchase_link").val();
+          var synopsis_summary = $('#synopsis_summary').val();
+          var historical_religious_significance = $('#historical_religious_significance').val();
+
+          
+          if (tribeName == '' || tribeName == null) {
+            error += 'Tribe Name is required\n';
+          }
+          if (book_title == '' || book_title == null) {
+            error += 'Book Title is required\n';
+          }
+          if (author == '' || author == null) {
+            error += 'Author is required\n';
+          }
+          if (genre_folklore_religious == '' || genre_folklore_religious == null) {
+            error += 'Genre Folklore Religious is required\n';
+          }
+          if (publication_historical_date == '' || publication_historical_date == null) {
+            error += 'Publication Historical Date is required\n';
+          }
+          if (available_for_purchase_link == '' || available_for_purchase_link == null) {
+            error += 'Available For Purchase Link is required\n';
+          }
+        
+          if (synopsis_summary == '' || synopsis_summary == null) {
+            error += 'Synopsis Summary is required\n';
+          }
+          if (historical_religious_significance == '' || historical_religious_significance == null) {
+            error += 'Historical Religious Significance is required\n';
+          }
+      
+          if (error != '') {
+            swal({
+              title: "Error",
+              text: "" + error,
+              type: "error",
+              showCancelButton: true,
+              confirmButtonClass: 'btn-danger',
+            });
+          } else {
+            document.forms["add_books"].submit();
+          }
+        }
+      </script>
+
+</html>

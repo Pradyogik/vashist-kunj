@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}   
+  
+</style>
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+        <%- include('../admin-layouts/header') %>
+            
+        <div class="content-wrapper">
+     
+          
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            
+				
+            	<div class="right_col" role="main">
+                <!-- page content -->
+                
+					<div class="row">
+            <% if(error.length>0){ %>
+              <script>new Toasteur("top-right", 3000).error(" <%= error %>", 'Error!');</script>
+          <% } %>
+        
+          <% if(success.length>0){ %>
+              <script>new Toasteur("top-right", 3000).success(" <%= success %>", 'Success!');</script>
+          <% } %>
+                        <div class="col-sm-7">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                                <!-- <div class="panel-heading">
+                                    <div class="panel-title col-sm-6 mt-4" >
+                                        <h4>Users List</h4>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="/admin/cms/pages/add" class="pull-right btn btn-warning w-md m-rb-5">Add Pages</a>
+                                    </div>
+                                </div> -->
+                            
+                                <div class="panel-body">
+                                  <fieldset class="the-fieldset">
+                                    <legend class="the-legend"> Product List</legend>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr.No.</th>
+                                                    <th>Photo</th>
+                                                    <th>Name</th>
+                                                    <th>Price </th>
+                                                    <th>Quantity</th>
+                                                    <th>Address</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%  if(list.length>0)
+                                                { 
+                                                  var number= 1;
+                                                  for (let l of list)
+                                                    {
+
+                                                      if(l.publication_status == 1){ 
+                                                        var del = '<label class="switch"><input class="form-check-input change_user_status" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Deactive" data-bs-original-title="Deactive" checked="" value="0" rel_id='+ l.product_id +'><span class="slider round"></span></label>';   
+                                                         
+                                                       }else{ 
+                                                         var del = '<label class="switch"><input class="form-check-input  change_user_status" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Active" data-bs-original-title="Active" value="1" rel_id='+ l.product_id +'><span class="slider round"></span></label>';  
+                                                        }
+                                                  %>
+                                                      <tr id="rowid_<%= l.product_id  %>">
+                                                      
+                                                      <td><%= number %></td>
+                                                      <td><img src="/upload/product/<%= l.product_image %>" alt="img"  height="40px" width="40px"></td>
+                                                      <td><%= l.product_title  %></td>
+                                                      <td><%= l.product_short_description %></td>
+                                                      <td><%= l.product_price %></td>
+                                                      <td><%= l.product_quantity %></td>
+                                                      <td ><%- del %></td>
+                                                      <td>
+                                                        <a href="/admin/users/edit/<%= l.id  %>" class="btn btn-xs btn-success" aria-label="">
+                                                          <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a onclick="return checkConfirm('<%= l.id  %>')" class="btn btn-xs btn-danger" aria-label="">
+                                                          <i class="fa fa-trash"></i>
+                                                        </a>
+                
+                
+                                                      </td>
+                                                      </td>
+                                                    </tr>
+                
+                                                    <% number++; } 
+                                                }  %>
+                                             
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                  </fieldset>
+                                    <br>
+                        <center>
+                          <ul class="pagination modal-4">
+                            <% var reamin = totalPages * pageSize;  if (reamin > pageSize) { %>  
+                            <% if (currentPage > 1) { %>
+                            <li><a href="?page=<%= currentPage - 1 %>" class="prev"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                            <% } %>
+                            <% for (let i = 1; i <= totalPages; i++) { %>
+                              <% if(i <= 6) { %>
+                              <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                              <% } else if(currentPage == i){ %>
+                                <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                
+                              <% break;  } } %>
+
+                            <% if(currentPage >= 5) { if(currentPage != totalPages) { %>
+                              <% if(currentPage != totalPages - 1) { %>
+                              <li><a href="javascript:void(0)" class="">...</a></li>
+                              <% } %>
+                              <li><a href="?page=<%= totalPages %>"><%= totalPages %></a></li>
+
+                            <%  } } %>
+
+                          
+                            <% if (currentPage < totalPages) { %>
+                              <li><a href="?page=<%= currentPage + 1 %>" class="next"> Next  <i class="fa fa-chevron-right"></i></a></li> 
+                            <% } %>
+
+                            <% } %>
+                           
+                          </ul>
+                        </center>
+                                </div>
+                                
+                            </div>		
+                            
+                        </div>
+                        <div class="col-sm-5">
+                          <div class="clearfix"></div>
+                          <div class="panel panel-bd">
+                              <div class="panel-body">
+                                  <fieldset class="the-fieldset">
+                                      <legend class="the-legend">Add Product</legend>
+                                      <form data-toggle="validator" method="post"  action="/admin/product/product" style="padding-top: 23px">
+                                          <div class="form-group">
+                                              <label for="inputName" class="control-label">First Name</label>
+                                              <input type="text" class="form-control" id="first_name" name="first_name"  placeholder="Enter First Name" required="">
+                                          </div>
+                                          <div class="help-block"></div>
+                                          <div class="form-group">
+                                              <label for="inputName" class="control-label">Last Name</label>
+                                              <input type="text" class="form-control" id="last_name" name="last_name"   placeholder="Enter Last Name" required="">
+                                          </div>
+                                          <div class="help-block"></div>
+                                          <div class="form-group">
+                                              <label for="inputName" class="control-label">Email</label>
+                                              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required="">
+                                          </div>
+                              
+                                          <div class="form-group">
+                                            <label for="inputName" class="control-label">Mobile</label>
+                                            <input type="number" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile" required="">
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="inputName" class="control-label">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required=""></input>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="inputName" class="control-label">Address</label>
+                                            <textarea type="address" class="form-control" id="address" name="address" placeholder="Enter Address" required=""></textarea>
+                                          </div>
+                                          <div class="help-block"></div>
+                                          <div class="form-group pull-right">
+                                              <button type="submit" class="btn btn-cap m-r-5 ">Submit</button>
+                                              <button type="reset" class="btn btn-warning">Cancel</button>
+                                          </div>
+                                      </form>
+                                  </fieldset>
+                              </div>
+                          </div>		
+                      </div>
+                    </div>
+                    
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+            
+        <%- include('../admin-layouts/footer') %>
+    </body>
+<script>
+
+    function checkConfirm(id) {
+
+            var rowId  = id;
+            var y = confirm('Are you sure');
+            if(y)
+            {
+                $.ajax({
+                type: 'get', // Type of request to be send, called as method
+                url: '/admin/users/deleteUser/?rowid='+rowId, //  Url to which the request is send
+                dataType: 'json',
+                success: function (responce) { // A function to be called if request succeeds.
+                if(responce == 1){
+                    new Toasteur("top-right", 3000).success("Selected row Deleted Suceesfully", 'Success');
+                    $("#rowid_"+rowId).hide();
+                    setTimeout(function(){
+                        window.location.reload(1);
+                    }, 3000);
+                }else{
+                    new Toasteur("top-right", 3000).error("Somthing Went wrong Please try again", 'Error!');
+                    setTimeout(function(){
+                        window.location.reload(1);
+                    }, 3000);
+                }
+                }
+            });
+            }
+
+        }    
+
+     $(document).on('change', '.change_user_status', function () { 
+        var status = $(this).val();
+        var rel_id = $(this).attr('rel_id');
+        
+            var success = confirm('Are you sure you want to change User status?');
+            if(success)
+            {
+                if (status != "" && (rel_id != 0 || rel_id != "")) {
+                    $.ajax({
+                    type: 'get', // Type of request to be send, called as method
+                    url: '/admin/users/changeUserStaus/?rowid='+rel_id+'&status='+status, //  Url to which the request is send
+                    dataType: 'json',
+                    success: function (responce) { // A function to be called if request succeeds.
+                        if(responce == 1){
+                        new Toasteur("top-right", 3000).success("User Status changed Suceesfully", 'Success');
+                        setTimeout(function(){
+                            window.location.reload(1);
+                            }, 3000);
+                        }else{
+                        new Toasteur("top-right", 3000).error("Somthing Went wrong Please try again", 'Error!');
+                        setTimeout(function(){
+                            window.location.reload(1);
+                            }, 3000);
+                        }
+                    }
+                    });
+
+                }
+            }  
+        else
+        {
+            return false; 
+        }
+  });
+
+</script>
+</html>

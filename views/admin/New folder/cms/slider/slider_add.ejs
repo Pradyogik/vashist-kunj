@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Slider</legend>
+                                        <form method="post" enctype="multipart/form-data" action="/admin/cms/slider/add" data-toggle="validator">
+                                            <div class="form-group">
+                                                <label for="inputTitle" class="control-label">Slider Title</label>
+                                                <input type="text" class="form-control" name="slider_title" id="slider_title" placeholder="Enter slider title" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputDescription" class="control-label">Slider Description</label>
+                                                <textarea class="form-control" name="slider_description" id="slider_description" placeholder="Enter slider description" rows="3" required=""></textarea>
+                                            </div>
+                                           
+                                            <div class="form-group">
+                                                <label for="imageFile" class="control-label">Upload Image</label>
+                                                <input type="file" class="form-control-file" name="slider_image" id="slider_image" accept="image/*">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="status" class="control-label">Status</label>
+                                                <div class="radio_inline">
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" value="1" id="toast" required="">
+                                                        <label for="toast">Active</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" value="0" id="boost" required="">
+                                                        <label for="boost">Inactive</label>
+                                                    </div>
+                                                    
+                                                </div>    
+                                            <div class="form-group pull-right">
+                                                <button type="submit" class="btn btn-cap m-r-5">Add Slider</button>
+                                                <button type="reset" class="btn btn-warning">Reset</button>
+                                            </div>
+                                        </form>
+                                        
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<!-- /page content -->
+               
+            </div>
+            <!-- footer content -->
+				<%- include('../../admin-layouts/footer') %>
+			<!-- /footer content -->
+        </div> <!-- ./wrapper -->
+    </body>
+
+</html>

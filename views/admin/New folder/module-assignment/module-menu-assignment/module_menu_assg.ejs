@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../admin-layouts/top-header') %>
+
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+
+                <div class="content-wrapper">
+
+                    <div class="right_col" role="main">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="clearfix"></div>
+                                <div class="panel panel-bd lobidrag">
+
+                                    <div class="panel-body">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Module</legend>
+                                            <form data-toggle="validator" method="post"
+                                                action="/admin/mod/assignment/addRole" style="padding-top: 23px">
+
+                                                <label class="col-lg-3 col-sm-12 col-form-label">Role</label>
+                                                <div class="col-lg-6 col-md-9 col-sm-12">
+
+                                                    <select class="basic-single js-example-disabled form-control"
+                                                        name="role_name">
+                                                        <% rolelist.forEach(function(role) { %>
+
+                                                            <option value="<%= role.id %>">
+                                                                <%= role.role_name %>
+                                                            </option>
+                                                            <% }); %>
+                                                    </select>
+
+                                            </form>
+                                        </fieldset>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <div class="clearfix"></div>
+                                <div class="panel panel-bd lobidrag">
+
+                                    <div class="panel-body">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend"> Menu</legend>
+                                            <form data-toggle="validator" method="post"
+                                                action="/admin/mod/assignment/add" style="padding-top: 23px">
+
+                                                <label class="col-lg-3 col-sm-12 col-form-label">Module</label>
+                                                <div class="col-lg-6 col-md-9 col-sm-12">
+
+                                                    <select class="basic-single js-example-disabled form-control"
+                                                        name="module_name">
+                                                        <% servicelist.forEach(function(module) { %>
+
+                                                            <option value="<%= module.id %>">
+                                                                <%= module.module_name %>
+                                                            </option>
+                                                            <% }); %>
+                                                    </select>
+
+                                            </form>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="col-md-12">
+                                <div class="clearfix"></div>
+                                <div class="panel panel-bd lobidrag">
+
+                                    <div class="panel-body">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend"> Assignment</legend>
+                                            <form data-toggle="validator" method="post" action="/admin/mod/role/add"
+                                                style="padding-top: 23px">
+
+                                                <label class="col-lg-3 col-sm-12 col-form-label"></label>
+                                                <div class="col-lg-6 col-md-9 col-sm-12">
+
+
+
+                                            </form>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+        <div class="col-md-6">
+            <div class="clearfix"></div>
+            <div class="panel panel-bd">
+                <div class="panel-heading">
+                    <fieldset class="the-fieldset">
+                        <legend class="the-legend">Role Assignment List</legend>
+
+                        <div class="panel-body">
+
+                            <div class="table-responsive">
+                                <table id="dataTableExample1"
+                                    class="table table-striped table-bordered" style="width:100%">
+
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Module Name</th>
+                                            <th>Module Description</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                        <% if(roleassglist.length>0)
+                                            {
+                                            var number= 1;
+                                            var del = '';
+                                            for (let l of roleassglist)
+                                            { %>
+                                            <tr>
+                                                <td>
+                                                    <%= number %>
+                                                </td>
+
+                                                <td>
+                                                    <%= l.module_name %>
+                                                </td>
+                                                <td>
+                                                    <%= l.module_description %>
+                                                </td>
+                                                <td class="<%= l && l.status === 1 ? 'active-status' : 'inactive-status' %>">
+                                                    <%= l && l.status === 1 ? 'Active' : 'Inactive' %>
+                                                  </td>
+
+                                                  <td style="text-align:center"><a href="/admin/mod/module/edit/<%= l.id %>"  aria-label="">
+                                                    <img src="/admin-assets/dist/img/edit.png" width="15" height="15" alt="Tabler" >
+                                                   
+                                                  </a>
+                                                  <a onclick="return checkConfirm('<%= l.iTranId  %>')"   aria-label="">
+                                                    <img src="/admin-assets/dist/img/delete.png" width="15" height="15" alt="Tabler" >
+                                                    
+                                                </td>  
+                                            </tr>
+                                            <% number++; } } %>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+		        
+		
+
+        <%- include('../../admin-layouts/footer') %>
+            </div>
+    </body>
+    <script type="text/javascript">
+        function getMenuList(module_id) {
+            var roleId = $('#role').val();
+            if (roleId == '') {
+                alert('Please select Role First');
+                $('#role').css('border', '1px solid red');
+                return false;
+            }
+
+            $.ajax({
+                url: "/admin/roleassignment/ajaxgetmenu/" + roleId + '/' + module_id,
+                success: function (result) {
+                    $("#menu_id").html(result);
+                }
+            });
+        }
+
+        function saveData() {
+
+            var role = $('#role').val();
+            var module = $('#module').val();
+
+            if (role == '') {
+                $('#role').css('border', '1px solid red');
+                return false;
+            } else {
+                $('#role').css('border', '1px solid #ccc');
+            }
+
+            if (module == '') {
+                $('#module').css('border', '1px solid red');
+                return false;
+            } else {
+                $('#module').css('border', '1px solid #ccc');
+            }
+
+            $('input[name^="menu_id[]"]').each(function () {
+                menuVal = $(this).val();
+                if ($(this).prop("checked")) {
+                    var cnt = 0;
+                    $('input[name^="action' + menuVal + '[]"]').each(function () {
+                        if ($(this).prop("checked")) {
+                            cnt++;
+                        }
+                    });
+
+                    if (cnt == 0) {
+                        alert('You Have Select Menu But not select action');
+                        $('span[name^="span' + menuVal + '"]').css('border', '1px solid red');
+                        return false;
+                    } else {
+                        $('span[name^="span' + menuVal + '"]').css('border', '#fff')
+                    }
+                }
+            });
+
+            $.ajax({
+                url: "/admin/roleassignment/addsavedata",
+                type: "POST",
+                data: $('#roleassignment').serialize(),
+                success: function (response) {
+                    alert('Your Data Saved Successfully');
+                }
+            });
+        }
+
+        function changeModule() {
+            $('#module').prop('selectedIndex', 0);
+            $('#menu_id').html('');
+        }
+    </script>
+
+</html>

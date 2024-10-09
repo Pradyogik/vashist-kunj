@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <div class="col-sm-12">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe- ADA</legend>
+                                            <dl>
+                                                <a href="/admin/tribe/master/folkmusic/<%=tribeId%>" class="pull-right btn btn-labeled btn-warning m-b-5" >Back To Music</a>
+                                                <dt>Tribe Name</dt>
+                                                <dd><%= music[0].tribe_name %></dd> 
+                                                <dt>Tribe About</dt>
+                                                <dd><%= music[0].about_tribe %></dd>
+                                                <dt>Music Title</dt>
+                                                <dd><%= music[0].music_title %></dd>
+                                                <dt>Music</dt>
+                                                <dd><%= music[0].variation %></dd>
+                                                <dt>region_cultural_origin</dt>
+                                                <dd><%= music[0].region_cultural_origin %></dd>
+                                            </dl>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe- ADA</legend>
+                                            <form action="/admin/tribe/master/folk-media/<%=tribeId%>/<%=musicId%>" enctype="multipart/form-data" method="post" >
+                                                <input type="hidden" name="tribe_slug" id="tribe_slug" value="<%=music[0].tribe_slug%>" >
+                                                <div class="col-sm-3">
+                                                    <label class="form-label required">Music:</label>
+                                                    <input class="form-control" type="file" name="music" id="music" placeholder="Select Music">
+                                                  </div>
+  
+                                                  <div class="col-sm-3">
+                                                    <label class="form-label required">Video:</label>
+                                                    <input class="form-control" type="file" name="video" id="video" placeholder="Select Video">
+                                                  </div>
+  
+                                                  <div class="col-sm-3">
+                                                    <label class="form-label required">Images:</label>
+                                                    <input class="form-control" type="file" name="images" id="images" placeholder="Select Content">
+                                                  </div>
+
+                                                  <div class="col-sm-3">
+                                                    <label class="form-label required">&nbsp;</label><br/>
+                                                    <input class="btn btn-primary" type="submit" name="submit" id="submit" value="Submit">
+                                                  </div>
+
+                                            </form>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-sm-12" >
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe- ADA</legend>
+                                            <table class="table tabel-bordered" >
+                                                <tr>
+                                                    <th>Sr No</th>
+                                                    <th>Music</th>
+                                                    <th>Media Type</th>
+                                                    <th>Media</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                <%  if(media.length>0)
+                                                    { 
+                                                    var del = '';
+                                                    for (let l of media)
+                                                        { %>
+                                                            <tr>
+                                                                <td><%= l.id %></td>
+                                                                <td><%= l.music_title %></td>
+                                                                <td><%= l.media_type %></td>
+                                                                <td><%= l.media_value %></td>
+                                                                <td>Edit, Delete</td>
+                                                            <tr>
+                                                        <% } 
+                                                    }  %>
+                                            </table>
+                                        </fieldset>
+                                    </div>
+
+                                </div>
+							    		
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<!-- /page content -->
+               
+            </div>
+            <!-- footer content -->
+				<%- include('../../admin-layouts/footer') %>
+			<!-- /footer content -->
+        </div> <!-- ./wrapper -->
+    </body>
+      
+    
+
+</html>

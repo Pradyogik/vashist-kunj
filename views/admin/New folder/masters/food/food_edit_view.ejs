@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+            	<div class="right_col" Food="main">
+					<div class="row">
+                        <div class="col-md-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend"> Update Food</legend>
+                                        <form data-toggle="validator" method="post" action="/admin/masters/food/edit/<%= food.id %>"  style="padding-top: 23px">
+                                            
+                                            
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Food Name</label>
+                                                <input type="text" class="form-control" id="food_name" name="food_name" value="<%= food.food_name %>" placeholder="Enter Food Name" required="">
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                            <!-- <div class="form-group">
+                                                <label for="inputName" class="control-label">Food Id</label>
+                                                <input type="text" class="form-control" id="food_id" name="food_id" placeholder="Enter Food Category" required="">
+                                            </div>
+                                            <div class="help-block"></div> -->
+
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Food Category</label>
+                                                <input type="text" class="form-control" id="food_category" name="food_category" value="<%= food.food_category %>" placeholder="Enter Food Category" required="">
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Food Description</label>
+                                                <textarea type="text" class="form-control" id="food_description" name="food_description" placeholder="Enter Food Description" required=""><%= food.food_description %></textarea>
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Food Price</label>
+                                                <input type="text" class="form-control" id="food_price" name="food_price" value="<%= food.food_price %>" placeholder="Enter Food Price" required="">
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                            <div class="form-group">
+                                                <label for="status" class="control-label">Status</label>
+                                                <div class="radio_inline">
+                                                    <div class="radio">
+                                                        <input type="radio" name="is_status" value="1" id="toast" <%= food.is_status === 1 ? 'checked' : '' %> required="">
+                                                        <label for="toast">Active</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="is_status" value="0" id="boost" <%= food.is_status === 0 ? 'checked' : '' %> required="">
+                                                        <label for="boost">Inactive</label>
+                                                    </div>
+                                                    
+                                                </div>
+                                                   
+                                                <div class="help-block"></div>
+                                            </div>
+                                           
+                                            <div class="form-group pull-right">
+                                                <button type="submit" class="btn btn-cap m-r-5">Submit</button>
+                                                <button type="submit" class="btn btn-warning">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+
+                    </div>
+				</div>
+               
+            </div>
+            
+				<%- include('../../admin-layouts/footer') %>
+        </div>
+    </body>
+
+
+</html>

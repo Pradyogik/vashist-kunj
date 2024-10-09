@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Pages</legend>
+                                        <form data-toggle="validator">
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Name</label>
+                                                <input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required="">
+                                            </div>
+                                            <div class="form-group has-feedback">
+                                                <label for="inputTwitter" class="control-label">Twitter</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">@</span>
+                                                    <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputTwitter" placeholder="1000hz" required="">
+                                                </div>
+                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                <div class="help-block">Hey look, this one has feedback icons!</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail" class="control-label">Email</label>
+                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Bruh, that email address is invalid" required="">
+                                                <div class="help-block"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword" class="control-label">Password</label>
+                                                <div class="form-inline row">
+                                                    <div class="form-group col-sm-6">
+                                                        <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required="">
+                                                        <div class="help-block">Minimum of 6 characters</div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required="">
+                                                        <div class="help-block"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group pull-right">
+                                                <button type="submit" class="btn btn-cap m-r-5">Submit</button>
+                                                <button type="submit" class="btn btn-warning">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<!-- /page content -->
+               
+            </div>
+            <!-- footer content -->
+				<%- include('../admin-layouts/footer') %>
+			<!-- /footer content -->
+        </div> <!-- ./wrapper -->
+    </body>
+
+</html>

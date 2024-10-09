@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <div class="col-sm-12">
+                                        <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe- ADA</legend>
+                                            <dl>
+                                              <dt>Tribe Name</dt>
+                                              <dd><%= tribe[0].tribe_name %></dd>
+                                              <dt>Tribe About</dt>
+                                              <dd><%= tribe[0].about_tribe %></dd>
+                                            </dl>
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="col-sm-2 mt">
+                                      <%- include('../../admin-layouts/tribe-left-panel') %> 
+                                     
+                                    </div>
+
+                                  
+                                     <div class="col-sm-10 mt">
+                                        <fieldset class="the-fieldset">
+                                          <%
+
+                                          tribe_name  = tribe[0].tribe_name? tribe[0].tribe_name : '';
+                                          title       = tribe[0].song_title ? tribe[0].song_title : '';
+                                          variation   = tribe[0].variation ? tribe[0].variation : '';
+                                          singer      = tribe[0].singer_performer_id ? tribe[0].singer_performer_id : ''; 
+                                          genre       = tribe[0].genre ? tribe[0].genre : '';
+                                          duration    = tribe[0].duration ? tribe[0].duration : '';
+                                          lyrics  = tribe[0].lyrics ? tribe[0].lyrics : '';
+                                          region      = tribe[0].region_cultural_origin ? tribe[0].region_cultural_origin : '';
+                                          social      = tribe[0].social_cultural_significance? tribe[0].social_cultural_significance : '';
+                                          historical  = tribe[0].historical_religious_significance ? tribe[0].historical_religious_significance : '';
+                                        %>
+                                            <legend class="the-legend">Tribe - > Folk Songs</legend>
+                                            <form data-toggle="validator" method="post" name="add_folk_song"  id="addFolKSong"  action="/admin/tribe/master/traditions/song/<%=tribeId%>/<%=songId%>" enctype="multipart/form-data" >
+                                              <div class="col-sm-4">
+                                                <label class="form-label required">Tribe(s) :</label>
+                                                <select class="form-control form-select"  name="tribe_name" id="tribeName">
+                                                  <option value="<%= tribe[0].tribe_id %>"><%= tribe[0].tribe_name %></option>
+                                                 
+                                                </select>
+                                                </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Title:</label>
+                                                    <input class="form-control" type="text" name="title" id="title" value="<%=title%>" placeholder="Enter Title">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Variation:</label>
+                                                    <input class="form-control" name="variation" id="variation" value="<%=variation%>" placeholder="Enter Variation">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Singer:</label>
+                                                    <input class="form-control" type="text" name="singer" id="singer" value="<%=singer%>" placeholder="Enter Singer/Performer">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Genre</label>
+                                                    <input class="form-control" type="text" name="genre" id="genre" value="<%=genre%>" placeholder="Enter Genre">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Duration</label>
+                                                    <input class="form-control" type="text" name="duration" id="duration" value="<%=duration%>" placeholder="Enter Duration">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Lyrics</label>
+                                                    <input class="form-control" type="text" name="lyrics" id="lyrics" value="<%=lyrics%>" placeholder="Enter Lyrics">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Region:</label>
+                                                    <input class="form-control" type="text" name="region" id="region"  value="<%=region%>" placeholder="Enter Region Or Cultual Origin">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Social:</label>
+                                                    <input class="form-control" type="text" name="social" id="social" value="<%=social%>" placeholder="Enter Social Or Cultural Significance">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label class="form-label required">Historical:</label>
+                                                    <input class="form-control" type="text" name="historical" id="historical" value="<%=historical%>" placeholder="Enter Historical/religious Context and Significance">
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                    <label for="status" class="control-label">Is Folk</label>
+                                                    <div class="radio_inline">
+                                                        <div class="radio">
+                                                            <input type="radio" name="is_folk" value="1" id="toast" required="" checked>
+                                                            <label for="toast">Yes</label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <input type="radio" name="is_folk" value="0" id="boost" required="">
+                                                            <label for="boost">No</label>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                                  
+                                                <div class="form-group pull-right mt">
+                                                    <button type="submit" class="btn btn-cap m-r-5" onclick =" return Validate();">Submit</button>
+                                                    <button type="submit" class="btn btn-warning">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </fieldset>
+                                        <div class="mt"> 
+                                          <fieldset class="the-fieldset">
+                                            <legend class="the-legend">Tribe - > Folk Songs List</legend>
+                                          <div class="table-responsive">
+                                            <table id="myTable" class="table card-table table-vcenter text-nowrap datatable">
+                                              <thead>
+                                                <tr>
+                                                  <th>S No.</th>
+                                                  <th>Tribe Name</th>
+                                                  <th>Song Title</th>
+                                                  <th>Variation</th>
+                                                  <th>Singer</th>
+                                                  <th>Genre</th>
+                                                  <th>Duration</th>
+                                                  <th>Lyrics</th>
+                                                  <th>Region</th>
+                                                  <th>Image</th>
+                                                  <th>Music</th>
+                                                  <th>Video</th>
+                                                  <th>Action</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <%  if(song.length>0)
+                                                  { 
+                                                    var number= 1;
+                                                    var del = '';
+                                                    for (let l of song)
+
+                                                      { %>
+                                                        <tr>
+                                                          <td><%= number %></td>
+                                                          <td><%= l.tribe_name %></td>
+                                                          <td><%= l.song_title %></td>
+                                                          <td><%= l.variation %></td>
+                                                          <td><%= l.singer_performer_id %></td>
+                                                          <td><%= l.genre %></td>
+                                                          <td><%= l.duration %></td>
+                                                          <td><%= l.lyrics %></td>
+                                                          <td><%= l.region_cultural_origin %></td>
+                                                          <td><a href="/admin/tribe/master/folk-media/<%= categoryType %>/<%= l.tribe_id %>/<%= l.song_id %>"><span class="label label-pill label-info-outline m-r-15"><%= l.image %></span></a></td>
+                                                        <td><a href="/admin/tribe/master/folk-media/<%= categoryType %>/<%= l.tribe_id %>/<%= l.song_id %>"><span class="label label-pill label-warning-outline m-r-15"><%= l.audio %></span></a></td>
+                                                        <td><a href="/admin/tribe/master/folk-media/<%= categoryType %>/<%= l.tribe_id %>/<%= l.song_id %>"><span class="label label-pill label-danger-outline m-r-15"><%= l.video %></span></a></td>
+                                                        <td>
+                                                          <a href="/admin/tribe/master/traditions/song/<%= l.tribe_id %>/<%= l.song_id %>" class="btn btn-xs btn-success" aria-label=""  title="Edit Item">
+                                                            <i class="fa fa-edit"></i>
+                                                          </a>
+                                                          <a onclick="return checkConfirm('<%= l.song_id  %>')"  class="btn btn-xs btn-danger" aria-label="" title="Delete Item">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                        </td>
+                                                        </tr>
+                  
+                                                      <% number++; } 
+                                                  }  %>
+                                               
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </fieldset>
+                                     </div>
+                                </div>
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<!-- /page content -->
+               
+            </div>
+            <!-- footer content -->
+				<%- include('../../admin-layouts/footer') %>
+			<!-- /footer content -->
+        </div> <!-- ./wrapper -->
+    </body>
+    <script type="text/javascript">
+ 
+      function Validate()
+      {
+        var error = '';
+        var tribeName = $('#tribeName').val();
+        var title = $('#title').val();
+        var variation = $('#variation').val();
+        var singer = $('#singer').val();
+        var genre = $('#genre').val();
+        var duration = $("#duration").val();
+        var lyrics = $('#lyrics').val();
+        var region = $('#region').val();
+        var social = $('#social').val();
+        var historical = $('#historical').val();
+
+        if(tribeName == '' || tribeName == null)
+        {
+          error+='Tribe Name Name is required\n';
+        }
+        if(title == '' || title == null)
+        {
+          error+='Title Name is required\n';
+        }
+        if(variation == '' || variation == null)
+        {
+          error+='Variation is required\n';
+        }
+        if(singer == '' || singer == null)
+        {
+          error+='Singer is required\n';
+        }
+        if(genre == '' || genre == null)
+        {
+          error+='Genre is required\n';
+        }
+        if(duration == '' || duration == null)
+        {
+          error+='Duration is required\n';
+        }
+        if(lyrics == '' || lyrics == null)
+        {
+          error+='Lyrics is required\n';
+        }
+        if(region == '' || region == null)
+        {
+          error+='Region is required\n';
+        }
+        if(social == '' || social == null)
+        {
+          error+='Social is required\n';
+        }
+        if(historical == '' || historical == null)
+        {
+          error+='Historical is required\n';
+        }
+        
+        if(error != '')
+        {
+         swal({
+          title: "Error",
+          text: ""+error,
+          type: "error",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+        });
+       }
+       else
+       {
+         $('#addFolKSong').submit();
+       }
+     }
+  </script>
+</html>

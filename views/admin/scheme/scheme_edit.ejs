@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= formHeading %></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/3.8.0/react-datepicker.min.css">
+  <link rel="stylesheet" href="path/to/coreui.css">
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1030.0.min.js"></script>
+  <script src="path/to/your/multiselect.js"></script>
+  <script src="path/to/your/text-editor.js"></script>
+</head>
+<%- include('../admin-layouts/top-header') %>
+
+<body>
+  <div class="row">
+    <div class="col-xs-12">
+      <% if (errorMessage) { %>
+      <div class="alert alert-danger" id="error">
+        <%= errorMessage %>
+      </div>
+      <% } %>
+      <% if (successMessage) { %>
+      <div class="alert alert-success" id="success">
+        <%= successMessage %>
+      </div>
+      <% } %>
+      <div class="card mb-4">
+        <form id="schemeForm" class="needs-validation" novalidate>
+          <div class="card-header">
+            <strong><%= formHeading %></strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="land_category">Select Land Category</label>
+                <select id="land_category" name="landCategory" class="form-select" required>
+                  <option value="">Select Land Category</option>
+                  <% landCategoryAr.forEach(function (category) { %>
+                    <option value="<%= category.landCategorySlug %>"><%= category.landCategory %></option>
+                  <% }); %>
+                </select>
+                <div class="invalid-feedback">Land Category is required</div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="parent_scheme_id">Select Parent Scheme</label>
+                <select id="parent_scheme_id" name="parentSchemeId" class="form-select">
+                  <option value="">Select Parent Scheme</option>
+                  <% schemes.forEach(function (scheme) { %>
+                    <option value="<%= scheme._id %>"><%= scheme.title %></option>
+                  <% }); %>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="title">Name of Scheme</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Name of Scheme" required>
+                <div class="invalid-feedback">Scheme Title is required</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="schemeCode">Scheme Code (Abbreviation)</label>
+                <input type="text" class="form-control" id="schemeCode" name="schemeCode" placeholder="Scheme Code" required>
+                <div class="invalid-feedback">Scheme Code is required</div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="totalArea">Total Area In Scheme</label>
+                <input type="number" class="form-control" id="totalArea" name="totalArea" placeholder="Total Area" required>
+                <div class="invalid-feedback">Total Area is required</div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="unit">Select Unit</label>
+                <select id="unit" name="totalAreaUnit" class="form-select" required>
+                  <option value="">Select Unit</option>
+                  <% UNITS.forEach(function (unit) { %>
+                    <option value="<%= unit %>"><%= unit %></option>
+                  <% }); %>
+                </select>
+                <div class="invalid-feedback">Unit is required</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="startDate">Scheme Start Date</label>
+                <input type="text" class="form-control datepicker" id="startDate" name="startDate" required>
+                <div class="invalid-feedback">Start Date is required</div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="endDate">Scheme End Date</label>
+                <input type="text" class="form-control datepicker" id="endDate" name="endDate" required>
+                <div class="invalid-feedback">End Date is required</div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="brochure">Upload Brochure File</label>
+                <input type="file" class="form-control" id="brochure" name="brochureFilePath" accept="application/pdf" required>
+                <div class="invalid-feedback">Brochure File is required</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="propertySize">Select Sizes</label>
+                <select multiple id="propertySize" name="propertySize[]" class="form-select">
+                  <% for (let p of propertylist) { %>
+                      <option value="<%= p.id %>"> <%= p.property_size %> <%= p.unit %> </option>
+                  <% } %>
+                </select>
+                <div class="invalid-feedback">Property Size is required</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="reserveCategory">Select Reserve Categories</label>
+                <select multiple id="reserveCategory" name="reserveCategory[]" class="form-select">
+                   <% for (let r of reservelist) { %>
+                       <option value="<%= r.id %>"> <%= r.reserve_category %> </option>
+                   <% } %>
+                </select>
+                <div class="invalid-feedback">Reserve Category is required</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card my-4">
+                  <div class="card-header">
+                    <strong>Manage Size & Reserve Category</strong>
+                  </div>
+                  <div class="card-body">
+                    <!-- Include your SchemeInventory HTML/JavaScript here -->
+                    <div id="schemeInventory"></div>
+                    <div class="invalid-feedback">Inventory Data is missing</div>
+                    <div class="invalid-feedback">Total Mismatch of Reserve Categories with Total No. Property for Property Size and Reserve Category.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3">
+                <label for="description">Description</label>
+                <!-- Include your TextEditor HTML/JavaScript here -->
+                <div id="textEditor"></div>
+                <div class="invalid-feedback">Scheme Description is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/all-schemes" class="btn btn-warning">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize datepickers
+    document.querySelectorAll('.datepicker').forEach(function (el) {
+      new Datepicker(el, {
+        format: 'dd/mm/yyyy'
+      });
+    });
+
+    // Form submission handling
+    document.getElementById('schemeForm').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const form = event.target;
+
+      if (form.checkValidity() === false) {
+        form.classList.add('was-validated');
+        return;
+      }
+
+      const formData = new FormData(form);
+      const data = {
+        title: formData.get('title'),
+        description: textEditor.getText(), // Assuming your text editor has a method to get text
+        start_date: formData.get('startDate'),
+        end_date: formData.get('endDate'),
+        parent_id: formData.get('parentSchemeId'),
+        landCategory: formData.get('landCategory'),
+        brochureFilePath: formData.get('brochureFilePath'),
+        total_area: formData.get('totalArea'),
+        total_area_unit: formData.get('totalAreaUnit'),
+        propertySize: formData.getAll('propertySize[]'),
+        reserveCategory: formData.getAll('reserveCategory[]'),
+        inventory: schemeInventory.getData(), // Assuming your SchemeInventory has a method to get data
+      };
+
+      try {
+        const response = await fetch('/api/scheme', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          alert(errorData.message);
+        } else {
+          const successData = await response.json();
+          alert('Scheme saved successfully');
+          window.location.href = '/all-schemes';
+        }
+      } catch (error) {
+        console.error('Error saving scheme:', error);
+        alert('Error saving scheme, please try again.');
+      }
+    });
+  </script>
+          <%- include('../admin-layouts/footer') %>
+
+</body>
+</html>

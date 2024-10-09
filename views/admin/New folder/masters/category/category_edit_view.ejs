@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+
+                
+				 
+            	<div class="right_col" Food="main">
+					<div class="row">
+                        <div class="col-md-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Update Tribe Category</legend>
+                                        <form data-toggle="validator" method="post" action="/admin/masters/category/edit/<%= category.id %>"  style="padding-top: 23px">
+                                            
+                                            
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Tribe Category</label>
+                                                <input type="text" class="form-control" id="tribe_category" name="tribe_category" value="<%= category.tribe_category %>" placeholder="Enter department Name" required="">
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                         
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Tribe Category Description</label>
+                                                <textarea type="text" class="form-control" id="tribe_category_description" name="tribe_category_description" placeholder="Enter department Description" required=""><%= category.tribe_category_description %></textarea>
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                           
+
+                                            <div class="form-group">
+                                                <label for="status" class="control-label">Status</label>
+                                                <div class="radio_inline">
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" value="1" id="toast" <%= category.status === 1 ? 'checked' : '' %> required="">
+                                                        <label for="toast">Active</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" value="0" id="boost" <%= category.status === 0 ? 'checked' : '' %> required="">
+                                                        <label for="boost">Inactive</label>
+                                                    </div>
+                                                    
+                                                </div>
+                                                   
+                                                <div class="help-block"></div>
+                                            </div>
+                                           
+                                            <div class="form-group pull-right">
+                                                <button type="submit" class="btn btn-cap m-r-5">Submit</button>
+                                                <button type="submit" class="btn btn-warning">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+
+                    </div>
+				</div>
+               
+            </div>
+				<%- include('../../admin-layouts/footer') %>
+        </div>
+    </body>
+
+
+</html>

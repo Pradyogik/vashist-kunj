@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        
+        <!-- Preloader -->
+        <div class="preloader"></div>
+       
+		<style>
+			.mt{
+				margin-top: 15px !important;
+			}
+
+		</style>
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../admin-layouts/header') %>
+            <!-- Content Wrapper. Contains page content -->
+			<% if(error.length>0){ %>
+				<script>new Toasteur("top-right", 5000).error(" <%= error %>", 'Error!');</script>
+			<% } %>
+			<% if(success.length>0){ %>
+					<script>new Toasteur("top-right", 5000).success(" <%= success %>", 'Success!');</script>
+			<% } %> 
+			<div class="content-wrapper">
+				<!-- Main content -->
+				<div class="content">
+				  <div class="row">
+					<!-- Form controls -->
+					<div class="panel panel-bd lobidrag">
+					  <div class="panel-body">
+						<fieldset class="the-fieldset">
+						  <legend class="the-legend">Add Folk</legend>
+							<div class="col-sm-12">
+							  <div class="row form-group">
+								<div class="col-sm-4">
+								  <label class="form-label required">Tribe Category :</label>
+								  <select class="form-control" name="category_type" id="categoryType" style="display: none;">
+									<option value="0">Select Category</option>
+									<option value="1" <%=  folk[0].folk_category_id === 1 ? 'selected' : '' %>>Music</option>
+									<option value="2" <%=  folk[0].folk_category_id === 2 ? 'selected' : '' %>>Song</option>
+									<option value="3" <%=  folk[0].folk_category_id === 3 ? 'selected' : '' %>>Dance</option>
+									<option value="4" <%=  folk[0].folk_category_id === 4 ? 'selected' : '' %>>Tales</option>
+								  </select>
+								</div>
+								<div class="mSection">
+								<form action="/admin/folk/folkmusic/add"  method="post" >	
+								  <div class="col-sm-4">
+									<input  type="hidden" name="folk_id" id="folkId" value="<%= folk[0].id %>">
+									<input  type="hidden" name="category_type" id="categoryType" value="1">
+									<label class="form-label required">Tribe Name:</label>
+									<input class="form-control" type="text" name="tribe_name" id="tribeName" value="<%= folk[0].tribe_name %>" placeholder="Enter Tribe Name">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Title:</label>
+									<input class="form-control" type="text" name="title" id="title" value="<%= folk[0].title %>" placeholder="Enter Title">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Variation:</label>
+									<input class="form-control" name="variation" id="variation" value="<%= folk[0].variation %>" placeholder="Enter Variation">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Composer:</label>
+									<input class="form-control" type="text" name="composer" id="composer" value="<%= folk[0].compser %>" placeholder="Enter Composer">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Genre</label>
+									<input class="form-control" type="text" name="genre" id="genre" value="<%= folk[0].genre %>" placeholder="Enter Genre">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Duration</label>
+									<input class="form-control" type="text" name="duration" id="duration" value="<%= folk[0].duration %>" placeholder="Enter Duration">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Instrument:</label>
+									<input class="form-control" type="text" name="instrument" id="instrument" value="<%= folk[0].instrument %>" placeholder="Enter Instrument">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Region:</label>
+									<input class="form-control" type="text" name="region" id="region" value="<%= folk[0].region_culture %>" placeholder="Enter Region Or Cultual Origin">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Social:</label>
+									<input class="form-control" type="text" name="social" id="social" value="<%= folk[0].social_culture %>" placeholder="Enter Social Or Cultural Significance">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Historical:</label>
+									<input class="form-control" type="text" name="historical" id="historical" value="<%= folk[0].historical_religious %>" placeholder="Enter Historical/religious Context and Significance">
+								  </div>
+								  <div class="col-sm-12 col-md-offset-5 mt">
+								    <button type="submit" class="btn btn-cap btn-sm">Submit</button>
+								    <button type="submit" class="btn btn-warning btn-sm">Cancel</button>
+								</div>
+								</form>  
+								</div>
+								<div class="sSection">
+								<form action="/admin/folk/folkmusic/add"  method="post" >	
+								  <div class="col-sm-4">
+									<input  type="hidden" name="folk_id" id="folkId" value="<%= folk[0].id %>">
+									<input  type="hidden" name="category_type" id="categoryType" value="2">
+									<label class="form-label required">Tribe Name:</label>
+									<input class="form-control" type="text" name="tribe_name" id="tribeName" value="<%= folk[0].tribe_name %>" placeholder="Enter Tribe Name">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Title:</label>
+									<input class="form-control" type="text" name="title" id="title" value="<%= folk[0].title %>" placeholder="Enter Title">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Variation:</label>
+									<input class="form-control" name="variation" id="variation" value="<%= folk[0].variation %>" placeholder="Enter Variation">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Singer:</label>
+									<input class="form-control" type="text" name="singer" id="singer" value="<%= folk[0].compser %>" placeholder="Enter Singer/Performer">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Genre</label>
+									<input class="form-control" type="text" name="genre" id="genre" value="<%= folk[0].tribe_name %>" placeholder="Enter Genre">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Duration</label>
+									<input class="form-control" type="text" name="duration" id="duration" value="<%= folk[0].duration %>" placeholder="Enter Duration">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Lyrics</label>
+									<input class="form-control" type="text" name="lyrics" id="lyrics" value="<%= folk[0].lyrics %>" placeholder="Enter Lyrics">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Region:</label>
+									<input class="form-control" type="text" name="region" id="region" value="<%= folk[0].region_culture %>" placeholder="Enter Region Or Cultual Origin">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Social:</label>
+									<input class="form-control" type="text" name="social" id="social" value="<%= folk[0].social_culture %>" placeholder="Enter Social Or Cultural Significance">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Historical:</label>
+									<input class="form-control" type="text" name="historical" id="historical" value="<%= folk[0].historical_religious %>" placeholder="Enter Historical/religious Context and Significance">
+								  </div>
+								  <div class="col-sm-12 col-md-offset-5 mt">
+								    <button type="submit" class="btn btn-cap btn-sm">Submit</button>
+								    <button type="submit" class="btn btn-warning btn-sm">Cancel</button>
+								</div>
+								</form>  
+								</div>
+								<div class="dSection">
+								<form action="/admin/folk/folkmusic/add"  method="post" >	
+								  <div class="col-sm-4">
+									<input  type="hidden" name="folk_id" id="folkId" value="<%= folk[0].id %>">
+									<input  type="hidden" name="category_type" id="categoryType" value="3">
+									<label class="form-label required">Tribe Name:</label>
+									<input class="form-control" type="text" name="tribe_name" id="tribeName" value="<%= folk[0].tribe_name %>" placeholder="Enter Tribe Name">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Dance Name</label>
+									<input class="form-control" type="text" name="dance_name" id="danceName" value="<%= folk[0].dance %>" placeholder="Enter Dance Name">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Character:</label>
+									<input class="form-control" type="text" name="character" id="character" value="<%= folk[0].characters %>" placeholder="Enter Character">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Dance Type</label>
+									<input class="form-control" type="text" name="dance_type" id="danceType" value="<%= folk[0].dance_type %>" placeholder="Enter Dance Type">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Region:</label>
+									<input class="form-control" type="text" name="region" id="region" value="<%= folk[0].region_culture %>" placeholder="Enter Region Or Cultual Origin">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Coustumes</label>
+									<input class="form-control" type="text" name="coustumes" id="coustumes" value="<%= folk[0].coutumes %>" placeholder="Enter Coustumes or attire associated">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Music:</label>
+									<input class="form-control" type="text" name="music" id="music" value="<%= folk[0].music %>" placeholder="Enter Music Accompanying the Dance">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Instrument:</label>
+									<input class="form-control" type="text" name="instrument" id="instrument" value="<%= folk[0].instrument %>" placeholder="Enter Instrument">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Steps:</label>
+									<input class="form-control" type="text" name="choreography" id="choreography" value="<%= folk[0].steps_chorepgraphy %>" placeholder="Enter Steps Or choreography">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Social:</label>
+									<input class="form-control" type="text" name="social" id="social" value="<%= folk[0].social_culture %>" placeholder="Enter Social Or Cultural Significance">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Historical:</label>
+									<input class="form-control" type="text" name="historical" id="historical" value="<%= folk[0].historical_religious %>" placeholder="Enter Historical/religious Context and Significance">
+								  </div>
+								  <div class="col-sm-12 col-md-offset-5 mt">
+								    <button type="submit" class="btn btn-cap btn-sm">Submit</button>
+								    <button type="submit" class="btn btn-warning btn-sm">Cancel</button>
+								</div>
+								</form>  
+								</div>
+								<div class="tSection">
+								<form action="/admin/folk/folkmusic/add"  method="post" >
+								  <div class="col-sm-4">
+									<input  type="hidden" name="folk_id" id="folkId" value="<%= folk[0].id %>">
+									<input  type="hidden" name="category_type" id="categoryType" value="4">
+									<label class="form-label required">Tribe Name:</label>
+									<input class="form-control" type="text" name="tribe_name" id="tribeName" value="<%= folk[0].tribe_name %>" placeholder="Enter Tribe Name">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Title:</label>
+									<input class="form-control" type="text" name="title" id="title" value="<%= folk[0].title %>" placeholder="Enter Title">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Variation:</label>
+									<input class="form-control" name="variation" id="variation" value="<%= folk[0].variation %>" placeholder="Enter Variation">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Plot summary:</label>
+									<input class="form-control" type="text" name="plot_summary" id="plot_summary" value="<%= folk[0].plot_summary %>" placeholder="Enter Plot summary">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Character:</label>
+									<input class="form-control" type="text" name="character" id="character" value="<%= folk[0].characters %>" placeholder="Enter Character">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Storyteller:</label>
+									<input class="form-control" type="text" name="storyteller" id="storyteller" value="<%= folk[0].storyteller %>" placeholder="Enter Storyteller">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Region:</label>
+									<input class="form-control" type="text" name="region" id="region" value="<%= folk[0].region_culture %>" placeholder="Enter Region Or Cultual Origin">
+								  </div>
+								  <div class="col-sm-4 form-group">
+									<label class="form-label required">Moral:</label>
+									<input class="form-control" type="text" name="moral" id="moral" value="<%= folk[0].moral %>" placeholder="Enter Moral">
+								  </div>
+								  <div class="col-sm-4">
+									<label class="form-label required">Historical:</label>
+									<input class="form-control" type="text" name="historical" id="historical" value="<%= folk[0].historical_religious %>" placeholder="Enter Historical/religious Context and Significance">
+								  </div>
+								  <div class="col-sm-12 col-md-offset-5 mt">
+								    <button type="submit" class="btn btn-cap btn-sm">Submit</button>
+								    <button type="submit" class="btn btn-warning btn-sm">Cancel</button>
+								</div>
+								</form>  
+								
+								</div>
+								
+							  </div>
+							</div>
+						  <!-- </form> -->
+						</fieldset>
+					  </div>
+					</div>
+				  </div>
+				  <!-- Checkboxes & Radios -->
+				  <div class="row">
+					<div class="col-sm-12">
+					  <div class="panel panel-bd lobidrag">
+						<div class="panel-body">
+						  <fieldset class="the-fieldset">
+							<legend class="the-legend">Add Folk Songs</legend>
+							<form>
+							  <div class="table-responsive">
+								<table class="table table-bordered">
+								  <thead>
+									<tr>
+									  <th>#</th>
+									  <th>Name</th>
+									  <th>Upload</th>
+									</tr>
+								  </thead>
+								  <tbody>
+									<tr>
+									  <td>1</td>
+									  <td>JS325</td>
+									  <td>
+										<input type="file" id="exampleInputFile" aria-describedby="fileHelp">
+									  </td>
+									</tr>
+									<tr>
+									  <td>2</td>
+									  <td>JS325</td>
+									  <td>
+										<input type="file" id="exampleInputFile" aria-describedby="fileHelp">
+									  </td>
+									</tr>
+									<tr>
+									  <td>3</td>
+									  <td>JS325</td>
+									  <td>
+										<input type="file" id="exampleInputFile" aria-describedby="fileHelp">
+									  </td>
+									</tr>
+									<tr>
+									  <td>4</td>
+									  <td>JS325</td>
+									  <td>
+										<input type="file" id="exampleInputFile" aria-describedby="fileHelp">
+									  </td>
+									</tr>
+									<tr>
+									  <td>5</td>
+									  <td>JS325</td>
+									  <td>
+										<input type="file" id="exampleInputFile" aria-describedby="fileHelp">
+									  </td>
+									</tr>
+								  </tbody>
+								</table>
+							  </div>
+							</form>
+						  </fieldset>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+            <!-- footer content -->
+				<%- include('../admin-layouts/footer') %>
+			<!-- /footer content -->
+        </div> <!-- ./wrapper -->
+    </body>
+	<script>
+	
+		function checkConfirm(id) {
+	
+		var companyId  = id;
+		var y = confirm('Are you sure');
+		if(y)
+		{
+			
+			$.ajax({
+			type: 'post', // Type of request to be send, called as method
+			url: '/admin/masters/company/delete/'+companyId, //  Url to which the request is send
+			dataType: 'json',
+			success: function (responce) { // A function to be called if request succeeds.
+				// console.log("responce");
+				// console.log(responce);
+				// return;
+			if(responce == 1){
+				console.log("responce");
+				console.log(responce);
+				new Toasteur("top-right", 5000).success("Selected row Deleted Suceesfully", 'Success!');
+				//new Toasteur("top-right",8000).success("Selected row Deleted Suceesfully", 'Success');
+				//$("#rowid_"+companyId).hide();
+				// setTimeout(function(){
+				// 	window.location.reload(1);
+				// }, 5000);
+			}else{
+				new Toasteur("top-right", 5000).error("Somthing Went wrong Please try again", 'Error!');
+				//new Toasteur("top-right", 5000).error("Somthing Went wrong Please try again", 'Error!');
+				// setTimeout(function(){
+				// 	window.location.reload(1);
+				// }, 5000);
+			}
+			}
+		});
+		}
+	
+		}   
+		
+
+		//$("mSection").hide();
+		
+		$(".sSection").hide();
+		$(".dSection").hide();
+		$(".tSection").hide();
+
+		
+		if($('#categoryType').val()  == '1') {
+			
+			$(".mSection").show();
+			$(".sSection").hide();
+			$(".dSection").hide();
+			$(".tSection").hide();
+			
+		}else if($('#categoryType').val() == '2') {
+		
+			$(".mSection").hide();
+			$(".sSection").show();
+			$(".dSection").hide();
+			$(".tSection").hide();
+
+		} else if($('#categoryType').val() == '3') {
+			
+			$(".mSection").hide();
+			$(".sSection").hide();
+			$(".dSection").show();
+			$(".tSection").hide();
+			
+		} else if($('#categoryType').val() == '4') {
+			
+			$(".mSection").hide();
+			$(".sSection").hide();
+			$(".dSection").hide();
+			$(".tSection").show();
+
+		} else {
+			alert(8);
+		} 
+	</script>
+
+</html>

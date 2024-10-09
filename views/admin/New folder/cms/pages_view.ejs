@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                                <div class="panel-heading">
+                                    <div class="panel-title col-sm-6" >
+                                        <h4>Page List</h4>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="/admin/cms/pages/add" class="pull-right btn btn-warning w-md m-rb-5">Add Pages</a>
+                                    </div>
+                                </div>
+                            
+                                <div class="panel-body">
+                            
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Title</th>
+                                                    <th>Slug</th>
+                                                    <th>Short Description</th>
+                                                    <th>Description</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>About Us</td>
+                                                    <td>about-us</td>
+                                                    <td>Indian state of Arunachal Pradesh</td>
+                                                    <td>The Adi people are one of the most populous groups of indigenous peoples in the Indian state of Arunachal Pradesh. A few thousand are also found in the Tibet Autonomous Region, where they are called the Lhoba together with some of the Nyishi people, Na people, Mishmi people and Tagin people.</td>
+                                                    <td class="active-status">
+                                                        Active
+                                                      </td>                                                    
+                                                      <td style="text-align:center"><a href="/admin/cms/pages/edit/1" aria-label="">
+                                                        <img src="/admin-assets/dist/img/edit.png" width="15" height="15" alt="Tabler">
+                                                       
+                                                      </a>
+                                                      <a href="#" aria-label="">
+                                                        <img src="/admin-assets/dist/img/delete.png" width="15" height="15" alt="Tabler">
+                                                        
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Tribe Detail</td>
+                                                    <td>tribe-detail</td>
+                                                    <td>Indian state of Arunachal Pradesh</td>
+                                                    <td>The Adi people are one of the most populous groups of indigenous peoples in the Indian state of Arunachal Pradesh. A few thousand are also found in the Tibet Autonomous Region, where they are called the Lhoba together with some of the Nyishi people, Na people, Mishmi people and Tagin people.</td>
+                                                    <td class="active-status">
+                                                        Active
+                                                      </td>                                                    
+                                                      <td style="text-align:center"><a href="/admin/cms/pages/edit/2" aria-label="">
+                                                        <img src="/admin-assets/dist/img/edit.png" width="15" height="15" alt="Tabler">
+                                                       
+                                                      </a>
+                                                      <a href="#" aria-label="">
+                                                        <img src="/admin-assets/dist/img/delete.png" width="15" height="15" alt="Tabler">
+                                                        
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>About Us</td>
+                                                    <td>about-us</td>
+                                                    <td>Indian state of Arunachal Pradesh</td>
+                                                    <td>The Adi people are one of the most populous groups of indigenous peoples in the Indian state of Arunachal Pradesh. A few thousand are also found in the Tibet Autonomous Region, where they are called the Lhoba together with some of the Nyishi people, Na people, Mishmi people and Tagin people.</td>
+                                                    <td class="active-status">
+                                                        Active
+                                                      </td>                                                    
+                                                      <td style="text-align:center"><a href="/admin/cms/pages/edit/3" aria-label="">
+                                                        <img src="/admin-assets/dist/img/edit.png" width="15" height="15" alt="Tabler">
+                                                       
+                                                      </a>
+                                                      <a href="#" aria-label="">
+                                                        <img src="/admin-assets/dist/img/delete.png" width="15" height="15" alt="Tabler">
+                                                        
+                                                    </a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                
+                                </div>
+                            </div>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+            
+        <%- include('../admin-layouts/footer') %>
+    </body>
+
+</html>

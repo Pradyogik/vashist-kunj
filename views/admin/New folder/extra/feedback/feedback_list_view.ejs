@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}   
+  
+</style>
+<style>
+  /* Add CSS for hiding/showing content based on radio selection */
+  #imageContent,
+  #danceContent {
+      display: none;
+  }
+
+  #music:checked ~ #musicContent,
+  #song:checked ~ #imageContent,
+  #dance:checked ~ #danceContent {
+      display: table-row;
+  }
+</style>
+<style>
+  .rating {
+      unicode-bidi: bidi-override;
+      direction: rtl;
+      text-align: left;
+  }
+  .rating > input {
+      display: none;
+  }
+  .rating > label {
+      display: inline-block;
+      padding: 0px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 1px !important;
+      margin-bottom: 1px !important;
+  }
+
+  .rating > input:checked ~ label,
+  .rating:not(:checked) > label:hover ~ label {
+      color: #FFD700;
+  }
+  .rating > input:checked ~ label:hover,
+  .rating > label:hover ~ input:checked ~ label,
+  .rating > input:checked ~ label:hover ~ input ~ label {
+      color: #FFED85;
+  }
+  .clr{
+      color: #fede27;
+      font-size: medium !important;
+  }
+ 
+  .float-right {
+   padding: 0px 40px 0px 0px;
+  }
+ 
+</style>
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                               
+                                <div class="panel-body">
+                                  <fieldset class="the-fieldset">
+                                    <legend class="the-legend"> Ratting And Feedback List</legend>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr.No.</th>
+                                                    <th>User Name</th>
+                                                    <th>Tribe Name</th>
+                                                    <th>Name</th>
+                                                    <th>Feedback</th>
+                                                    <th>Ratting</th>
+                                                    <th>Approved</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%  if(list.length>0)
+                                                { 
+                                                  var number= 1;
+                                                  for (let l of list)
+                                                    {
+                                                      if(l.ratting == 1){
+                                                        var ratReviw = '<span class="fa fa-star clr "></span></label>';
+    
+                                                      }else if(l.ratting == 2){
+      
+                                                          var ratReviw = '<label for="star6"><span class="fa fa-star clr "></span></label><span class="fa fa-star clr "></span></label>';
+      
+                                                      }else if(l.ratting == 3){
+                                                          
+                                                          var ratReviw = '<label for="star6"><span class="fa fa-star clr "></span></label><label for="star6"><span class="fa fa-star clr "></span></label><label for="star6"><span class="fa fa-star clr "></span></label>';
+      
+                                                      }else if(l.ratting == 4){
+      
+                                                          var ratReviw = '<label for="star6"><span class="fa fa-star clr "></span></label> <label for="star6"><span class="fa fa-star clr "></span></label> <label for="star6"><span class="fa fa-star clr "></span></label><label for="star6"><span class="fa fa-star clr "></span></label><label for="star6"><span class="fa fa-star clr "></span></label>';
+      
+                                                      }else if(l.ratting == 5){
+      
+                                                          var ratReviw = '<label for="star6"><span class="fa fa-star clr "></span></label> <label for="star6"><span class="fa fa-star clr "></span></label> <label for="star6"><span class="fa fa-star clr "></span></label><label for="star6"><span class="fa fa-star clr "></span></label><label for="star6"><span class="fa fa-star clr "></span></label>';
+                                                      } 
+                                                          
+                                                      if(l.is_approved == 1){ 
+                                                          var del = '<label class="switch"><input class="form-check-input change_admin_user_status" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Deactive" data-bs-original-title="Deactive" checked="" value="0" rel_id='+ l.id +'><span class="slider round"></span></label>';   
+                                                            
+                                                        }else{ 
+                                                            var del = '<label class="switch"><input class="form-check-input  change_admin_user_status" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Active" data-bs-original-title="Active" value="1" rel_id='+ l.id +'><span class="slider round"></span></label>';  
+                                                      }
+
+                                                         
+                                                        %>
+                                                       
+                                                <!-- the overlay element -->
+                                                <div class="md-overlay"></div>
+                                                      <tr id="rowid_<%= l.id  %>">
+                                                      <td><%= number %></td>
+                                                      <td><%= l.name  %></td>
+                                                      <td><%= l.tribe  %></td>
+                                                      <td><%= l.pName %></td>
+                                                      <td><%= l.feedback  %></td>
+                                                      <td><%- ratReviw %></td>
+                                                      <td ><%- del %></td>
+                                                      <td>
+                                                        <a onclick="return checkConfirm('<%= l.id  %>')"  class="btn btn-xs btn-danger" aria-label="" title="Delete Item">
+                                                          <i class="fa fa-trash"></i>
+                                                      </a>
+                                                      </td>
+                                                   
+                                                    </tr>
+                
+                                                    <% number++; } 
+                                                }  %>
+                                             
+                                            </tbody>
+                                        </table>
+                                    </div>
+                           
+                                </fieldset>
+                                    <br>
+                        <center>
+                          <ul class="pagination modal-4">
+                            <% var reamin = totalPages * pageSize;  if (reamin > pageSize) { %>  
+                            <% if (currentPage > 1) { %>
+                            <li><a href="?page=<%= currentPage - 1 %>" class="prev"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                            <% } %>
+                            <% for (let i = 1; i <= totalPages; i++) { %>
+                              <% if(i <= 6) { %>
+                              <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                              <% } else if(currentPage == i){ %>
+                                <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                
+                              <% break;  } } %>
+
+                            <% if(currentPage >= 5) { if(currentPage != totalPages) { %>
+                              <% if(currentPage != totalPages - 1) { %>
+                              <li><a href="javascript:void(0)" class="">...</a></li>
+                              <% } %>
+                              <li><a href="?page=<%= totalPages %>"><%= totalPages %></a></li>
+
+                            <%  } } %>
+
+                          
+                            <% if (currentPage < totalPages) { %>
+                              <li><a href="?page=<%= currentPage + 1 %>" class="next"> Next  <i class="fa fa-chevron-right"></i></a></li> 
+                            <% } %>
+
+                            <% } %>
+                           
+                          </ul>
+                        </center>
+                                </div>
+                            </div>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+				<!-- /page content -->
+        </div>
+        <%- include('../../admin-layouts/footer') %>
+    </body>
+<script>
+    
+     $(document).on('change', '.change_admin_user_status', function () { 
+        var status = $(this).val();
+        var rel_id = $(this).attr('rel_id');
+        
+            var success = confirm('Are you sure you want to change User status?');
+            if(success)
+            {
+                if (status != "" && (rel_id != 0 || rel_id != "")) {
+                    $.ajax({
+                    type: 'get', // Type of request to be send, called as method
+                    url: '/admin/extra/changeFeedbackStaus/?rowid='+rel_id+'&status='+status, //  Url to which the request is send
+                    dataType: 'json',
+                    success: function (responce) { // A function to be called if request succeeds.
+                        if(responce == 1){
+                        new Toasteur("top-right", 3000).success("Feedback Is Approved Suceesfully", 'Success');
+                        setTimeout(function(){
+                            window.location.reload(1);
+                            }, 3000);
+                        }else{
+                        new Toasteur("top-right", 3000).error("Somthing Went wrong Please try again", 'Error!');
+                        setTimeout(function(){
+                            window.location.reload(1);
+                            }, 3000);
+                        }
+                    }
+                    });
+
+                }
+            }  
+        else
+        {
+            return false; 
+        }
+      });
+      function checkConfirm(id) {
+    
+          var rowId  = id;
+          var y = confirm('Are you sure');
+          if(y)
+          {
+              $.ajax({
+              type: 'get', // Type of request to be send, called as method
+              url: '/admin/extra/delete-Feedback/?rowid='+rowId, //  Url to which the request is send
+              dataType: 'json',
+              success: function (responce) { // A function to be called if request succeeds.
+                if(responce == 1){
+                    new Toasteur("top-right", 3000).success("Selected row Deleted Suceesfully", 'Success');
+                    $("#rowid_"+rowId).hide();
+                    setTimeout(function(){
+                        window.location.reload(1);
+                    }, 3000);
+                }else{
+                    new Toasteur("top-right", 3000).error("Somthing Went wrong Please try again", 'Error!');
+                    setTimeout(function(){
+                        window.location.reload(1);
+                    }, 3000);
+                }
+                }
+              });
+          }
+
+      }    
+
+</script>
+</html>

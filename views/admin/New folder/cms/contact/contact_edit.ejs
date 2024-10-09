@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+   
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-md-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Contact Edit</legend>
+                                      
+                                        <form data-toggle="validator" method="post"  action="/admin/cms/contact/edit/<%= contact.id %>" style="padding-top: 23px">
+                                                <div class="form-group">
+                                                    <label for="inputName" class="control-label">Head Office Address</label>
+                                                    <input type="text" class="form-control" id="head_office_address" name="head_office_address" value="<%= contact.head_office_address %>" placeholder="Enter Head Office Address" required="">
+                                                </div>
+                                                <div class="form-group has-feedback">
+                                                    <label for="inputTwitter" class="control-label">Phone Number</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">+91</span>
+                                                        <input type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" name="phone_number" value="<%= contact.phone_number %>" class="form-control" id="phone_number" placeholder="000 0000 0000" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail" class="control-label">Email</label>
+                                                    <input type="email" class="form-control" id="inputEmail" name="email" value="<%= contact.email %>" placeholder="Enter Email" data-error="Bruh, that email address is invalid" required="">
+                                                    <div class="help-block"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputEmail" class="control-label">Opening Hours</label>
+                                                    <input type="text" class="form-control" id="opening_hours" name="opening_hours" value="<%= contact.opening_hours %>" placeholder="Enter Opening Hours" data-error="Bruh, that email address is invalid" required="">
+                                                    <div class="help-block"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="status" class="control-label">Status</label>
+                                                    <div class="radio_inline">
+                                                        <div class="radio">
+                                                            <input type="radio" name="status" value="1" id="toast" <%= contact.status === 1 ? 'checked' : '' %> required="">
+                                                            <label for="toast">Active</label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <input type="radio" name="status" value="0" id="boost" <%= contact.status === 0 ? 'checked' : '' %> required="">
+                                                            <label for="boost">Inactive</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="help-block"></div>
+                                                </div>
+                                                <div class="form-group pull-right">
+                                                    <button type="submit" class="btn btn-cap m-r-5">Submit</button>
+                                                    <a href="/admin/cms/contact" class="btn btn-warning">Cancel</a>
+                                                </div>
+                                            </form>
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+
+
+
+                
+                    </div>
+				</div>
+               
+            </div>
+				<%- include('../../admin-layouts/footer') %>
+        </div>
+    </body>
+
+</html>

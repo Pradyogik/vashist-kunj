@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                                <div class="panel-heading">
+                                    <div class="panel-title col-sm-6" >
+                                        <h4>Contact List</h4>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="/admin/cms/contact/add" class="pull-right btn btn-warning w-md m-rb-5">Add contact</a>
+                                    </div>
+                                </div>
+                            
+                                <div class="panel-body">
+                            
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Head Office Address</th>
+                                                    <th>Phone No.</th>
+                                                    <th>Email</th>
+                                                    <th>Opening Hours</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Arunachal Pradesh State Centre, Block-03,
+                                                    <br>Civil Secretariat, Itanagar
+                                                        Arunachal Pradesh 791111</td>
+                                                    <td>(+91) 123 456 7890</td>
+                                                    <td>dir-dit-arn[at]gov[dot]in</td>
+                                                    <td>Mon - Fri: 8:00AM - 6:00PM</td>
+                                                    <td class="active-status">
+                                                        Active
+                                                      </td>                                                    
+                                                      <td style="text-align:center"><a href="/admin/cms/pages/edit/1" aria-label="">
+                                                        <img src="/admin-assets/dist/img/edit.png" width="15" height="15" alt="Tabler">
+                                                       
+                                                      </a>
+                                                      <a href="#" aria-label="">
+                                                        <img src="/admin-assets/dist/img/delete.png" width="15" height="15" alt="Tabler">
+                                                        
+                                                    </a></td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                
+                                </div>
+                            </div>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+            
+        <%- include('../../admin-layouts/footer') %>
+    </body>
+
+</html>

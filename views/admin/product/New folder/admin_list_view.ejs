@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}   
+  
+</style>
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+		
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <%- include('../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+				<!-- page content -->
+            	<div class="right_col" role="main">
+					<div class="row">
+                        <div class="col-sm-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd">
+                                <!-- <div class="panel-heading">
+                                    <div class="panel-title col-sm-6 mt-4" >
+                                        <h4>Admin List</h4>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="/admin/cms/pages/add" class="pull-right btn btn-warning w-md m-rb-5">Add Pages</a>
+                                    </div>
+                                </div> -->
+                            
+                                <div class="panel-body">
+                                  <fieldset class="the-fieldset">
+                                    <legend class="the-legend"> Admin List</legend>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr.No.</th>
+                                                    <th>Name</th>
+                                                    <th>Email </th>
+                                                    <th>Mobile</th>
+                                                    <!-- <th>Password</th> -->
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%  if(list.length>0)
+                                                { 
+                                                  var number= 1;
+                                                  for (let l of list)
+                                                    {
+
+                                                        
+
+
+                                                        if(l.is_status == 1){ 
+                                                            var del = '<label class="switch"><input class="form-check-input change_admin_user_status" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Deactive" data-bs-original-title="Deactive" checked="" value="0" rel_id='+ l.id +'><span class="slider round"></span></label>';   
+                                                             
+                                                           }else{ 
+                                                             var del = '<label class="switch"><input class="form-check-input  change_admin_user_status" type="checkbox" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Active" data-bs-original-title="Active" value="1" rel_id='+ l.id +'><span class="slider round"></span></label>';  
+                                                            }
+
+                                                        if(l.password !=''){ 
+                                                          var pwd = ' <button class="btn btn-base md-trigger m-b-5 m-r-2" data-modal="modal-7">Sticky Up</button>';   
+                                                            
+                                                          }    
+                                                        %>
+                                                       
+                                                <!-- the overlay element -->
+                                                <div class="md-overlay"></div>
+                                                      <tr id="rowid_<%= l.id  %>">
+                                                      <td><%= number %></td>
+                                                      <td><%= l.username  %></td>
+                                                      <td><%= l.email %></td>
+                                                      <td><%= l.mobile %></td>
+                                                      <!-- <td ><%- pwd %></td> -->
+                                                      <td ><%- del %></td>
+                                                      
+                                                      <td>
+                                                        <a href="/editUserDetail/?id=<%= l.id  %>" class="btn btn-xs btn-success" aria-label="">
+                                                          <i class="fa fa-edit"></i>
+                                                        </a>
+                                                        <a onclick="return checkConfirm('<%= l.id  %>')" class="btn btn-xs btn-danger" aria-label="">
+                                                          <i class="fa fa-trash"></i>
+                                                        </a>
+                
+                
+                                                      </td>
+                                                    </tr>
+                
+                                                    <% number++; } 
+                                                }  %>
+                                             
+                                            </tbody>
+                                        </table>
+                                    </div>
+                           
+                                </fieldset>
+                                    <br>
+                        <center>
+                          <ul class="pagination modal-4">
+                            <% var reamin = totalPages * pageSize;  if (reamin > pageSize) { %>  
+                            <% if (currentPage > 1) { %>
+                            <li><a href="?page=<%= currentPage - 1 %>" class="prev"><i class="fa fa-chevron-left"></i> Previous</a></li>
+                            <% } %>
+                            <% for (let i = 1; i <= totalPages; i++) { %>
+                              <% if(i <= 6) { %>
+                              <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                              <% } else if(currentPage == i){ %>
+                                <li><a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a></li>
+                                
+                              <% break;  } } %>
+
+                            <% if(currentPage >= 5) { if(currentPage != totalPages) { %>
+                              <% if(currentPage != totalPages - 1) { %>
+                              <li><a href="javascript:void(0)" class="">...</a></li>
+                              <% } %>
+                              <li><a href="?page=<%= totalPages %>"><%= totalPages %></a></li>
+
+                            <%  } } %>
+
+                          
+                            <% if (currentPage < totalPages) { %>
+                              <li><a href="?page=<%= currentPage + 1 %>" class="next"> Next  <i class="fa fa-chevron-right"></i></a></li> 
+                            <% } %>
+
+                            <% } %>
+                           
+                          </ul>
+                        </center>
+                                </div>
+                            </div>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+         <!-- Modal sticky up effects -->
+         <div class="md-modal md-effect-7" id="modal-7" >
+          <div class="md-content" id="modal" class="modal">
+              <h3>Update Password  <span class="close">&times;</span></h3>
+              
+              <div class="n-modal-body">
+                
+                <form data-toggle="validator" id="passwordForm" style="padding-top: 23px">
+                                         
+                  <div class="form-group">
+                      <label for="inputName" class="control-label">Current Password:</label>
+                      <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputName" class="control-label">New Password:</label>
+                    <input class="form-control" type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <div class="form-group">
+                  <label for="inputName" class="control-label">Confirm New Password:</label>
+                  <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" required>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-base md-close">Submit</button>
+              </div>
+              </form>
+                 
+              </div>
+          </div>
+      </div>
+            
+        <%- include('../admin-layouts/footer') %>
+    </body>
+<script>
+
+    function checkConfirm(id) {
+
+            var rowId  = id;
+            var y = confirm('Are you sure');
+            if(y)
+            {
+                $.ajax({
+                type: 'get', // Type of request to be send, called as method
+                url: '/admin/users/deleteAdminUser/?rowid='+rowId, //  Url to which the request is send
+                dataType: 'json',
+                success: function (responce) { // A function to be called if request succeeds.
+                if(responce == 1){
+                    new Toasteur("top-right", 3000).success("Selected row Deleted Suceesfully", 'Success');
+                    $("#rowid_"+rowId).hide();
+                    setTimeout(function(){
+                        window.location.reload(1);
+                    }, 3000);
+                }else{
+                    new Toasteur("top-right", 3000).error("Somthing Went wrong Please try again", 'Error!');
+                    setTimeout(function(){
+                        window.location.reload(1);
+                    }, 3000);
+                }
+                }
+            });
+            }
+
+        }    
+
+     $(document).on('change', '.change_admin_user_status', function () { 
+        var status = $(this).val();
+        var rel_id = $(this).attr('rel_id');
+        
+            var success = confirm('Are you sure you want to change User status?');
+            if(success)
+            {
+                if (status != "" && (rel_id != 0 || rel_id != "")) {
+                    $.ajax({
+                    type: 'get', // Type of request to be send, called as method
+                    url: '/admin/users/changeAdminUserStaus/?rowid='+rel_id+'&status='+status, //  Url to which the request is send
+                    dataType: 'json',
+                    success: function (responce) { // A function to be called if request succeeds.
+                        if(responce == 1){
+                        new Toasteur("top-right", 3000).success("Admin User Status changed Suceesfully", 'Success');
+                        setTimeout(function(){
+                            window.location.reload(1);
+                            }, 3000);
+                        }else{
+                        new Toasteur("top-right", 3000).error("Somthing Went wrong Please try again", 'Error!');
+                        setTimeout(function(){
+                            window.location.reload(1);
+                            }, 3000);
+                        }
+                    }
+                    });
+
+                }
+            }  
+        else
+        {
+            return false; 
+        }
+  });
+
+  const closeModalBtn = document.getElementsByClassName('close')[0];  
+
+    closeModalBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+  passwordForm.onsubmit = function(event) {
+
+  event.preventDefault();
+  const currentPassword = document.getElementById('currentPassword').value;
+  const newPassword = document.getElementById('newPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  // You can add your password update logic here, like sending the data to the server via AJAX
+  
+  // For demonstration purposes, let's log the values
+  console.log('Current Password:', currentPassword);
+  console.log('New Password:', newPassword);
+  console.log('Confirm Password:', confirmPassword);
+
+  // After processing, you may want to close the modal
+  modal.style.display = 'none';
+
+
+        //   var success = confirm('Are you sure you want to change User status?');
+        //     if(success)
+        //     {
+        //         if (status != "" && (rel_id != 0 || rel_id != "")) {
+        //             $.ajax({
+        //             type: 'get', // Type of request to be send, called as method
+        //             url: '/admin/users/changeAdminUserStaus/?rowid='+rel_id+'&status='+status, //  Url to which the request is send
+        //             dataType: 'json',
+        //             success: function (responce) { // A function to be called if request succeeds.
+        //                 if(responce == 1){
+        //                 new Toasteur("top-right", 3000).success("Admin User Status changed Suceesfully", 'Success');
+        //                 setTimeout(function(){
+        //                     window.location.reload(1);
+        //                     }, 3000);
+        //                 }else{
+        //                 new Toasteur("top-right", 3000).error("Somthing Went wrong Please try again", 'Error!');
+        //                 setTimeout(function(){
+        //                     window.location.reload(1);
+        //                     }, 3000);
+        //                 }
+        //             }
+        //             });
+
+        //         }
+        //     }  
+        // else
+        // {
+        //     return false; 
+        // }
+}
+
+</script>
+</html>

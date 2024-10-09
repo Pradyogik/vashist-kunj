@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('../../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+
+        <div class="wrapper">
+            <%- include('../../admin-layouts/header') %>
+            
+            <div class="content-wrapper">
+				 
+            	<div class="right_col" Food="main">
+					<div class="row">
+                        <div class="col-md-12">
+							<div class="clearfix"></div>
+                            <div class="panel panel-bd lobidrag">
+                                
+                                <div class="panel-body">
+                                    <fieldset class="the-fieldset">
+                                        <legend class="the-legend">Update Designation</legend>
+                                        <form data-toggle="validator" method="post" action="/admin/masters/role/edit/<%= role.id %>"  style="padding-top: 23px">
+                                            
+                                            
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Role Name</label>
+                                                <input type="text" class="form-control" id="role_name" name="role_name" value="<%= role.role_name %>" placeholder="Enter department Name" required="">
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                         
+                                            <div class="form-group">
+                                                <label for="inputName" class="control-label">Role Description</label>
+                                                <textarea type="text" class="form-control" id="role_description" name="role_description" placeholder="Enter department Description" required=""><%= role.role_description %></textarea>
+                                            </div>
+                                            <div class="help-block"></div>
+
+                                           
+
+                                            <div class="form-group">
+                                                <label for="status" class="control-label">Status</label>
+                                                <div class="radio_inline">
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" value="1" id="toast" <%= role.status === 1 ? 'checked' : '' %> required="">
+                                                        <label for="toast">Active</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="status" value="0" id="boost" <%= role.status === 0 ? 'checked' : '' %> required="">
+                                                        <label for="boost">Inactive</label>
+                                                    </div>
+                                                    
+                                                </div>
+                                                   
+                                                <div class="help-block"></div>
+                                            </div>
+                                           
+                                            <div class="form-group pull-right">
+                                                <button type="submit" class="btn btn-cap m-r-5">Submit</button>
+                                                <button type="submit" class="btn btn-warning">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </fieldset>
+                                </div>
+							    		
+                            </div>
+                        </div>
+
+                    </div>
+				</div>
+               
+            </div>
+				<%- include('../../admin-layouts/footer') %>
+        </div>
+    </body>
+
+
+</html>

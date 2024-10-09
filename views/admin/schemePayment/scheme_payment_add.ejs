@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}   
+  
+        #paymentPlanTable {
+            display: none;
+        }
+  
+</style>
+    
+    <%- include('../admin-layouts/top-header') %>
+    <body class="hold-transition fixed sidebar-mini">
+        <!-- Preloader -->
+        <div class="preloader"></div>
+        <%- include('../admin-layouts/header') %>
+            
+        <div class="content-wrapper">
+     
+          
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            
+				
+            	<div class="right_col" role="main">
+                <!-- page content -->
+                
+					<div class="row">
+           
+                        <div class="col-sm-12">
+                          <div class="clearfix"></div>
+                          <div class="panel panel-bd">
+                              <div class="panel-body">
+                                  <fieldset class="the-fieldset">
+                                      <legend class="the-legend">Add Scheme Payment</legend>
+                                      <div class="container mt-5">
+                                        <div class="form-group">
+                                            <label for="selectScheme">Select Schemes</label>
+                                            <select class="form-control" id="selectScheme" onchange="showTable()">
+                                                <option value="" selected disabled>Select Scheme</option>
+                                                <option value="complex1">Complex1</option>
+                                                <option value="complex2">Complex2</option>
+                                                <option value="complex3">Complex3</option>
+                                                <option value="complex4">Complex4</option>
+                                                <option value="complex5">Complex5</option>
+                                            </select>
+                                        </div>
+                                
+                                        <form id="paymentPlanTable">
+                                            <table class="table" >
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="3">Payment Plan For Property Size: <b>(15000 Sq. Yard)</b></th>
+                                                        <th colspan="4">
+                                                            Total Amount of Property:
+                                                            <input type="number" class="form-control" id="totalAmount" placeholder="Total Amount" name="amt_15000_totalAmount" value="0" required>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Payment Plan Name</th>
+                                                        <th>Payment Type</th>
+                                                        <th>Percent / Fix Amount</th>
+                                                        <th>Value of %</th>
+                                                        <th>Amount</th>
+                                                        <th>Payment Mode</th>
+                                                        <th>No. of EMIs</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="reg_15000_paymentPlanName" value="regPlanName" readonly></td>
+                                                        <td><input type="text" class="form-control" name="reg_15000_paymentType" value="registration" readonly></td>
+                                                        <td><input type="text" class="form-control" name="reg_15000_isPercent" value="Fix Amount" readonly></td>
+                                                        <td><input type="number" class="form-control" name="reg_15000_percentVal" placeholder="registrationValue"  readonly></td>
+                                                        <td><input type="number" class="form-control" name="reg_15000_amountVal" value="0" required></td>
+                                                        <td>
+                                                            <!-- <select class="form-control" name="reg_15000_paymentMode" required> -->
+                                                                <!-- <option value="one-time" selected>Select Payment</option> -->
+                                                                <!-- <option value="emi">EMI</option> -->
+                                                            <!-- </select> -->
+                                                        </td>
+                                                        <td><input type="number" class="form-control" name="reg_15000_installment" value="0" readonly></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="adv_15000_paymentPlanName" value="advancePlanName" readonly></td>
+                                                        <td><input type="text" class="form-control" name="adv_15000_paymentType" value="advance" readonly></td>
+                                                        <td>
+                                                            <select class="form-control" name="adv_15000_isPercent" required>
+                                                                <option value="fix">Fix Amount</option>
+                                                                <option value="percent" selected>Select Percent</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="number" class="form-control" name="adv_15000_percentVal" value="0" required></td>
+                                                        <td><input type="number" class="form-control" name="adv_15000_amountVal" value="0" required></td>
+                                                        <td>
+                                                            <select class="form-control" name="adv_15000_paymentMode" required>
+                                                                <option value="one-time" selected>Select Payment</option>
+                                                                <option value="emi">EMI</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="number" class="form-control" name="adv_15000_installment" value="0" required></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="rem_15000_paymentPlanName" value="remainingPlanName" readonly></td>
+                                                        <td><input type="text" class="form-control" name="rem_15000_paymentType" value="remaining" readonly></td>
+                                                        <td>
+                                                            <select class="form-control" name="rem_15000_isPercent" required>
+                                                                <option value="fix">Fix Amount</option>
+                                                                <option value="percent" selected>Select Percent</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="number" class="form-control" name="rem_15000_percentVal" value="0" required></td>
+                                                        <td><input type="number" class="form-control" name="rem_15000_amountVal" value="0" required></td>
+                                                        <td>
+                                                            <select class="form-control" name="rem_15000_paymentMode" required>
+                                                                <option value="one-time" selected>Select Payment</option>
+                                                                <option value="emi">EMI</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="number" class="form-control" name="rem_15000_installment" value="0" required></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                
+                                            <div class="mt-3">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="button" class="btn btn-warning">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                
+                                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+                                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                                    <script>
+                                        function showTable() {
+                                            var selectScheme = document.getElementById('selectScheme');
+                                            var table = document.getElementById('paymentPlanTable');
+                                            if (selectScheme.value) {
+                                                table.style.display = 'table';
+                                            } else {
+                                                table.style.display = 'none';
+                                            }
+                                        }
+                                
+                                        // Optional: Form submission handler
+                                        document.getElementById('paymentPlanForm').addEventListener('submit', function(event) {
+                                            event.preventDefault();
+                                            alert('Form submitted!');
+                                            // Add form submission logic here
+                                        });
+                                    </script>
+                                  </fieldset>
+                              </div>
+                          </div>		
+                      </div>
+                    </div>
+                    
+                </div>
+            </div>
+				<!-- /page content -->
+               
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="/path/to/your/http.service.js"></script>
+        <script src="/path/to/your/paymentPlanData.js"></script>
+        <script>
+          //  document.addEventListener("DOMContentLoaded", function() {
+            // const schemeId = 2; // Replace with your actual schemeId
+            // const schemePayPlan = {
+                // "1000": [
+                    // { paymentPlanName: '', paymentType: 'registration', isPercent: 'fix', percentVal: 0, amountVal: '', paymentMode: 'one-time', installment: 0, totalAmount: 100000 },
+                    // { paymentPlanName: '', paymentType: 'advance', isPercent: '', percentVal: 0, amountVal: '', paymentMode: '', installment: 0, totalAmount: 100000 },
+                    // { paymentPlanName: '', paymentType: 'remaining', isPercent: '', percentVal: 0, amountVal: '', paymentMode: '', installment: 0, totalAmount: 100000 }
+                // ],
+                // "1500": [
+                    // { paymentPlanName: '', paymentType: 'registration', isPercent: 'fix', percentVal: 0, amountVal: '', paymentMode: 'one-time', installment: 0, totalAmount: 150000 },
+                    // { paymentPlanName: '', paymentType: 'advance', isPercent: '', percentVal: 0, amountVal: '', paymentMode: '', installment: 0, totalAmount: 150000 },
+                    // { paymentPlanName: '', paymentType: 'remaining', isPercent: '', percentVal: 0, amountVal: '', paymentMode: '', installment: 0, totalAmount: 150000 }
+                // ]
+            // };
+
+            // const paymentPlanDataElement = document.getElementById('paymentPlanData');
+            // let schemeDetail = {};
+            // let propertySize = Object.keys(schemePayPlan);
+            // let payData = schemePayPlan;
+            // let payReadonly = {};
+
+            // function handleChange(event) {
+                // let name = event.target.name.split('_');
+                // const val = event.target.value;
+                // let ppData = payData;
+
+                // if (name[0] === "reg") {
+                    // ppData[name[1]][0][name[2]] = val;
+                // } else if (name[0] === "adv") {
+                    // ppData[name[1]][1][name[2]] = val;
+                // } else if (name[0] === "rem") {
+                    // ppData[name[1]][2][name[2]] = val;
+                // } else if (name[0] === "amt") {
+                    // ppData[name[1]][0][name[2]] = val;
+                    // ppData[name[1]][1][name[2]] = val;
+                    // ppData[name[1]][2][name[2]] = val;
+                // }
+
+                // let pReadonly = payReadonly;
+                // if (name[2] === "isPercent") {
+                    // if (val === "fix") {
+                        // ppData[name[1]][1]['percentVal'] = 0;
+                        // ppData[name[1]][2]['percentVal'] = 0;
+                        // if (name[0] === "adv") {
+                            // ppData[name[1]][2]['isPercent'] = 'fix';
+                        // } else if (name[0] === "rem") {
+                            // ppData[name[1]][1]['isPercent'] = 'fix';
+                        // }
+                        // pReadonly[name[1]][1]['percentVal'] = 'readonly';
+                        // pReadonly[name[1]][2]['percentVal'] = 'readonly';
+                        // pReadonly[name[1]][1]['amountVal'] = false;
+                        // pReadonly[name[1]][2]['amountVal'] = false;
+                    // } else if (val === "percent") {
+                        // if (name[0] === "adv") {
+                            // ppData[name[1]][2]['isPercent'] = 'percent';
+                        // } else if (name[0] === "rem") {
+                            // ppData[name[1]][1]['isPercent'] = 'percent';
+                        // }
+                        // pReadonly[name[1]][1]['percentVal'] = false;
+                        // pReadonly[name[1]][2]['percentVal'] = false;
+                        // pReadonly[name[1]][1]['amountVal'] = 'readonly';
+                        // pReadonly[name[1]][2]['amountVal'] = 'readonly';
+                    // }
+                // }
+
+                // if (name[2] === "paymentMode") {
+                    // let iv = '';
+                    // if (name[0] === "adv") {
+                        // iv = 1;
+                    // } else if (name[0] === "rem") {
+                        // iv = 2;
+                    // }
+                    // if (val === 'one-time') {
+                        // pReadonly[name[1]][iv]['emiOption'] = 'readonly';
+                    // } else if (val === 'emi') {
+                        // pReadonly[name[1]][iv]['emiOption'] = false;
+                    // }
+                // }
+
+                // if (name[2] === "percentVal" || name[2] === "totalAmount" || name[2] === "amountVal") {
+                    // var tamount = ppData[name[1]][0]['totalAmount'];
+                    // if (tamount) {
+                        // if (name[0] === "adv" && ppData[name[1]][1]['isPercent'] === "percent") {
+                            // var advAmt = tamount * val / 100;
+                            // var remAmt = tamount - advAmt;
+                            // var remPerVal = 100 - val;
+                            // ppData[name[1]][1]['amountVal'] = advAmt;
+                            // ppData[name[1]][2]['amountVal'] = remAmt;
+                            // ppData[name[1]][2]['percentVal'] = remPerVal;
+                            // ppData[name[1]][2]['isPercent'] = 'percent';
+                        // } else if (name[0] === "adv" && ppData[name[1]][1]['isPercent'] === "fix") {
+                            // var remAmt = tamount - val;
+                            // ppData[name[1]][2]['percentVal'] = 0;
+                            // ppData[name[1]][1]['percentVal'] = 0;
+                            // ppData[name[1]][2]['amountVal'] = remAmt;
+                        // } else if (name[0] === "rem" && ppData[name[1]][2]['isPercent'] === "percent") {
+                            // var remAmt = tamount * val / 100;
+                            // var advAmt = tamount - remAmt;
+                            // var advPerVal = 100 - val;
+                            // ppData[name[1]][1]['amountVal'] = advAmt;
+                            // ppData[name[1]][2]['amountVal'] = remAmt;
+                            // ppData[name[1]][1]['percentVal'] = advPerVal;
+                            // ppData[name[1]][1]['isPercent'] = 'percent';
+                        // } else if (name[0] === "rem" && ppData[name[1]][2]['isPercent'] === "fix") {
+                            // var advAmt = tamount - val;
+                            // ppData[name[1]][2]['percentVal'] = 0;
+                            // ppData[name[1]][1]['percentVal'] = 0;
+                            // ppData[name[1]][1]['amountVal'] = advAmt;
+                        // }
+                    // }
+                // }
+                // renderTable();
+            // }
+
+            // function renderTable() {
+                // paymentPlanDataElement.innerHTML = propertySize.map((itm, ind) => `
+                    // <div class="col-12">
+                        // <table class="table">
+                            // <thead>
+                                // <tr>
+                                    // <th colspan="3">Payment Plan For Property Size: <b>(${itm} sq ft)</b></th>
+                                    // <th colspan="4">
+                                        // Total Amount of Property:
+                                        // <input type="number" class="form-control" id="totalAmount" placeholder="Total Amount" name="amt_${itm}_totalAmount" value="${payData[itm][0].totalAmount}" required>
+                                    // </th>
+                                // </tr>
+                                // <tr>
+                                    // <th>Payment Plan Name</th>
+                                    // <th>Payment Type</th>
+                                    // <th>Percent / Fix</th>
+                                    // <th>Percent Value (%)</th>
+                                    // <th>Amount</th>
+                                    // <th>Payment Mode</th>
+                                    // <th>EMI Option</th>
+                                // </tr>
+                            // </thead>
+                            // <tbody>
+                                // ${['registration', 'advance', 'remaining'].map((type, i) => `
+                                    // <tr>
+                                        // <td><input type="text" class="form-control" name="${type}_${itm}_paymentPlanName" value="${payData[itm][i].paymentPlanName}" required></td>
+                                        // <td><input type="text" class="form-control" name="${type}_${itm}_paymentType" value="${payData[itm][i].paymentType}" readonly></td>
+                                        // <td>
+                                            // <select class="form-control" name="${type}_${itm}_isPercent" required>
+                                                // <option value="fix" ${payData[itm][i].isPercent === 'fix' ? 'selected' : ''}>Fix</option>
+                                                // <option value="percent" ${payData[itm][i].isPercent === 'percent' ? 'selected' : ''}>Percent</option>
+                                            // </select>
+                                        // </td>
+                                        // <td>
+                                            // <input type="number" class="form-control" name="${type}_${itm}_percentVal" value="${payData[itm][i].percentVal}" ${payReadonly[itm] && payReadonly[itm][i] && payReadonly[itm][i].percentVal === 'readonly' ? 'readonly' : ''} required>
+                                        // </td>
+                                        // <td>
+                                            // <input type="number" class="form-control" name="${type}_${itm}_amountVal" value="${payData[itm][i].amountVal}" ${payReadonly[itm] && payReadonly[itm][i] && payReadonly[itm][i].amountVal === 'readonly' ? 'readonly' : ''} required>
+                                        // </td>
+                                        // <td>
+                                            // <select class="form-control" name="${type}_${itm}_paymentMode" required>
+                                                // <option value="one-time" ${payData[itm][i].paymentMode === 'one-time' ? 'selected' : ''}>One-Time</option>
+                                                // <option value="emi" ${payData[itm][i].paymentMode === 'emi' ? 'selected' : ''}>EMI</option>
+                                            // </select>
+                                        // </td>
+                                        // <td>
+                                            // <select class="form-control" name="${type}_${itm}_installment" ${payReadonly[itm] && payReadonly[itm][i] && payReadonly[itm][i].emiOption === 'readonly' ? 'readonly' : ''} required>
+                                                // <option value="0" ${payData[itm][i].installment === 0 ? 'selected' : ''}>Select EMI Option</option>
+                                                // <option value="3" ${payData[itm][i].installment === 3 ? 'selected' : ''}>3 Months</option>
+                                                // <option value="6" ${payData[itm][i].installment === 6 ? 'selected' : ''}>6 Months</option>
+                                                // <option value="9" ${payData[itm][i].installment === 9 ? 'selected' : ''}>9 Months</option>
+                                                // <option value="12" ${payData[itm][i].installment === 12 ? 'selected' : ''}>12 Months</option>
+                                            // </select>
+                                        // </td>
+                                    // </tr>
+                                // `).join('')}
+                            // </tbody>
+                        // </table>
+                    // </div>
+                // `).join('');
+
+                // document.querySelectorAll('input, select').forEach(el => {
+                    // el.addEventListener('change', handleChange);
+                // });
+            // }
+
+            // renderTable();
+        // });
+
+        </script>
+        
+        <%- include('../admin-layouts/footer') %>
+    </body>
+    
+</html>
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zxx" class="theme-light">
+    <%- include('../layouts/top-header') %>
+
+<body data-spy="scroll" data-offset="70">
+
+    <%- include('../layouts/header') %>
+
+
+    <% if(error.length>0){ %>
+        <script>new Toasteur("top-right", 3000).error(" <%= error %>", 'Error!');</script>
+           
+       
+        <% } %>
+    
+        <% if(success.length>0){ %>
+            <script>new Toasteur("top-right", 3000).success(" <%= success %>", 'Success!');</script>
+               
+           
+            <% } %>
+
+            <div class="container-fluidc kkk">
+                <video class="banner-video" autoplay muted loop>
+                    <source src="/assets/DJI_0236.MP4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+
+            </div>
+    
+<div id="home" class="banner-buy-area">
+   
+<div class="container-fluid">
+
+<div class="row justify-content-around">
+<!-- <div class="col-lg-3 col-sm-6"> -->
+<!-- <div class="banner-buy-info-card"> -->
+<!-- <div class="icon"> -->
+<!-- <i class="bx bx-time"></i> -->
+<!-- </div> -->
+<!-- <p> -->
+<!-- <span>Mon-Fri (8am - 6pm)</span> -->
+<!-- <span>Sat-Sun (10am - 2pm)</span> -->
+<!-- </p> -->
+<!-- </div> -->
+<!-- </div> -->
+<div class="col-lg-4 col-sm-6">
+<div class="banner-buy-info-card">
+<div class="icon">
+<i class="bx bxs-contact"></i>
+</div>
+<p>
+<span>Contact us</span>
+<span><a href="#"><span class="__cf_email__" data-cfemail="55262025253a27211525303b213a7b363a38">vcafda@gmail.com</span></a></span>
+</p>
+</div>
+</div>
+<div class="col-lg-4 col-sm-6">
+<div class="banner-buy-info-card">
+<div class="icon">
+<i class="bx bx-phone-call"></i>
+</div>
+<p>
+<span>(24 hours / 7 days)</span>
+<span><a href="tel:4234543123678">+91-82872-80191</a></span>
+</p>
+</div>
+</div>
+<div class="col-lg-4 col-sm-6">
+<div class="banner-buy-info-card">
+<div class="icon">
+<i class="bx bx-world"></i>
+</div>
+<p>
+<span>Civil Lines, Parikrama Marg, Faizabad, Ayodhya - Phone : (05278) 223460
+</span>
+<span>India, Pin: 223969, Fax : 220110</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+<%- include('../layouts/footer') %>
+
+</html>
+
+<script>
+
+    function validateLogin() {
+        var mobile = document.getElementById('mobile').value;
+
+        if (mobile == '') {
+            new Toasteur("top-right", 2000).error("Enter a valid mobile number", 'Error!');
+            $('#mobile').focus();
+            return false;
+        }
+
+        if (mobile.length > 10) {
+            new Toasteur("top-right", 2000).error("Enter a valid mobile number", 'Error!');
+            $('#mobile').focus();
+            return false;
+        }
+        if (mobile.length < 10) {
+            new Toasteur("top-right", 2000).error("Enter a valid mobile number", 'Error!');
+            $('#mobile').focus();
+            return false;
+        }
+        else {
+
+            $("#login").submit();
+
+            return true;
+        }
+
+    }
+
+</script>

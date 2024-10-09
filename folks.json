@@ -1,0 +1,362 @@
+{
+    "folk_music":[
+      {
+            
+        "title":"Sisang yenam",
+        "play_url":"folk/song/song2",
+        "image":"folk/dance/dance1.jpg"
+    },	
+    {
+      
+      "title":"Sisal yebom nam",
+      "play_url":"folk/song/song3",
+      "image":"folk/dance/dance2.jpg"
+    },	
+    {
+      
+      "title":"Banbo Reyang Atel aa",
+      "play_url":"folk/song/song4",
+      "image":"folk/dance/dance2.jpg"
+    },	
+    {
+      "title":"Aaji Ngilung",
+      "play_url":"folk/song/song4",
+      "image":"folk/dance/dance4.jpg"
+    },	
+
+    {
+      "title":"Ai No Ngome",
+      "play_url":"folk/song/song5",
+      "image":"folk/dance/dance5.jpg"
+    },	
+    {
+        
+        "title":"MISS SIANG",
+        "play_url":"folk/song/song1",
+        "image":"folk/dance/dance6.jpg"
+    }
+    ],
+    "folk_song":[
+      {
+            
+        "title":"Sisang yenam",
+        "play_url":"folk/folk_song/song2.mp3",
+        "image":"folk/folk_dance/dance1.jpg"
+    },	
+   
+    {
+      "title":"Aaji Ngilung",
+      "play_url":"folk/folk_song/song4.mp3",
+      "image":"folk/folk_dance/dance3.jpg"
+    },	
+
+    {
+      "title":"Ai No Ngome",
+      "play_url":"folk/folk_song/song5.mp3",
+      "image":"folk/folk_dance/dance5.jpg"
+    }
+    
+    ],
+    "folk_dance":[
+        {
+            
+              "title":"Folk Dance of Adi Tribes",
+              "play_url":"https://www.youtube.com/embed/M7sm6dfHbCw",
+              "image":"folk/dance/dance3.jpg"
+          },	
+          {
+            
+            "title":"Folk Dance of Nishi Tribes",
+            "play_url":"https://www.youtube.com/embed/aVjWqYlbObw?si=E9LrNMfAdGAM2UTe",
+            "image":"folk/dance/dance4.jpg"
+          },	
+          {
+           
+            "title":"Folk Dance of AKA (HRUSSO) Tribes",
+            "play_url":"https://www.youtube.com/embed/hUqZZcFoo9Y?si=BtcviYtXEJupvoxG",
+            "image":"folk/dance/dance6.jpg"
+          },	
+          {
+           
+            "title":"Rekham Pada Dance",
+            "play_url":"https://www.youtube.com/embed/G8rkCjTk528?si=4MCN2ucuGPSKDuX7",
+            "image":"folk/dance/dance5.jpg"
+          },	
+
+          {
+            
+            "title":"Beautiful Arunachali Indian girls dance gracefully",
+            "play_url":"https://www.youtube.com/embed/G8rkCjTk528?si=4MCN2ucuGPSKDuX7",
+            "image":"folk/dance/dance5.jpg"
+          },	
+          {
+              
+              "title":"Tami Ngok Gisa Si Galo Cover Dance Video ",
+              "play_url":"https://www.youtube.com/embed/G8rkCjTk528?si=4MCN2ucuGPSKDuX7",
+              "image":"folk/dance/dance4.jpg"
+          }
+    ],
+    "folk_tale":[
+        {
+            
+              "title":"APA TANI ",
+              "play_url":"Her head became the snow-covered mountains ; the bones of her back turned into smaller hills. Her chest was the valley where the Apa-Tanis live. From her neck came the north country of the Tagins. Her buttocks turned into the Assam plain. For just as the buttocks are full of fat, Assam has fat rich soil. Kujum-Chantu’s eyes became the Sun and Moon. From her mouth was born Kujum-Popi, who sent the Sun and Moon to shine in the sky.",
+              "image":"folk/tale/tale1.jpg"
+          },	
+         
+          {
+           
+            "title":"HRUSSO ",
+            "play_url":" At first there was no earth and sky ; there were only two great eggs. But they were not ordinary eggs, for they were soft and shone like gold. They did not stay in one place, but were round and round. At last, as they went round, they collided and both the eggs broke open. From one came the Earth, from the other the Sky, her husband. Now the Earth was too big for the Sky to hold in his arms and he said, ‘Though you are my wife, you are greater than I and I cannot take you. Make yourself smaller.’ The Earth accordingly made herself pliable and the mountains and valleys were formed, and she became small and the Sky was able to go to her in love. When the Sky made love to the Earth, every kind of tree and grass and all living creatures came into being.",
+            "image":"folk/tale/tale3.jpg"
+          },	
+          {
+           
+            "title":"SINGPHO ",
+            "play_url":"ince she came from the mist she was a sort of cloud. In time she gave birth to a girl called Ningon-Chinun and a boy called Tung-Kam-Waisun. They had the appearance of snow. When they grew up they married each other and from them were born a girl called Inga (Earth) and a son called Mu (Sky). Inga was mud and Mu, a cloud. These two also married and had a boy called Imbung, the Wind. When he was born, he blew so strongly that he raised the cloud, his father, into the sky and dried up his mother, the mud. In this way heaven and earth were made.",
+            "image":"folk/tale/tale3.jpg"
+          }
+         
+    ],
+    "dresses":[
+        {
+           
+              "title":"Traditional dress of Sherdukpen Tribe",
+              "play_url":"They are natives of Bomdila and resemble the Monapas. Traditionally, a Sherdukpan male wears sleeveless silk material with its edges attached to the shoulder. The costume falls down till knee length.  The look is complete only after a skull cap which has yak's hair decorated on it is worn on top of the head.",
+              "image":"folk/dress/dress1.jpg"
+          },	
+          {
+            
+            "title":"Traditional dress of  Tangsa Tribe",
+            "play_url":"This tribe wears costumes on similar lines to Burmese. The men wear green coloured wrap around spun in white, red as well as yellow coloured yarn. A sleeveless shirt along with an upper garment too is worn",
+            "image":"folk/dress/dress2.jpg"
+          },	
+          {
+           
+            "title":"Traditional dress of Miji Tribe",
+            "play_url":"The residents of Miji Tribe believe in keeping it simple which is why women inhabiting the districts of East and West Kameng put on outfits which are very simple but bring out their elegance. A long cloak is generally worn by them. Clothes without accessories are a waste. Therefore, the dress is accessorized with huge earrings and beautiful neckpieces.",
+            "image":"folk/dress/dress3.jpg"
+          },	
+          {
+           
+            "title":"Traditional dress of Adi Tribe",
+            "play_url":"These people reside in the sub-tropical regions of Upper Siang, East and West Siang, Dibang Valley and Upper Subansiri. Because of the cool temperature in the region, men, as well as women, are required to wear jackets and woollen clothes so as to keep themselves warm. The clothes of both men as well as women are made out of deerskin, bearskin and cane skin.",
+            "image":"folk/dress/dress4.jpg"
+          },	
+
+          {
+            
+            "title":"Traditional dress of Monpas",
+            "play_url":"This is a Buddhist community of Andhra Pradesh which is very famous for its skull cap. This skull cap is made up of laces and fringes. Women also wear sleeveless chemise paired with a long jacket. The chemise is tied to the waist by a long and narrow cloth so as to keep it in place properly.",
+            "image":"folk/dress/dress5.jpg"
+          },	
+          {
+              "title":"Traditional dress of Aptani Tribe",
+              "play_url":"Women get a tattoo made which consists of blue stripes which are broad in shape and extend from head to the nose tip with five lined drawn vertically under the lower lip on the chin. The hair is neatly arranged on the top of the head into what is known as Dilling. Ading Akh which is nothing but a brass skewer is passed right across the Dilling horizontally.",
+              "image":"folk/dress/dress6.jpg"
+          }
+    ],
+    "rituals":[
+        {
+            "name":"Test1",
+              "title":"testing",
+              "play_url":"abc",
+              "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+              "name":"Test1",
+              "title":"testing",
+              "play_url":"abc",
+              "image":"image"
+          }
+    ],
+    "festivals":[
+        {
+            
+              "title":"Solung Festival ",
+              "play_url":"abc",
+              "image":"folk/festivals/f1.jpg"
+          },	
+          {
+            
+            "title":"Losar Festivel ",
+            "play_url":"abc",
+            "image":"folk/festivals/f2.jpg"
+          },	
+          {
+            
+            "title":"Nyokum festival Nyishi ",
+            "play_url":"abc",
+            "image":"folk/festivals/f3.jpg"
+          }
+         
+    ],
+    "delicacies":[
+        {
+           
+              "title":"Bamboo shoot",
+              "play_url":"abc",
+              "image":"folk/food/food1.jpg"
+          },	
+          {
+          
+            "title":"Luktar",
+            "play_url":"abc",
+            "image":"folk/food/food2.jpg"
+          },	
+          {
+           
+            "title":"Rice",
+            "play_url":"",
+            "image":"folk/food/food3.jpg"
+          }	
+        
+    ],
+    "handicrafts":[
+        {
+            
+              "title":"Wooden Mat",
+              "play_url":"abc",
+              "image":"folk/handicrafts/h1.jpg"
+          },	
+          {
+            
+            "title":"Mio Craft",
+            "play_url":"abc",
+            "image":"folk/handicrafts/h2.jpg"
+          },	
+          {
+           
+            "title":"Glass Bead Craft",
+            "play_url":"abc",
+            "image":"folk/handicrafts/h3.jpg"
+          }	
+        
+    ],
+    "books":[
+        {
+            
+              "title":"Folktales of Arunachal Pradesh",
+              "play_url":"abc",
+              "image":"folk/books/b1.jpg"
+          },	
+          {
+            
+            "title":"Book on Galo folk stories released | Arunachal Observer",
+            "play_url":"abc",
+            "image":"folk/books/b2.jpg"
+          },	
+          {
+           
+            "title":"The Sky Queen - by Roopa Baliga - House Full of Books",
+            "play_url":"abc",
+            "image":"folk/books/b3.jpg"
+          }
+         
+    ],
+    "scripts":[
+        {
+            "name":"Test1",
+              "title":"testing",
+              "play_url":"abc",
+              "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+              "name":"Test1",
+              "title":"testing",
+              "play_url":"abc",
+              "image":"image"
+          }
+    ],
+    "languages":[
+        {
+            "name":"Test1",
+              "title":"testing",
+              "play_url":"abc",
+              "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+
+          {
+            "name":"Test1",
+            "title":"testing",
+            "play_url":"abc",
+            "image":"image"
+          },	
+          {
+              "name":"Test1",
+              "title":"testing",
+              "play_url":"abc",
+              "image":"image"
+          }
+    ]
+
+
+}

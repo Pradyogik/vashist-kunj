@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zxx" class="theme-light">
+    <%- include('../layouts/top-header') %>
+<style>
+    .form-group{
+    padding: 7px;}
+</style>
+<body data-spy="scroll" data-offset="70" >
+
+    <%- include('../layouts/header') %>
+
+    
+    <% if(error.length>0){ %>
+        <script>new Toasteur("top-right", 3000).error(" <%= error %>", 'Error!');</script>
+           
+       
+        <% } %>
+    
+        <% if(success.length>0){ %>
+            <script>new Toasteur("top-right", 3000).success(" <%= success %>", 'Success!');</script>
+               
+           
+            <% } %>
+
+
+
+<div id="services" class="core-service-area with-black-bg ptb-100" style="padding-top : 20px;">
+<div class="container">
+<div class="main-section-title">
+<h2>Application Registration</h2>
+</div>
+<div class="core-service-list-tab">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+<li class="nav-item">
+<a class="nav-link active" id="core-service-1-tab" data-bs-toggle="tab" href="#core-service-1" role="tab" aria-controls="core-service-1">Basic Details</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="core-service-2-tab" data-bs-toggle="tab" href="#core-service-2" role="tab" aria-controls="core-service-2">Upload Documents</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="core-service-3-tab" data-bs-toggle="tab" href="#core-service-3" role="tab" aria-controls="core-service-3">Bank Details</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" id="core-service-6-tab" data-bs-toggle="tab" href="#core-service-6" role="tab" aria-controls="core-service-6">Pay And Download Brochure</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" id="core-service-7-tab" data-bs-toggle="tab" href="#core-service-7" role="tab" aria-controls="core-service-7">Pay Registration Fee & Apply For Scheme</a>
+        </li>
+<!-- <li class="nav-item"> -->
+<!-- <a class="nav-link" id="core-service-4-tab" data-bs-toggle="tab" href="#core-service-4" role="tab" aria-controls="core-service-4">Payment Review</a> -->
+<!-- </li> -->
+<!-- <li class="nav-item"> -->
+<!-- <a class="nav-link" id="core-service-5-tab" data-bs-toggle="tab" href="#core-service-5" role="tab" aria-controls="core-service-5">Detail Review</a> -->
+<!-- </li> -->
+<!-- <li class="nav-item"> -->
+<!-- <a class="nav-link" id="core-service-6-tab" data-bs-toggle="tab" href="#core-service-6" role="tab" aria-controls="core-service-6">Refinance Advisor</a> -->
+<!-- </li> -->
+</ul>
+<div class="tab-content" id="myTabContent">
+<div class="tab-pane fade show active" id="core-service-1" role="tabpanel">
+<div class="row align-items-center justify-content-center">
+
+
+        <form id="contactForm">
+        <div class="row m-0">
+        <div class="col-lg-12 col-md-12">
+        <div class="row">
+            <div class="form-check">
+                <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Primary Applicant</label>
+                <hr style="display: inline-block; width: calc(100% - 100px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+            </div>
+        <div class="col-sm-3 col-lg-3">
+        <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" id="name" class="form-control"  data-error="Please enter your name" placeholder="Enter your name">
+        <div class="help-block with-errors"></div>
+        </div>
+        </div>
+        <div class="col-sm-3 col-lg-3" style="display: none;">
+            <div class="form-group">
+                <label for="size">Property Size</label>
+                <select name="size" id="size" class="form-control"  data-error="Please select your Property Size">
+                    <option value="" disabled selected>Select your Property Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                    <option value="Up to 4000 Sq Meter">Up to 4000 Sq Meter</option>
+                    <option value="Up to 3000 Sq Meter">Up to 3000 Sq Meter</option>
+                    <option value="Up to 2000 Sq Meter">Up to 2000 Sq Meter</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        
+        <div class="col-sm-3 col-lg-3">
+            <div class="form-group">
+            <label>DOB</label>
+            <input type="date" name="dob" id="dob" class="form-control"  data-error="Please enter your DOB" placeholder="pento@gmail.com">
+            <div class="help-block with-errors"></div>
+            </div>
+            </div>
+
+            <div class="col-sm-3 col-lg-3">
+                <div class="form-group" >
+                    <label for="Gender">Gender</label>
+                    <select name="Gender" id="Gender" class="form-control"  data-error="Please select your Gender">
+                        <option value="" disabled selected>Select your Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            
+        <div class="col-sm-3 col-lg-3">
+        <div class="form-group">
+        <label>Father's Name / Husband</label>
+        <input type="text" name="father_name" id="father_name"  data-error="Please enter your Father's Name" class="form-control" placeholder="Father's Name / Husband">
+        <div class="help-block with-errors"></div>
+        </div>
+        </div>
+        <div class="col-sm-5 col-lg-5">
+        <div class="form-group">
+        <label>Nominee Details</label>
+        <input type="text" name="nominee_details" id="nominee_details" class="form-control"  data-error="Please enter your Nominee Details" placeholder="your subject">
+        <div class="help-block with-errors"></div>
+        </div>
+        </div>
+        <div class="col-sm-2 col-lg-2">
+            <div class="form-group" >
+                <label for="Gender">Relation With Nominee</label>
+                <select name="Gender" id="Gender" class="form-control"  data-error="Please select your Gender">
+                    <option value="" disabled selected>Select Your Relation</option>
+                    <option value="brother">Brother</option>
+                    <option value="Sister">Sister</option>
+                    <option value="Mother">Mother</option>
+                    <option value="Father">Father</option>
+                    <option value="Wife">Wife</option>
+                    <option value="Husband">Husband</option>
+                    <option value="Son">Son</option>
+                    <option value="Daughter">Daughter</option>
+
+
+                    <!-- Add more options as needed -->
+                </select>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-lg-4">
+            <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" id="email"  data-error="Please enter your Email" class="form-control" placeholder="Email">
+            <div class="help-block with-errors"></div>
+            </div>
+            </div>
+            <div class="col-sm-3 col-lg-3">
+                <div class="form-group" >
+                    <label for="Category">Category</label>
+                    <select name="Category" id="Category" class="form-control"  data-error="Please select your Category">
+                        <option value="" disabled selected>Select Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                        <option value="scheduled_caste">General</option>
+                        <option value="scheduled_caste">Scheduled Caste</option>
+                        <option value="female">Scheduled Tribe</option>
+                        <option value="female">Other Backward Classes</option>
+                        <option value="female">Legislator/Member of Parliament and Freedom Fighter</option>
+                        <option value="female">Government employees and security personnel who have completed the age of 50 years</option>
+                        <option value="female">Employees of the Development Authority/UP Housing Development Board, Water Institution, Municipal Corporation, and Local Bodies</option>
+                        <option value="female">Retired soldiers and their dependents</option>
+                        <option value="female">Persons with disabilities</option>
+
+                        <!-- Add more options as needed -->
+                    </select>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-lg-4">
+            <div class="form-group">
+            <label>Applicant Mobile</label>
+            <input type="text" name="applicant_mobile" id="applicant_mobile" class="form-control"   placeholder="Applicant Mobile">
+            <div class="help-block with-errors"></div>
+            </div>
+            </div>
+            <div class="col-sm-4 col-lg-4">
+                <div class="form-group">
+                <label>Applicant Alternate Mobile</label>
+                <input type="text" name="applicant_alternate_mobile" id="applicant_alternate_mobile" class="form-control"   placeholder="Applicant Alternate Mobile">
+                <div class="help-block with-errors"></div>
+                </div>
+                </div>
+
+                <div class="col-sm-4 col-lg-4" style="padding-top: 28px;">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" onclick="toggleForm()">
+                        <label class="form-check-label" for="exampleRadios2" id="jointLabel">
+                            Joint Application (If Any)
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Form fields to toggle -->
+                <div id="jointApplicationForm" style="display: none;">
+                    <div class="form-check">
+                        <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Joint Applicant</label>
+                        <hr style="display: inline-block; width: calc(100% - 100px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+                    </div>
+                    <div class="row">
+                        <!-- First Row -->
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" id="name" class="form-control"  data-error="Please enter your name" placeholder="Enter your name">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="form-group">
+                                <label>DOB</label>
+                                <input type="date" name="dob" id="dob" class="form-control"  data-error="Please enter your DOB">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="form-group" >
+                                <label for="Gender">Gender</label>
+                                <select name="Gender" id="Gender" class="form-control"  data-error="Please select your Gender">
+                                    <option value="" disabled selected>Select your Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <!-- Add more options as needed -->
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="form-group">
+                                <label>Father's Name / Husband</label>
+                                <input type="text" name="father_name" id="father_name"  data-error="Please enter your Father's Name" class="form-control" placeholder="Father's Name / Husband">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional rows can be added as needed in the same way -->
+                                                                                                                                                                                                                                                         
+                    <!-- Additional form fields here -->
+                </div>
+                <script>
+                    var isBlue = false; // Keep track of the current color state
+                    
+                    function toggleForm() {
+                        var form = document.getElementById('jointApplicationForm');
+                        var label = document.getElementById('jointLabel');
+                        
+                        if (form.style.display === "none" || form.style.display === "") {
+                            form.style.display = "block";  // Show the form
+                            label.style.color = "blue";    // Change label color to blue
+                            isBlue = true;
+                        } else {
+                            form.style.display = "none";   // Hide the form
+                            label.style.color = "";        // Reset label color to original
+                            isBlue = false;
+                        }
+                    }
+                    </script>
+                    
+                
+                    
+          
+            <div class="form-check">
+                <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Contact</label>
+                <hr style="display: inline-block; width: calc(100% - 100px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+            </div>
+            <!-- Communication Address Section -->
+<label class="form-check-label" style="font-weight: bold;">Communication Address</label>
+<div class="col-sm-12 col-lg-12">
+    <div class="form-group">
+        <label>Address</label>
+        <input type="text" name="communication_address" id="communication_address" class="form-control"  data-error="Please enter your address" placeholder="Enter your address">
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="col-sm-4 col-lg-4">
+    <div class="form-group">
+        <label>City</label>
+        <input type="text" name="communication_city" id="communication_city" class="form-control"  data-error="Please enter your City" placeholder="Enter your City">
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="col-sm-4 col-lg-4">
+    <div class="form-group">
+        <label>State</label>
+        <input type="text" name="communication_state" id="communication_state" class="form-control"  data-error="Please enter your State" placeholder="Enter your State">
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="col-sm-4 col-lg-4">
+    <div class="form-group">
+        <label>Zip Code</label>
+        <input type="text" name="communication_zipCode" id="communication_zipCode" class="form-control"  data-error="Please enter your zipCode" placeholder="Enter your zipCode">
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<!-- Checkbox to copy data -->
+<div class="col-sm-12 col-lg-12">
+    <input type="checkbox" id="sameAddress" onclick="copyAddress()">
+    <label for="sameAddress">Same as Communication Address</label>
+</div>
+
+<!-- Permanent Address Section -->
+<label class="form-check-label" style="font-weight: bold; padding-top: 20px;">Permanent Address</label>
+<div class="col-sm-12 col-lg-12">
+    <div class="form-group">
+        <label>Address</label>
+        <input type="text" name="permanent_address" id="permanent_address" class="form-control"  data-error="Please enter your address" placeholder="Enter your address">
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="col-sm-4 col-lg-4">
+    <div class="form-group">
+        <label>City</label>
+        <input type="text" name="permanent_city" id="permanent_city" class="form-control"  data-error="Please enter your City" placeholder="Enter your City">
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="col-sm-4 col-lg-4">
+    <div class="form-group">
+        <label>State</label>
+        <input type="text" name="permanent_state" id="permanent_state" class="form-control"  data-error="Please enter your State" placeholder="Enter your State">
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="col-sm-4 col-lg-4">
+    <div class="form-group">
+        <label>Zip Code</label>
+        <input type="text" name="permanent_zipCode" id="permanent_zipCode" class="form-control"  data-error="Please enter your zipCode" placeholder="Enter your zipCode">
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<!-- JavaScript to Copy Address -->
+<script>
+function copyAddress() {
+    if (document.getElementById('sameAddress').checked) {
+        document.getElementById('permanent_address').value = document.getElementById('communication_address').value;
+        document.getElementById('permanent_city').value = document.getElementById('communication_city').value;
+        document.getElementById('permanent_state').value = document.getElementById('communication_state').value;
+        document.getElementById('permanent_zipCode').value = document.getElementById('communication_zipCode').value;
+    } else {
+        // If unchecked, clear the fields
+        document.getElementById('permanent_address').value = '';
+        document.getElementById('permanent_city').value = '';
+        document.getElementById('permanent_state').value = '';
+        document.getElementById('permanent_zipCode').value = '';
+    }
+}
+</script>
+                
+
+        </div>
+        </div>
+        <div class="col-md-12 col-lg-12" style="padding-top: 20px; text-align: center;">
+        <div class="let-contact-btn">
+        <button type="submit" class="main-default-btn">Submit and Next</button>
+        <div id="msgSubmit" class="h3 text-center hidden"></div>
+        <div class="clearfix"></div>
+        </div>
+        </div>
+        </div>
+        </form>
+        
+</div>
+</div>
+<div class="tab-pane fade" id="core-service-2" role="tabpanel">
+<div class="row align-items-center justify-content-center">
+    <form id="contactForm">
+        <div class="row m-0">
+        <div class="col-lg-12 col-md-12">
+        <div class="row">
+
+
+          
+            <div class="form-check">
+                <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Applicant Documents</label>
+                <hr style="display: inline-block; width: calc(100% - 200px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+            </div>
+                            
+            <label class="form-check-label" style="color:red;">File upload instruction: Accepted file formate jpeg/png/pdf and size(500kb)</label>
+                <div class="col-sm-6 col-lg-6">
+                    <div class="form-group">
+                    <label>Aadhar Id<span style="color:red;">*<span></label>
+                    <input type="text" name="city" id="city" class="form-control"  data-error="Please Aadhar Id" placeholder="Aadhar Id">
+                    <div class="help-block with-errors"></div>
+                    </div>
+              </div>
+            <div class="col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label for="fileUpload">Aadhar Id<span style="color:red;">*<span></span></label>
+                    <input type="file" name="fileUpload" id="fileUpload" class="form-control"  data-error="Please choose a file">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+                <div class="form-group">
+                <label>PAN Id<span style="color:red;">*<span></label>
+                <input type="text" name="city" id="city" class="form-control"  data-error="Please PAN Id" placeholder="PAN Id">
+                <div class="help-block with-errors"></div>
+                </div>
+          </div>
+        <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+                <label for="fileUpload">upload PAN<span style="color:red;">*<span></span></label>
+                <input type="file" name="fileUpload" id="fileUpload" class="form-control"  data-error="Please choose a file">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+                <label for="fileUpload">Upload Cast Certificate<span style="color:red;">*<span></span></label>
+                <input type="file" name="fileUpload" id="fileUpload" class="form-control"  data-error="Please choose a file">
+                <div class="help-block with-errors"></div>
+            </div>
+      </div>
+        <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+                <label for="fileUpload">upload Photo<span style="color:red;">*<span></span></label>
+                <input type="file" name="fileUpload" id="fileUpload" class="form-control"  data-error="Please choose a file">
+                <div class="help-block with-errors"></div>
+            </div>
+      </div>
+
+    <div class="col-sm-6 col-lg-6">
+        <div class="form-group">
+            <label for="fileUpload">upload Signature<span style="color:red;">*<span></span></label>
+            <input type="file" name="fileUpload" id="fileUpload" class="form-control"  data-error="Please choose a file">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <!-- <div class="col-sm-3 col-lg-3" style = "padding-top: 25px; text-align: right;" > -->
+        <!-- <div class="form-group" > -->
+            <!-- <a href="assets/Affidavit.pdf" download class="main-default-btn" style="display: inline-block; text-align: center; background-color: #007bff; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;"> -->
+                <!-- Download Afidavit -->
+            <!-- </a> -->
+        <!-- </div> -->
+    <!-- </div> -->
+    <div class="form-group">
+        <label for="selfDeclaration">
+            Upload Afidavit (Please upload the copy in PDF, JPG, PNG, JPEG format only and 500 KB is the max upload size) 
+            <span style="color:red;">*</span>
+        </label>
+        <br>
+        <a href="assets/Affidavit.pdf" download style="color: blue; text-decoration: underline;">
+            Download Format of Affidavit
+        </a>
+        <br><br>
+        <input type="file" name="selfDeclaration" id="selfDeclaration" class="form-control" accept=".pdf, .jpg, .jpeg, .png" >
+    </div>
+    
+    <div class="form-group">
+    <label for="selfDeclaration">
+        Upload Self Declaration (Please upload the copy in PDF, JPG, PNG, JPEG format only and 500 KB is the max upload size) 
+        <span style="color:red;">*</span>
+    </label>
+    <br>
+    <a href="assets/Self_Declaration.pdf" download style="color: blue; text-decoration: underline;">
+        Download Format of Self Declaration
+    </a>
+    <br><br>
+    <input type="file" name="selfDeclaration" id="selfDeclaration" class="form-control" accept=".pdf, .jpg, .jpeg, .png" >
+</div>
+
+    <div id="jointApplicantSection" style="display: none;">
+        <div class="form-check">
+            <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Joint Applicant Documents</label>
+            <hr style="display: inline-block; width: calc(100% - 200px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+        </div>
+    
+        <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+                <label for="fileUpload">Upload Photo<span style="color:red;">*</span></label>
+                <input type="file" name="fileUploadPhoto" id="fileUploadPhoto" class="form-control"  data-error="Please choose a file">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+    
+        <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+                <label for="fileUpload">Upload Signature<span style="color:red;">*</span></label>
+                <input type="file" name="fileUploadSignature" id="fileUploadSignature" class="form-control"  data-error="Please choose a file">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        
+    </div>
+        </div>
+        </div>
+        <div class="col-md-12 col-lg-12" style="padding-top: 20px; text-align: center;">
+        <div class="let-contact-btn">
+        <button type="submit" class="main-default-btn">Submit and Next</button>
+        <div id="msgSubmit" class="h3 text-center hidden"></div>
+        <div class="clearfix"></div>
+        </div>
+        </div>
+        </div>
+        
+        </form>
+</div>
+</div>
+<div class="tab-pane fade" id="core-service-3" role="tabpanel">
+<div class="row align-items-center justify-content-center">
+    <form id="contactForm">
+        <div class="row m-0">
+        <div class="col-lg-12 col-md-12">
+        <div class="row">
+          
+            <div class="form-check">
+                <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Applicant's Bank Detail</label>
+                <hr style="display: inline-block; width: calc(100% - 200px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+            </div>
+                            
+            <div class="col-sm-6 col-lg-6">
+                <div class="form-group">
+                <label>Bank Name<span style="color:red;">*<span></label>
+                <input type="text" name="city" id="city" class="form-control"  data-error="Please Bank Name" placeholder="Bank Name">
+                <div class="help-block with-errors"></div>
+                </div>
+          </div>
+          <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+            <label>Account Holder Name<span style="color:red;">*<span></label>
+            <input type="text" name="account_holder" id="account_holder" class="form-control"  data-error="Please Confirm Account holder name" placeholder="Confirm Account holder name">
+            <div class="help-block with-errors"></div>
+            </div>
+      </div>
+          <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+            <label>Account Number<span style="color:red;">*<span></label>
+            <input type="text" name="accountNumber" id="accountNumber" class="form-control"  data-error="Please Account No." placeholder="Account No.">
+            <div class="help-block with-errors"></div>
+            </div>
+      </div>
+      <div class="col-sm-6 col-lg-6">
+        <div class="form-group">
+        <label>Confirm Account Number<span style="color:red;">*<span></label>
+        <input type="text" name="confirmAccountNumber" id="confirmAccountNumber" class="form-control"  data-error="Please Account No." placeholder="Account No.">
+        <div class="help-block with-errors"></div>
+        </div>
+  </div>
+      <div class="col-sm-6 col-lg-6">
+        <div class="form-group">
+        <label>IFSC Code<span style="color:red;">*<span></label>
+        <input type="text" name="ifsc_code" id="ifsc_code" class="form-control"  data-error="Please IFSC Code" placeholder="IFSC Code">
+        <div class="help-block with-errors"></div>
+        </div>
+    </div>
+        <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+                <label for="fileUpload">Upload Cancelled Cheque<span style="color:red;">*<span></span></label>
+                <input type="file" name="cancelled_cheque" id="cancelled_cheque" class="form-control"  data-error="Please choose Cancelled Cheque">
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        </div>
+        </div>
+        <div class="col-md-12 col-lg-12" style="padding-top: 20px; text-align: center;">
+        <div class="let-contact-btn">
+        <button type="submit" class="main-default-btn">Submit and Next</button>
+        <div id="msgSubmit" class="h3 text-center hidden"></div>
+        <div class="clearfix"></div>
+        </div>
+        </div>
+        </div>
+        </form>
+</div>
+</div>
+<div class="tab-pane fade" id="core-service-4" role="tabpanel">
+<div class="row align-items-center justify-content-center">
+    <form id="contactForm">
+        <div class="row m-0">
+        <div class="col-lg-12 col-md-12">
+        <div class="row">
+          
+            <div class="form-check">
+                <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Applicant Documents</label>
+                <hr style="display: inline-block; width: calc(100% - 200px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+            </div>
+                            
+            <label class="form-check-label" style="color:red;">File upload instruction: Accepted file formate jpeg/png/pdf and size(500kb)</label>
+                <div class="col-sm-6 col-lg-6">
+                    <div class="form-group">
+                    <label>Bank Name<span style="color:red;">*<span></label>
+                    <input type="text" name="city" id="city" class="form-control"  data-error="Please Bank Name" placeholder="Bank Name">
+                    <div class="help-block with-errors"></div>
+                    </div>
+              </div>
+              <div class="col-sm-6 col-lg-6">
+                <div class="form-group">
+                <label>Bank Name<span style="color:red;">*<span></label>
+                <input type="text" name="city" id="city" class="form-control"  data-error="Please Bank Name" placeholder="Bank Name">
+                <div class="help-block with-errors"></div>
+                </div>
+          </div>
+          <div class="col-sm-6 col-lg-6">
+            <div class="form-group">
+            <label>Bank Name<span style="color:red;">*<span></label>
+            <input type="text" name="city" id="city" class="form-control"  data-error="Please Bank Name" placeholder="Bank Name">
+            <div class="help-block with-errors"></div>
+            </div>
+      </div>
+            <!-- <div class="col-sm-6 col-lg-6"> -->
+                <!-- <div class="form-group"> -->
+                    <!-- <label for="fileUpload">upload Aadhar<span style="color:red;">*<span></span></label> -->
+                    <!-- <input type="file" name="fileUpload" id="fileUpload" class="form-control"  data-error="Please choose a file"> -->
+                    <!-- <div class="help-block with-errors"></div> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        </div>
+        </div>
+        <div class="col-md-12 col-lg-12" style="padding-top: 20px; text-align: center;">
+        <div class="let-contact-btn">
+        <button type="submit" class="main-default-btn">Submit and Next</button>
+        <div id="msgSubmit" class="h3 text-center hidden"></div>
+        <div class="clearfix"></div>
+        </div>
+        </div>
+        </div>
+        </form>
+</div>
+</div>
+<div class="tab-pane fade" id="core-service-5" role="tabpanel">
+<div class="row align-items-center justify-content-center">
+    <form id="contactForm">
+        <div class="row m-0">
+        <div class="col-lg-12 col-md-12">
+        <div class="row">
+          
+            <div class="form-check">
+                <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Applicant Documents</label>
+                <hr style="display: inline-block; width: calc(100% - 200px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+            </div>
+                            
+            <label class="form-check-label" style="color:red;">File upload instruction: Accepted file formate jpeg/png/pdf and size(500kb)</label>
+                <div class="col-sm-6 col-lg-6">
+                    <div class="form-group">
+                    <label>Aadhar Id<span style="color:red;">*<span></label>
+                    <input type="text" name="city" id="city" class="form-control"  data-error="Please Aadhar Id" placeholder="Aadhar Id">
+                    <div class="help-block with-errors"></div>
+                    </div>
+              </div>
+            <div class="col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label for="fileUpload">upload Aadhar<span style="color:red;">*<span></span></label>
+                    <input type="file" name="fileUpload" id="fileUpload" class="form-control"  data-error="Please choose a file">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-12 col-lg-12" style="padding-top: 20px; text-align: center;">
+        <div class="let-contact-btn">
+        <button type="submit" class="main-default-btn">Submit and Next</button>
+        <div id="msgSubmit" class="h3 text-center hidden"></div>
+        <div class="clearfix"></div>
+        </div>
+        </div>
+        </div>
+        </form>
+</div>
+</div>
+<div class="tab-pane fade" id="core-service-6" role="tabpanel">
+<div class="row align-items-center justify-content-center">
+    <form id="contactForm">
+        <div class="row m-0">
+        <div class="col-lg-12 col-md-12">
+        <div class="row">
+          
+            <div class="form-check">
+                <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Pay And Download Brochure</label>
+                <hr style="display: inline-block; width: calc(100% - 200px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+            </div>
+                            
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Parent Scheme</th>
+                        <th>Sub Scheme Name</th>
+                        <th>From Date - To Date</th>
+                        <th>Brochure Fee</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Vashishtha Kunj</td>
+                        <td>Vashishtha Kunj Phase - 1 NH - 27</td>
+                        <td>28/10/2024 - 28/11/2024</td>
+                        <td>
+                            <div>Brochure Cost: 600/- INR</div>
+                        </td>
+                        <td>
+                            <a href="/pg" 
+                            class="btn btn-success">Click Here To Pay Registration Fee</a>
+                        </td>
+                        <td>
+                            <button 
+                                style="background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 5px;" 
+                                class="action-btn"
+                                onclick="downloadBrochure()">
+                                Download Brochure
+                            </button>
+                        </td>
+                        
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+        <script>
+            function downloadBrochure() {
+                var link = document.createElement('a');
+                link.href = 'assets/Brochure.pdf'; // Path to your PDF
+                link.download = 'Brochure.pdf'; // Suggested file name
+                link.click();
+            }
+            </script>
+        <div class="col-md-12 col-lg-12" style="padding-top: 20px; text-align: center;">
+        <div class="let-contact-btn">
+        <button type="submit" class="main-default-btn">Submit and Next</button>
+        <div id="msgSubmit" class="h3 text-center hidden"></div>
+        <div class="clearfix"></div>
+        </div>
+        </div>
+        </div>
+        </form>
+</div>
+</div>
+
+<div class="tab-pane fade" id="core-service-7" role="tabpanel">
+    <div class="row align-items-center justify-content-center">
+        <form id="contactForm">
+            <div class="row m-0">
+            <div class="col-lg-12 col-md-12">
+            <div class="row">
+              
+                <div class="form-check">
+                    <label class="form-check-label" style="font-weight: bold; padding-top:30px; display: inline-block;">Applicant Registration | Vashishtha Kunj Phase - 1 NH - 27 | Land Category : Commercial </label>
+                    <hr style="display: inline-block; width: calc(100% - 200px); margin: 0 0 0 10px; vertical-align: middle; border: none; border-top: 1px solid #000;">
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <div class="form-group">
+                        <label for="housingType">Housing Type</label>
+                        <select name="housingType" id="housingType" class="form-control"  data-error="Please select your Housing Type">
+                            <option value="" disabled selected>Select your Housing Type</option>
+                            <option value="HIG-II">HIG-II</option>
+                            <option value="HIG-I">HIG-I</option>
+                            <option value="MIG-III">MIG-III</option>
+                            <option value="MIG-II">MIG-II</option>
+                            <option value="MIG-I">MIG-I</option>
+                            <option value="LIG-II">LIG-II</option>
+                            <option value="LIG-I">LIG-I</option>
+                            <option value="EWS">EWS</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="table table-bordered" >
+                    <thead>
+                        <tr>
+                            <tr>
+                                <th>क्रम संख्या</th>
+                                <th>भूखंड का प्रकार</th>
+                                <th>भूखंडों की संख्या</th>
+                                <th>भूखंड की माप (मी.)</th>
+                                <th>भूखंड का क्षेत्रफल (वर्ग मी.)</th>
+                                <th>भूखंड दर वर्ग मी. (₹ approx.)</th>
+                                <th>अनुमानित मूल्य (लाख ₹ में)</th>
+                                <th>फ्री-होल्ड शुल्क सहित विक्रय मूल्य (लाख ₹ में)</th>
+                                <th>पंजीकरण धनराशि (₹)</th>
+                            </tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <tr>
+                                <td>1</td>
+                                <td>HIG-II</td>
+                                <td>160</td>
+                                <td>10 X 20</td>
+                                <td>200.00</td>
+                                <td>31,755.00</td>
+                                <td>63.51</td>
+                                <td>71.13</td>
+                                <td>7,11,300.00</td>
+                            </tr>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col-sm-4 col-lg-4" style="padding-top: 28px;">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option3" onclick="togglePlotSize()">
+                        <label class="form-check-label" for="exampleRadios2" id="jointplotsize">
+                            View Scheme Details
+                        </label>
+                    </div>
+                </div>                 
+                <table class="table table-bordered" id="plotsizelist" style="display:none;">
+                        <thead>
+                            <tr>
+                                <th>क्रम संख्या</th>
+                                <th>भूखंड का प्रकार</th>
+                                <th>भूखंडों की संख्या</th>
+                                <th>भूखंड की माप (मी.)</th>
+                                <th>भूखंड का क्षेत्रफल (वर्ग मी.)</th>
+                                <th>भूखंड दर वर्ग मी. (₹ approx.)</th>
+                                <th>अनुमानित मूल्य (लाख ₹ में)</th>
+                                <th>फ्री-होल्ड शुल्क सहित विक्रय मूल्य (लाख ₹ में)</th>
+                                <th>पंजीकरण धनराशि (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>HIG-II</td>
+                                <td>160</td>
+                                <td>10 X 20</td>
+                                <td>200.00</td>
+                                <td>31,755.00</td>
+                                <td>63.51</td>
+                                <td>71.13</td>
+                                <td>7,11,300.00</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>HIG-I</td>
+                                <td>152</td>
+                                <td>9 X 18</td>
+                                <td>162.00</td>
+                                <td>31,755.00</td>
+                                <td>51.44</td>
+                                <td>57.61</td>
+                                <td>5,76,100.00</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>MIG-III</td>
+                                <td>120</td>
+                                <td>7.5 X 15</td>
+                                <td>112.50</td>
+                                <td>31,755.00</td>
+                                <td>35.72</td>
+                                <td>40.00</td>
+                                <td>4,00,000.00</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>MIG-II</td>
+                                <td>140</td>
+                                <td>6 X 15</td>
+                                <td>90.00</td>
+                                <td>31,755.00</td>
+                                <td>28.57</td>
+                                <td>31.99</td>
+                                <td>3,19,900.00</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>MIG-I</td>
+                                <td>70</td>
+                                <td>6 X 12.5</td>
+                                <td>75.00</td>
+                                <td>31,755.00</td>
+                                <td>23.81</td>
+                                <td>26.66</td>
+                                <td>2,66,600.00</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>LIG-II</td>
+                                <td>35</td>
+                                <td>5 X 12</td>
+                                <td>60.00</td>
+                                <td>30,960.00</td>
+                                <td>18.57</td>
+                                <td>20.79</td>
+                                <td>2,07,900.00</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>LIG-I</td>
+                                <td>70</td>
+                                <td>5 X 10</td>
+                                <td>50.00</td>
+                                <td>30,960.00</td>
+                                <td>15.48</td>
+                                <td>17.33</td>
+                                <td>1,73,300.00</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>EWS</td>
+                                <td>96</td>
+                                <td>4 X 9</td>
+                                <td>36.00</td>
+                                <td>28,575.00</td>
+                                <td>10.28</td>
+                                <td>11.51</td>
+                                <td>1,15,100.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" style="text-align:right; font-weight:bold;">कुल भूखंडों की संख्या:</td>
+                                <td>919</td>
+                            </tr> 
+                        </tfoot>
+                    </table>
+                    
+            </div>
+            </div>
+            <script>
+                var isBlue = false; // Keep track of the current color state
+                
+                function togglePlotSize() {
+                    var form = document.getElementById('plotsizelist');
+                    var label = document.getElementById('jointplotsize');
+                    
+                    if (form.style.display === "none" || form.style.display === "") {
+                        form.style.display = "block";  // Show the form
+                        label.style.color = "blue";    // Change label color to blue
+                        isBlue = true;
+                    } else {
+                        form.style.display = "none";   // Hide the form
+                        label.style.color = "";        // Reset label color to original
+                        isBlue = false;
+                    }
+                }
+                </script>
+                
+            <div class="col-md-12 col-lg-12" style="padding-top: 20px; text-align: center;">
+            <div class="let-contact-btn">
+            <a href="/pg" class="main-default-btn">Pay Registration Fee</a>
+            <div id="msgSubmit" class="h3 text-center hidden"></div>
+            <div class="clearfix"></div>
+            </div>
+            </div>
+            </div>
+            </form>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<%- include('../layouts/footer') %>
+
+</body>
+</html>
